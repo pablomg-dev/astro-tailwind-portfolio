@@ -4,7 +4,7 @@ export const SITE_CONFIG: SiteConfig = {
   title: "Pablo M. González — Desarrollador Web",
   author: "Pablo M. González",
   description:
-    "Soy Pablo, desarrollador freelance desde enero 2024 👨‍💻 trabajando en remoto 🚀",
+    "Soy Pablo, desarrollador web freelance 🧑‍💻, potenciemos tu marca y proyecto 🚀",
   lang: "es",
   siteLogo: "/pablo-small.jpg",
   navLinks: [
