@@ -6,7 +6,7 @@ export const SITE_CONFIG: SiteConfig = {
   description:
     "Soy Pablo, desarrollador freelance desde enero 2024 👨‍💻 trabajando en remoto 🚀",
   lang: "es",
-  siteLogo: "/pablo-small.png",
+  siteLogo: "/pablo-small.jpg",
   navLinks: [
     { text: "Sobre mi", href: "#about" },
     { text: "Projectos", href: "#projects" },
@@ -33,7 +33,7 @@ export const SITE_CONTENT: SiteContent = {
     description: `
       Soy una persona versátil y apasionado por el aprendizaje continuo, con experiencia en desarrollo web utilizando tecnologías como HTML, CSS, JavaScript, Node.js, y MongoDB. Mi enfoque es orientado a resultados, destacando por mi capacidad de adaptación a entornos cambiantes, iniciativa y organización. Además, soy un entusiasta de las criptomonedas y finanzas descentralizadas (DeFi), donde he desarrollado habilidades en trading y análisis de tendencias del mercado, lo que me ha permitido entender las dinámicas del ecosistema cripto.
     `,
-    image: "/pablo-big.png",
+    image: "/pablo-big.jpg",
   },
   projects: [
     {
