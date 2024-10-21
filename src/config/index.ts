@@ -17,8 +17,8 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "LinkedIn", href: "https://www.linkedin.com/in/pablomg19/" },
     { text: "Github", href: "https://github.com/pmg369" },
   ],
-  socialImage: "/zen-og.png",
-  canonicalURL: "https://astro-zen.vercel.app",
+  socialImage: "/vistaprevia.png",
+  canonicalURL: "https://pablomgdev.netlify.app/",
 };
 
 export const SITE_CONTENT: SiteContent = {
