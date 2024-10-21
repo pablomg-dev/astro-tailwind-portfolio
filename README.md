@@ -1,25 +1,25 @@
-# AstroZen - Personal Portfolio Website
+# Astro-Tailwidn-Portfolio - Sitio de portfolio personal
 
-AstroZen is a minimalist, accessible and responsive portfolio template for your personal portfolio website. It is built with Astro and TailwindCSS.
+Astro-Tailwidn-Portfolio es una plantilla modificada (https://github.com/immois/astro-zen) de portafolio minimalista, accesible y responsiva para un sitio web de portafolio personal. Está diseñada con Astro y TailwindCSS.
 
-## 🔥 Features
+## 🔥 Caracteristicas
 
-- [x] Minimalist design. clean and simple
-- [x] Mobile-first responsive layout
-- [x] SEO-friendly and accessible
-- [x] Easy to customize with a single configuration file
+- [x] Diseño minimalista, limpio y sencillo
+- [x] Diseño responsivo que prioriza los dispositivos móviles
+- [x] Accesible y compatible con SEO
+- [x] Fácil de personalizar con un único archivo de configuración
 
-## 🚀 Getting Started
-Clone this repository to your local machine using Git.
+## 🚀 Empezando
+Clona este repositorio en tu máquina local usando Git.
 
 ```scheme
-git clone https://github.com/immois/astro-zen.git
-cd astro-zen
+git clone https://github.com/pmg369/astro-tailwind-portfolio.git
+cd astro-tailwind-portfolio
 ```
 
-| Command           | Action                                       |
+| Comanco           | Acción                                       |
 | :---------------- | :------------------------------------------- |
-| `pnpm install`     | Installs dependencies                        |
-| `pnpm dev`     | Starts local dev server at `localhost:4321`  |
-| `pnpm build`   | Build your production site to `./dist/`      |
-| `pnpm preview` | Preview your build locally, before deploying |
+| `pnpm install`     | Instalar dependecias                        |
+| `pnpm dev`     | Inicia el servidor de desarrollo local en `localhost:4321`  |
+| `pnpm build`   | Construya su sitio de producción para `./dist/`      |
+| `pnpm preview` | Obtenga una vista previa de su compilación localmente, antes de implementarla |
