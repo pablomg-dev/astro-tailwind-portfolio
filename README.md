@@ -1,4 +1,4 @@
-# Astro-Tailwidn-Portfolio - Sitio de portfolio personal
+# Astro-Tailwind-Portfolio - Sitio de portfolio personal
 
 Astro-Tailwidn-Portfolio es una plantilla modificada (https://github.com/immois/astro-zen) de portafolio minimalista, accesible y responsiva para un sitio web de portafolio personal. Está diseñada con Astro y TailwindCSS.
 
