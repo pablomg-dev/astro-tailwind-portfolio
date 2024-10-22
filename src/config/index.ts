@@ -14,8 +14,8 @@ export const SITE_CONFIG: SiteConfig = {
   socialLinks: [
     { text: "X", href: "https://x.com/W3Paul" },
     { text: "Instagram", href: "https://www.instagram.com/pablomg.3/" },
-    { text: "LinkedIn", href: "https://www.linkedin.com/in/pablomg19/" },
-    { text: "Github", href: "https://github.com/pmg369" },
+    { text: "LinkedIn", href: "https://www.linkedin.com/in/pablomgdev/" },
+    { text: "Github", href: "https://github.com/pablomg-dev" },
   ],
   socialImage: "/vistaprevia.png",
   canonicalURL: "https://pablomgdev.netlify.app/",
