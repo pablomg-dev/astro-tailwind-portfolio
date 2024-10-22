@@ -13,7 +13,7 @@ export const SITE_CONFIG: SiteConfig = {
   ],
   socialLinks: [
     { text: "X", href: "https://x.com/W3Paul" },
-    { text: "Instagram", href: "https://www.instagram.com/pablomg.3/" },
+    { text: "Instagram", href: "https://www.instagram.com/pablomg.dev/" },
     { text: "LinkedIn", href: "https://www.linkedin.com/in/pablomgdev/" },
     { text: "Github", href: "https://github.com/pablomg-dev" },
   ],
