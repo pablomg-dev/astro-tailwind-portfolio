@@ -30,7 +30,7 @@ export const SITE_CONTENT: SiteContent = {
   },
   about: {
     description: `
-      Soy una persona versátil y apasionado por el aprendizaje continuo, con experiencia en desarrollo web utilizando tecnologías como HTML, CSS, JavaScript, Node.js, y MongoDB. Mi enfoque es orientado a resultados, destacando por mi capacidad de adaptación a entornos cambiantes, iniciativa y organización. Además, soy un entusiasta de las criptomonedas y finanzas descentralizadas (DeFi), donde he desarrollado habilidades en trading y análisis de tendencias del mercado, lo que me ha permitido entender las dinámicas del ecosistema cripto.
+      Soy una persona dinámica y apasionado por el aprendizaje continuo, con experiencia en desarrollo web utilizando tecnologías como HTML, CSS, JavaScript, Bootstrap, Tailwind, Node.js, y MongoDB. Mi enfoque esta orientado a los resultados, destacando por mi capacidad de adaptación a entornos cambiantes, aportando mi iniciativa y organización.
     `,
     image: "/pablo-big.jpg",
   },
