@@ -25,12 +25,12 @@ export const SITE_CONTENT: SiteContent = {
     name: "Pablo M. González",
     specialty: "Desarrollador Web",
     summary:
-      "Soy Pablo, desarrollador web freelance 🧑‍💻, potenciemos tu marca y proyecto 🚀",
+      "¡Bienvenido/a!, soy Pablo 🙋‍♂️, desarrollador web freelance 🧑‍💻, potenciemos tu marca y proyecto 🚀",
     email: "pablomgonzalez.dev@gmail.com",
   },
   about: {
     description: `
-      Soy una persona dinámica y apasionado por el aprendizaje continuo, con experiencia en desarrollo web utilizando tecnologías como HTML, CSS, JavaScript, Bootstrap, Tailwind, Node.js, y MongoDB. Mi enfoque esta orientado a los resultados, destacando por mi capacidad de adaptación a entornos cambiantes, aportando mi iniciativa y organización.
+      Soy una persona dinámica y apasionado por el aprendizaje continuo, poseo experiencia en desarrollo web y un enfoque orientado a obtener resultados efectivos. Me adapto y organizo siempre en busca de nuevas maneras de crecer y aportar valor en cada proyecto que emprendo. Además de mi profesión, soy autodidacta en la astrología y tengo un interés por mundo de las criptomonedas, áreas que me han enseñado a mejorar como profesional y a establecer conexiones valiosas con personas de intereses similares.
     `,
     image: "/pablo-big.jpg",
   },
