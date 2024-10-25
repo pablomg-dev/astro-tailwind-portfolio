@@ -36,13 +36,6 @@ export const SITE_CONTENT: SiteContent = {
   },
   projects: [
     {
-      name: "Plataforma Disco Music",
-      summary: "Este proyecto está inspirado en mi banda favorita, Audioslave. Permite a los usuarios registrarse, editar álbumes y canciones, agregar nuevos elementos, y ofrece la opción de escuchar canciones en streaming o enlazarlas a videos de YouTube.",
-      link: "https://audioslave-fanpage-p5.onrender.com/",
-      code: "https://github.com/pmg369/plataforma-disco-music",
-      image: "/platdismu.png",
-    },
-    {
       name: "Cora Astrología Viva",
       summary: "Este sitio web está diseñado para reflejar la esencia y los servicios de una terapeuta holística, combinando un enfoque visual relajante con información clara y accesible.",
       link: "https://corastrologiaviva.netlify.app/",
@@ -55,6 +48,13 @@ export const SITE_CONTENT: SiteContent = {
       link: "https://espacio-luminem.com/",
       code: "https://github.com/pmg369/espacio-luminem",
       image: "/esplum.png",
+    },
+    {
+      name: "Plataforma Disco Music (en desarrollo)",
+      summary: "Este proyecto está inspirado en mi banda favorita, Audioslave. Permite a los usuarios registrarse, editar álbumes y canciones, agregar nuevos elementos, y ofrece la opción de escuchar canciones en streaming o enlazarlas a videos de YouTube.",
+      link: "https://audioslave-fanpage-p5.onrender.com/",
+      code: "https://github.com/pmg369/plataforma-disco-music",
+      image: "/platdismu.png",
     },
   ],
 };
