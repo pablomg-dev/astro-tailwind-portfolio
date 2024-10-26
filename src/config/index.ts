@@ -1,8 +1,8 @@
 import type { SiteConfig, SiteContent } from "../types";
 
 export const SITE_CONFIG: SiteConfig = {
-  title: "Pablo M. González — Desarrollador Web",
-  author: "Pablo M. González",
+  title: "Pablo M.G. — Desarrollador Web",
+  author: "Pablo M.G.",
   description:
     "Soy Pablo 🙋‍♂️, desarrollador web freelance 🧑‍💻, potenciemos tu marca y proyecto 🚀",
   lang: "es",
@@ -22,7 +22,7 @@ export const SITE_CONFIG: SiteConfig = {
 
 export const SITE_CONTENT: SiteContent = {
   hero: {
-    name: "Pablo M. González",
+    name: "Pablo M.G.",
     specialty: "Desarrollador Web",
     summary:
       "¡Bienvenido/a!, soy Pablo 🙋‍♂️, desarrollador web freelance 🧑‍💻, potenciemos tu marca y proyecto 🚀",
