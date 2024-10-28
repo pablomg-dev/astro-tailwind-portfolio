@@ -25,7 +25,7 @@ export const SITE_CONTENT: SiteContent = {
     name: "Pablo M.G.",
     specialty: "Desarrollador Web",
     summary:
-      "¡Bienvenido/a!, soy Pablo 🙋‍♂️, desarrollador web freelance 🧑‍💻, potenciemos tu marca y proyecto 🚀",
+      "¡Bienvenido/a!, soy Pablo 🙋‍♂️, desarrollador web freelance 🧑‍💻, potenciemos tu marca y/o proyecto 🚀",
     email: "pablomgonzalez.dev@gmail.com",
   },
   about: {
