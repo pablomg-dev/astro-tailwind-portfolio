@@ -28,12 +28,6 @@ export const SITE_CONTENT: SiteContent = {
       "¡Bienvenido/a!, soy Pablo 🙋‍♂️, desarrollador web freelance 🧑‍💻, potenciemos tu marca y/o proyecto 🚀",
     email: "pablomgonzalez.dev@gmail.com",
   },
-  about: {
-    description: `
-      Soy una persona dinámica y apasionado por el aprendizaje continuo, poseo experiencia en desarrollo web y un enfoque orientado a obtener resultados efectivos. Me adapto y organizo siempre en busca de nuevas maneras de crecer y aportar valor en cada proyecto que emprendo. Además de mi profesión, soy autodidacta en la astrología y tengo un interés por mundo de las criptomonedas, áreas que me han enseñado a mejorar como profesional y a establecer conexiones valiosas con personas de intereses similares.
-    `,
-    image: "/pablo-big.jpg",
-  },
   projects: [
     {
       name: "Cora Astrología Viva",
@@ -57,6 +51,12 @@ export const SITE_CONTENT: SiteContent = {
       image: "/platdismu.png",
     },
   ],
+  about: {
+    description: `
+      Soy una persona dinámica y apasionado por el aprendizaje continuo, poseo experiencia en desarrollo web y un enfoque orientado a obtener resultados efectivos. Me adapto y organizo siempre en busca de nuevas maneras de crecer y aportar valor en cada proyecto que emprendo. Además de mi profesión, soy autodidacta en la astrología y tengo un interés por mundo de las criptomonedas, áreas que me han enseñado a mejorar como profesional y a establecer conexiones valiosas con personas de intereses similares.
+    `,
+    image: "/pablo-big.jpg",
+  },
 };
 
 // #5755ff
