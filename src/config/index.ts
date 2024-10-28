@@ -8,8 +8,8 @@ export const SITE_CONFIG: SiteConfig = {
   lang: "es",
   siteLogo: "/pablo-small.jpg",
   navLinks: [
-    { text: "Sobre mi", href: "#about" },
     { text: "Projectos", href: "#projects" },
+    { text: "Sobre mi", href: "#about" },
   ],
   socialLinks: [
     { text: "Instagram", href: "https://www.instagram.com/pablomg.dev/" },
@@ -53,7 +53,7 @@ export const SITE_CONTENT: SiteContent = {
   ],
   about: {
     description: `
-      Soy una persona dinámica y apasionado por el aprendizaje continuo, poseo experiencia en desarrollo web y un enfoque orientado a obtener resultados efectivos. Me adapto y organizo siempre en busca de nuevas maneras de crecer y aportar valor en cada proyecto que emprendo. Además de mi profesión, soy autodidacta en la astrología y tengo un interés por mundo de las criptomonedas, áreas que me han enseñado a mejorar como profesional y a establecer conexiones valiosas con personas de intereses similares.
+      Soy una persona dinámica y apasionada por el aprendizaje continuo, con experiencia en desarrollo web y un enfoque en obtener resultados efectivos. Busco siempre nuevas maneras de aportar valor en cada proyecto. Además de mi profesión, soy autodidacta en astrología y tengo un interés en las criptomonedas, áreas que me han permitido crecer como profesional y conectar con personas afines.
     `,
     image: "/pablo-big.jpg",
   },
