@@ -4,7 +4,7 @@ export const SITE_CONFIG: SiteConfig = {
   title: "Pablo M.G. — Desarrollador Web",
   author: "Pablo M.G.",
   description:
-    "Soy Pablo 🙋‍♂️, desarrollador web freelance 🧑‍💻, potenciemos tu marca y proyecto 🚀",
+    "Soy Pablo 🙋‍♂️, desarrollador web freelance 🧑‍💻, potenciemos tu marca y/o proyecto 🚀",
   lang: "es",
   siteLogo: "/pablo-small.jpg",
   navLinks: [
