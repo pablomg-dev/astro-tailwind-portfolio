@@ -53,7 +53,7 @@ export const SITE_CONTENT: SiteContent = {
   ],
   about: {
     description: `
-      Soy una persona dinámica y apasionada por el aprendizaje continuo, con experiencia en desarrollo web y un enfoque en obtener resultados efectivos. Busco siempre nuevas maneras de aportar valor en cada proyecto. Además de mi profesión, soy autodidacta en astrología y tengo un interés en las criptomonedas, áreas que me han permitido crecer como profesional y conectar con personas afines.
+      Soy una persona dinámica y apasionada por el aprendizaje continuo, con experiencia en desarrollo web y un enfoque en obtener resultados efectivos. Busco siempre nuevas maneras de aportar valor en cada proyecto. Además tengo un profundo interés en el mundo de las criptomonedas y la astrología como hobby, dos áreas que han enriquecido mi desarrollo profesional y me han permitido construir conexiones valiosas con personas de intereses afines.
     `,
     image: "/pablo-big.jpg",
   },
