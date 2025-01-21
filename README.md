@@ -17,7 +17,7 @@ git clone https://github.com/pmg369/astro-tailwind-portfolio.git
 cd astro-tailwind-portfolio
 ```
 
-| Comanco           | Acción                                       |
+| Comando           | Acción                                       |
 | :---------------- | :------------------------------------------- |
 | `pnpm install`     | Instalar dependecias                        |
 | `pnpm dev`     | Inicia el servidor de desarrollo local en `localhost:4321`  |
