@@ -29,6 +29,13 @@ export const SITE_CONTENT: SiteContent = {
   },
   projects: [
     {
+      name: "Soy Jessi Carmona",
+      summary: "Sitio web para una terapeuta de artes sanadoras. El enfoque estuvo en crear una experiencia visual armoniosa que refleje su trabajo en meditación, yoga y desarrollo personal. La web comunica cercanía, claridad y bienestar, invitando a la exploración del autoconocimiento y la conexión con la comunidad.",
+      link: "https://soyjessicarmona.com/",
+      code: "https://github.com/pablomg-dev/jessiCarmona",
+      image: "/soyjessi.png",
+    },
+    {
       name: "Cora Astrología Viva",
       summary: "Este sitio web está diseñado para reflejar la esencia y los servicios de una terapeuta holística, combinando un enfoque visual relajante con información clara y accesible.",
       link: "https://corastrologiaviva.netlify.app/",
