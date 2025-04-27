@@ -50,7 +50,7 @@ export const SITE_CONTENT: SiteContent = {
       image: "/esplum.png",
     },
     {
-      name: "Plataforma Disco Music (en desarrollo)",
+      name: "Plataforma Disco Music",
       summary: "Este proyecto está inspirado en mi banda favorita, Audioslave. Permite a los usuarios registrarse, editar álbumes y canciones, agregar nuevos elementos, y ofrece la opción de escuchar canciones en streaming o enlazarlas a videos de YouTube.",
       link: "https://audioslave-fanpage-p5.onrender.com/",
       code: "https://github.com/pmg369/plataforma-disco-music",
@@ -64,5 +64,3 @@ export const SITE_CONTENT: SiteContent = {
     image: "/pablo-big.jpg",
   },
 };
-
-// #5755ff
