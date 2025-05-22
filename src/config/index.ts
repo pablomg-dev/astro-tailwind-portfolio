@@ -1,10 +1,10 @@
 import type { SiteConfig, SiteContent } from "../types";
 
 export const SITE_CONFIG: SiteConfig = {
-  title: "Pablo M.G. — Desarrollador Web",
+  title: "Pablo M.G. — Web Developer",
   author: "Pablo M.G.",
   description:
-    "Soy Pablo 🙋‍♂️, Programador y Desarrollador Web 🧑‍💻",
+    "Soy Pablo 🙋‍♂️, Web Developer 🧑‍💻",
   lang: "es",
   siteLogo: "/pablo-small.jpg",
   navLinks: [
@@ -22,10 +22,10 @@ export const SITE_CONFIG: SiteConfig = {
 export const SITE_CONTENT: SiteContent = {
   hero: {
     name: "Pablo M.G.",
-    specialty: "Desarrollador Web",
+    specialty: "Web Developer",
     summary:
-      "¡Bienvenido/a!, Soy Pablo 🙋‍♂️, Programador y Desarrollador Web 🧑‍💻",
-    email: "pablomgonzalez.dev@gmail.com",
+      "¡Bienvenido/a!, Soy Pablo 🙋‍♂️, te ayudo a crear tu sitio 🧑‍💻",
+    email: "pablomartingonzalez2025@gmail.com",
   },
   projects: [
     {
