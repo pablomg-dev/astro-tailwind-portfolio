@@ -5,9 +5,10 @@ interface Props {
 }
 
 const { text, href } = Astro.props;
+const sectionId = href.startsWith('#') ? href.slice(1) : href;
 ---
 
-<section id={href} class="pb-10">
+<section id={sectionId} class="pb-10">
   <h2
     class="text-4xl md:text-5xl font-serif font-bold tracking-tighter text-white my-12"
   >

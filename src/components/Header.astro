@@ -40,6 +40,7 @@ const { siteLogo, navLinks } = Astro.props;
             <a
               class={`font-medium text-sm p-2 block hover:text-primary nav-item`}
               href={link.href}
+              data-nav-link
             >
               {link.text}
             </a>
@@ -64,5 +65,67 @@ const { siteLogo, navLinks } = Astro.props;
   button?.addEventListener("click", toggleMenu);
   navItems.forEach((item) => {
     item?.addEventListener("click", toggleMenu);
+  });
+
+  // Función de scroll suave personalizada
+  function smoothScroll(targetPosition: number, duration: number = 600) {
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime: number | null = null;
+
+    function animation(currentTime: number) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+
+      // Función de easing para hacer el scroll más suave
+      const easeInOutQuad = (t: number) => {
+        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      };
+
+      window.scrollTo(0, startPosition + distance * easeInOutQuad(progress));
+
+      if (progress < 1) {
+        requestAnimationFrame(animation);
+      }
+    }
+
+    requestAnimationFrame(animation);
+  }
+
+  // Manejador de click para los enlaces de navegación
+  document.querySelectorAll('[data-nav-link]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      
+      if (href?.startsWith('#')) {
+        const targetId = href.slice(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+          const targetPosition = targetElement.offsetTop - headerHeight;
+          
+          smoothScroll(targetPosition, 1000); // 1000ms = 1 segundo de duración
+        }
+      }
+    });
+  });
+
+  // Manejar el scroll suave después de la carga de la página
+  document.addEventListener('astro:page-load', () => {
+    const hash = window.location.hash;
+    if (hash) {
+      const targetElement = document.getElementById(hash.slice(1));
+      if (targetElement) {
+        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+        const targetPosition = targetElement.offsetTop - headerHeight;
+        
+        setTimeout(() => {
+          smoothScroll(targetPosition, 1000);
+        }, 100);
+      }
+    }
   });
 </script>
