@@ -76,7 +76,7 @@ Las contribuciones son bienvenidas. Por favor, abre un issue o pull request para
 
 ## 📧 Contacto
 
-Pablo Morales - [@pmg369](https://github.com/pmg369)
+Pablo MG - [@pmg369](https://github.com/pmg369)
 
 ---
 
