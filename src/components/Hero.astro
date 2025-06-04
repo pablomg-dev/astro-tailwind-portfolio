@@ -20,13 +20,15 @@ const { name, specialty, summary, email } = Astro.props;
   
   <div class="max-w-2xl animate-slide-in-right" style="animation-delay: 0.4s">
     <p class="text-neutral text-lg mb-8">{summary}</p>
-    <a
-      href={`mailto:${email}`}
-      class="inline-block bg-primary text-white px-8 py-4 rounded-lg font-medium cursor-pointer hover:bg-primary/80 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg relative"
-    >
-      <span class="relative z-10">¡Contáctame!</span>
+    <div class="relative inline-block">
+      <a
+        href={`mailto:${email}`}
+        class="inline-block bg-primary text-white px-8 py-4 rounded-lg font-medium cursor-pointer hover:bg-primary/80 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg"
+      >
+        ¡Contáctame!
+      </a>
       <div class="absolute inset-0 rounded-lg animate-pulse-glow pointer-events-none"></div>
-    </a>
+    </div>
   </div>
 
   <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
