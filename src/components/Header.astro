@@ -62,6 +62,7 @@ const { navLinks } = Astro.props;
   });
 
   function smoothScroll(target: string) {
+    if (!target) return;
     const element = document.querySelector(target);
     if (!element) return;
 
@@ -93,8 +94,10 @@ const { navLinks } = Astro.props;
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      const target = (e.target as HTMLAnchorElement).getAttribute("href") || "";
-      smoothScroll(target);
+      const target = (e.currentTarget as HTMLAnchorElement).getAttribute("href");
+      if (target) {
+        smoothScroll(target);
+      }
     });
   });
 </script>
