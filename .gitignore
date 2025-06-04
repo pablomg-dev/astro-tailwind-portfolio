@@ -1,24 +1,69 @@
-# build output
+# Directorios de construcción y salida
 dist/
+.output/
+build/
 
-# generated types
+# Tipos generados
 .astro/
 
-# dependencies
+# Dependencias
 node_modules/
+.pnpm-store/
 
-# logs
+# Logs y debugging
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+.pnpm-debug.log*
 
-# environment variables
+# Variables de entorno y configuraciones locales
 .env
+.env.*
+!.env.example
 .env.production
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# macOS-specific files
+# Archivos del sistema operativo
 .DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-# jetbrains setting folder
+# IDEs y editores
 .idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+*.orig
+.project
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# Archivos temporales
+*.tmp
+*.temp
+.cache/
+.temp/
+tmp/
+temp/
+
+# Cobertura y testing
+coverage/
+.nyc_output/
+cypress/videos/
+cypress/screenshots/
+
+# Otros archivos específicos de desarrollo
+.vercel
+.netlify
+stats.html
+.turbo
