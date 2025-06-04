@@ -60,17 +60,17 @@ export const SITE_CONTENT: SiteContent = {
   ],
   about: {
     description: `
-      ¡Hola! Soy Pablo, desarrollador web.
+      ¡Hola! Soy Pablo, Desarrollador Web.
 
-      Creo soluciones digitales para negocios y proyectos personales. Especializado en:
+      Creo soluciones digitales para proyectos personales y emprendimientos. Especializado en:
 
-      - Webs de negocio que atraen clientes
-      - Páginas personales que destacan tu marca
+      - Páginas personales que destaquen tu marca
       - Proyectos a medida
+      - Optimización de tu sitio web
 
       Me enfoco en calidad y funcionalidad, trabajando de cerca con cada cliente.
 
-      ¿Listo para llevar tu proyecto al siguiente nivel?
+      ¿Listo/a para llevar tu proyecto al siguiente nivel?
     `,
     image: "/pablo-big.jpg",
   },
