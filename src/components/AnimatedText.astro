@@ -1,13 +1,23 @@
 ---
-import type { AnimatedTextProps } from "@types";
+import type { AnimatedTextProps } from "../types";
 type Props = AnimatedTextProps;
 
 const { text } = Astro.props;
+
+// Separar el texto en partes: emoji inicial, texto principal y emoji final
+const parts = text.split(/(💻|🚀)/);
 ---
 
-<div class="flex items-center gap-2">
-  <div class="text-primary text-2xl font-bold animate-bounce-slow">🚀</div>
-  <div class="text-white text-xl font-medium animate-fade-in">
-    {text}
-  </div>
+<div class="flex items-center gap-2 text-white text-xl font-medium">
+  {
+    parts.map((part) => {
+      if (part === '💻') {
+        return <span class="animate-float inline-block">💻</span>;
+      } else if (part === '🚀') {
+        return <span class="animate-float inline-block">🚀</span>;
+      } else {
+        return <span class="animate-fade-in">{part}</span>;
+      }
+    })
+  }
 </div>

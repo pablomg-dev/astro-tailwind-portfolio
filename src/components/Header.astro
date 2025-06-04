@@ -10,7 +10,7 @@ const { navLinks } = Astro.props;
 
 <header class="max-w-5xl mx-auto flex items-center justify-between px-5 py-8 relative border-b border-neutral/20">
   <a href="/" aria-label="Home link" class="flex items-center">
-    <AnimatedText text="Creador de páginas web" />
+    <AnimatedText text="💻 Diseñador de Sitios Web 🚀" />
   </a>
 
   <button
@@ -87,6 +87,9 @@ const { navLinks } = Astro.props;
     requestAnimationFrame(animation);
   }
 
+  // Variable para controlar si el scroll debe ejecutarse
+  let shouldHandleScroll = false;
+
   // Manejador de click para los enlaces de navegación
   document.querySelectorAll('[data-nav-link]').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -94,6 +97,7 @@ const { navLinks } = Astro.props;
       const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
       
       if (href?.startsWith('#')) {
+        shouldHandleScroll = true; // Activar el scroll solo cuando se hace clic
         const targetId = href.slice(1);
         const targetElement = document.getElementById(targetId);
         
@@ -101,7 +105,9 @@ const { navLinks } = Astro.props;
           const headerHeight = document.querySelector('header')?.offsetHeight || 0;
           const targetPosition = targetElement.offsetTop - headerHeight;
           
-          smoothScroll(targetPosition, 1000); // 1000ms = 1 segundo de duración
+          smoothScroll(targetPosition, 1000);
+          // Actualizar la URL sin causar scroll
+          history.pushState(null, '', href);
         }
       }
     });
@@ -109,16 +115,19 @@ const { navLinks } = Astro.props;
 
   // Manejar el scroll suave después de la carga de la página
   document.addEventListener('astro:page-load', () => {
-    const hash = window.location.hash;
-    if (hash) {
-      const targetElement = document.getElementById(hash.slice(1));
-      if (targetElement) {
-        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-        const targetPosition = targetElement.offsetTop - headerHeight;
-        
-        setTimeout(() => {
-          smoothScroll(targetPosition, 1000);
-        }, 100);
+    // Solo ejecutar el scroll si fue activado por un clic
+    if (shouldHandleScroll) {
+      const hash = window.location.hash;
+      if (hash) {
+        const targetElement = document.getElementById(hash.slice(1));
+        if (targetElement) {
+          const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+          const targetPosition = targetElement.offsetTop - headerHeight;
+          
+          setTimeout(() => {
+            smoothScroll(targetPosition, 1000);
+          }, 100);
+        }
       }
     }
   });

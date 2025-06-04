@@ -9,11 +9,15 @@ const { description, name } = Astro.props;
 
 <Section text="Sobre mi" href="about">
   <div class="flex gap-12 md:gap-8 flex-col items-center md:flex-row">
-    <div class="text-neutral w-auto text-base md:pr-5 animate-fade-in whitespace-pre-line">
+    <div 
+      class="text-neutral w-auto text-base md:pr-5 opacity-0 transition-all duration-700 translate-y-16 whitespace-pre-line"
+      data-scroll-animation
+    >
       {description}
     </div>
     <div
-      class="w-64 h-80 bg-white p-4 flex-shrink-0 rotate-[5deg] md:rotate-[7deg] animate-fade-in"
+      class="w-64 h-80 bg-white p-4 flex-shrink-0 rotate-[5deg] md:rotate-[7deg] opacity-0 transition-all duration-700 translate-y-16"
+      data-scroll-animation
     >
       <img
         class="object-cover rounded-lg shadow-lg"
@@ -27,3 +31,36 @@ const { description, name } = Astro.props;
     </div>
   </div>
 </Section>
+
+<script>
+  function setupScrollAnimations() {
+    const animatedElements = document.querySelectorAll('[data-scroll-animation]');
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).style.opacity = '1';
+            (entry.target as HTMLElement).style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.1,
+        rootMargin: '-50px'
+      }
+    );
+
+    animatedElements.forEach((element) => {
+      observer.observe(element);
+    });
+  }
+
+  // Ejecutar al cargar la página
+  setupScrollAnimations();
+
+  // Ejecutar después de la navegación de Astro
+  document.addEventListener('astro:page-load', setupScrollAnimations);
+</script>
