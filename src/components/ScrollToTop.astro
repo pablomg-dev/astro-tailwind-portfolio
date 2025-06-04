@@ -22,9 +22,13 @@ import ArrowUp from "@icons/ArrowUp.astro";
       const scrollThreshold = viewportHeight * 0.3; // Reducido a 30% para que aparezca antes
 
       if (scrollPosition > scrollThreshold) {
-        scrollButton.classList.remove("invisible", "opacity-0", "translate-y-10");
+        requestAnimationFrame(() => {
+          scrollButton?.classList.remove("invisible", "opacity-0", "translate-y-10");
+        });
       } else {
-        scrollButton.classList.add("invisible", "opacity-0", "translate-y-10");
+        requestAnimationFrame(() => {
+          scrollButton?.classList.add("invisible", "opacity-0", "translate-y-10");
+        });
       }
     }
 
@@ -43,11 +47,21 @@ import ArrowUp from "@icons/ArrowUp.astro";
 
     // Inicializar estado del botón
     toggleScrollButton();
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("scroll", toggleScrollButton);
+      scrollButton.removeEventListener("click", smoothScrollToTop);
+    };
   }
 
   // Inicializar cuando el DOM está listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollToTop);
+  } else {
+    initScrollToTop();
+  }
+
+  // También inicializar en navegación de Astro
   document.addEventListener('astro:page-load', initScrollToTop);
-  
-  // También inicializar inmediatamente por si no hay navegación
-  initScrollToTop();
 </script> 
