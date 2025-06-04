@@ -6,7 +6,7 @@ export const SITE_CONFIG: SiteConfig = {
   description:
     "Soy Pablo 🙋‍♂️, Web Developer 🧑‍💻",
   lang: "es",
-  siteLogo: "/pablo-small.jpg",
+  siteLogo: "/pablo-small.png",
   navLinks: [
     { text: "Projectos", href: "#projects" },
     { text: "Sobre mi", href: "#about" },
@@ -14,6 +14,7 @@ export const SITE_CONFIG: SiteConfig = {
   socialLinks: [
     { text: "LinkedIn", href: "https://www.linkedin.com/in/pablomgdev/" },
     { text: "Github", href: "https://github.com/pablomg-dev" },
+    { text: "Instagram", href: "https://www.instagram.com/pablomg.dev/" },
   ],
   socialImage: "/vistaprevia.png",
   canonicalURL: "https://pablomgdev.netlify.app/",
@@ -59,7 +60,17 @@ export const SITE_CONTENT: SiteContent = {
   ],
   about: {
     description: `
-      Soy una persona dinámica y apasionada por el aprendizaje continuo, con experiencia en desarrollo web y un enfoque en obtener resultados efectivos. Busco siempre nuevas maneras de aportar valor en cada proyecto. Además tengo un profundo interés en el mundo de la Blockchain y Web3, también la astrología como un hobby, dos áreas que han enriquecido mi desarrollo profesional y me han permitido construir conexiones valiosas con personas de intereses afines.
+      ¡Hola! Soy Pablo, desarrollador web.
+
+      Creo soluciones digitales para negocios y proyectos personales. Especializado en:
+
+      - Webs de negocio que atraen clientes
+      - Páginas personales que destacan tu marca
+      - Proyectos a medida
+
+      Me enfoco en calidad y funcionalidad, trabajando de cerca con cada cliente.
+
+      ¿Listo para llevar tu proyecto al siguiente nivel?
     `,
     image: "/pablo-big.jpg",
   },

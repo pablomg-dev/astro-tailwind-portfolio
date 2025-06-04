@@ -1,28 +1,22 @@
 ---
 import Menu from "@icons/Menu.astro";
-import { Image } from "astro:assets";
+import AnimatedText from "@components/AnimatedText.astro";
 import type { HeaderProps } from "@types";
 
 type Props = HeaderProps;
 
-const { siteLogo, navLinks } = Astro.props;
+const { navLinks } = Astro.props;
 ---
 
-<header class="max-w-5xl mx-auto flex justify-between px-5 py-6 relative border-b border-neutral/20">
-  <a href="/" aria-label="Home link">
-    <Image
-      class="rounded-full"
-      src={siteLogo}
-      width="45"
-      height="45"
-      alt="website logo"
-    />
+<header class="max-w-5xl mx-auto flex items-center justify-between px-5 py-8 relative border-b border-neutral/20">
+  <a href="/" aria-label="Home link" class="flex items-center">
+    <AnimatedText text="Creador de páginas web" />
   </a>
 
   <button
     type="button"
     id="menu-button"
-    class="sm:hidden text-neutral px-1.5"
+    class="sm:hidden text-neutral px-2 py-1"
     aria-expanded="false"
     aria-controls="main-menu"
   >
@@ -30,15 +24,15 @@ const { siteLogo, navLinks } = Astro.props;
   </button>
 
   <nav
-    class="hidden text-neutral border absolute right-5 top-20 bg-black border-neutral/40 py-5 px-4 rounded-xl sm:block sm:border-0 sm:p-0 sm:static sm:bg-transparent"
+    class="hidden text-neutral border absolute right-5 top-24 bg-black border-neutral/40 py-6 px-4 rounded-xl sm:block sm:border-0 sm:p-0 sm:static sm:bg-transparent"
     id="main-menu"
   >
-    <ul class="sm:flex gap-2">
+    <ul class="sm:flex gap-4">
       {
         navLinks.map((link) => (
           <li class="relative">
             <a
-              class={`font-medium text-sm p-2 block hover:text-primary nav-item`}
+              class={`font-medium text-base px-4 py-2 block hover:text-primary nav-item transition-colors duration-300`}
               href={link.href}
               data-nav-link
             >

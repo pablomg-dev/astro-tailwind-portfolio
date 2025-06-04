@@ -1,0 +1,13 @@
+---
+import type { AnimatedTextProps } from "@types";
+type Props = AnimatedTextProps;
+
+const { text } = Astro.props;
+---
+
+<div class="flex items-center gap-2">
+  <div class="text-primary text-2xl font-bold animate-bounce-slow">🚀</div>
+  <div class="text-white text-xl font-medium animate-fade-in">
+    {text}
+  </div>
+</div>
