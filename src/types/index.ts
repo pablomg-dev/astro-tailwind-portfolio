@@ -38,3 +38,11 @@ export interface HeaderProps {
   siteLogo: string;
   navLinks: { text: string; href: string }[];
 }
+
+export interface AnimatedTextProps {
+  text: string;
+}
+
+export interface LogoProps {
+  name: string;
+}
