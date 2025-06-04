@@ -61,74 +61,40 @@ const { navLinks } = Astro.props;
     item?.addEventListener("click", toggleMenu);
   });
 
-  // Función de scroll suave personalizada
-  function smoothScroll(targetPosition: number, duration: number = 600) {
-    const startPosition = window.pageYOffset;
+  function smoothScroll(target: string) {
+    const element = document.querySelector(target);
+    if (!element) return;
+
+    const startPosition = window.scrollY;
+    const targetPosition = element.getBoundingClientRect().top + window.scrollY;
     const distance = targetPosition - startPosition;
-    let startTime: number | null = null;
+    const duration = 1000;
+    let start: number | null = null;
 
     function animation(currentTime: number) {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
+      if (start === null) start = currentTime;
+      const timeElapsed = currentTime - start;
+      const run = ease(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
 
-      // Función de easing para hacer el scroll más suave
-      const easeInOutQuad = (t: number) => {
-        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-      };
-
-      window.scrollTo(0, startPosition + distance * easeInOutQuad(progress));
-
-      if (progress < 1) {
-        requestAnimationFrame(animation);
-      }
+    function ease(t: number, b: number, c: number, d: number) {
+      t /= d / 2;
+      if (t < 1) return (c / 2) * t * t + b;
+      t--;
+      return (-c / 2) * (t * (t - 2) - 1) + b;
     }
 
     requestAnimationFrame(animation);
   }
 
-  // Variable para controlar si el scroll debe ejecutarse
-  let shouldHandleScroll = false;
-
-  // Manejador de click para los enlaces de navegación
-  document.querySelectorAll('[data-nav-link]').forEach(link => {
-    link.addEventListener('click', (e) => {
+  const links = document.querySelectorAll('a[href^="#"]');
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
       e.preventDefault();
-      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
-      
-      if (href?.startsWith('#')) {
-        shouldHandleScroll = true; // Activar el scroll solo cuando se hace clic
-        const targetId = href.slice(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-          const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-          const targetPosition = targetElement.offsetTop - headerHeight;
-          
-          smoothScroll(targetPosition, 1000);
-          // Actualizar la URL sin causar scroll
-          history.pushState(null, '', href);
-        }
-      }
+      const target = (e.target as HTMLAnchorElement).getAttribute("href") || "";
+      smoothScroll(target);
     });
-  });
-
-  // Manejar el scroll suave después de la carga de la página
-  document.addEventListener('astro:page-load', () => {
-    // Solo ejecutar el scroll si fue activado por un clic
-    if (shouldHandleScroll) {
-      const hash = window.location.hash;
-      if (hash) {
-        const targetElement = document.getElementById(hash.slice(1));
-        if (targetElement) {
-          const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-          const targetPosition = targetElement.offsetTop - headerHeight;
-          
-          setTimeout(() => {
-            smoothScroll(targetPosition, 1000);
-          }, 100);
-        }
-      }
-    }
   });
 </script>

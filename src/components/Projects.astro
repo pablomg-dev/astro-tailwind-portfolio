@@ -12,7 +12,7 @@ const { projects } = Astro.props;
 
 <Section text="Proyectos" href="projects">
   {
-    projects.map((project, index) => (
+    projects.map((project) => (
       <div 
         class={`w-full min-h-96 relative z-[1] bg-[#1c232d]/85 bg-difu before:content-[''] before:rounded-2xl before:absolute before:z-[-1] before:opacity-[5%] before:inset-0 before:bg-[url(/raja.png)] before:bg-repeat before:bg-[length:128px] rounded-2xl flex flex-col sm:grid sm:grid-cols-2 mb-10 opacity-0 transition-all duration-700 translate-y-16`}
         data-scroll-animation
@@ -65,8 +65,11 @@ const { projects } = Astro.props;
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            const element = entry.target as HTMLElement;
+            if (element) {
+              element.style.opacity = '1';
+              element.style.transform = 'translateY(0)';
+            }
             observer.unobserve(entry.target);
           }
         });
