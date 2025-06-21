@@ -3,7 +3,7 @@ import type { HeroProps } from "../types";
 
 interface Props extends HeroProps {}
 
-const { name, specialty, summary, email } = Astro.props;
+const { name, specialty, summary } = Astro.props;
 ---
 
 <section class="min-h-[85vh] flex flex-col justify-start pt-32 relative">
@@ -19,15 +19,14 @@ const { name, specialty, summary, email } = Astro.props;
   
   <div class="max-w-2xl animate-slide-in-right" style="animation-delay: 0.4s">
     <p class="text-neutral text-lg mb-8">{summary}</p>
-    <div class="relative inline-block">
-      <a
-        href={`mailto:${email}`}
-        class="inline-block bg-primary text-white px-8 py-4 rounded-lg font-medium cursor-pointer hover:bg-primary/80 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg"
-      >
-        ¡Contáctame!
-      </a>
-      <div class="absolute inset-0 rounded-lg animate-pulse-glow pointer-events-none"></div>
+    <div class="flex gap-6 items-center mt-6">
+      <img src="/mongodb-icon.svg" alt="MongoDB" class="w-10 h-10 hover:scale-110 transition-transform duration-300" />
+      <img src="/express-js-icon.svg" alt="Express" class="w-10 h-10 hover:scale-110 transition-transform duration-300" />
+      <img src="/react-js-icon.svg" alt="React" class="w-10 h-10 hover:scale-110 transition-transform duration-300" />
+      <img src="/node-js-icon.svg" alt="Node.js" class="w-10 h-10 hover:scale-110 transition-transform duration-300" />
+      <img src="/astrojs.svg" alt="Astro" class="w-10 h-10 hover:scale-110 transition-transform duration-300" />
     </div>
+    <p class="text-neutral text-sm mt-2">Stack principal: <span class="font-semibold">MERN & Astro</span> (MongoDB, Express, React, Node.js, Astro)</p>
   </div>
 
   <div class="absolute top-20 right-20 w-32 h-32 bg-primary/20 rounded-full filter blur-3xl animate-pulse-glow"></div>

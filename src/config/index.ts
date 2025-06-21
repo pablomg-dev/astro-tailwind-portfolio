@@ -15,6 +15,7 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "LinkedIn", href: "https://www.linkedin.com/in/pablomgdev/" },
     { text: "Github", href: "https://github.com/pablomg-dev" },
     { text: "Instagram", href: "https://www.instagram.com/pablomg.dev/" },
+    { text: "TikTok", href: "https://www.tiktok.com/@pablomg.dev" },
   ],
   socialImage: "/vistaprevia.png",
   canonicalURL: "https://pablomgdev.netlify.app/",
@@ -29,6 +30,13 @@ export const SITE_CONTENT: SiteContent = {
     email: "pablomartingonzalez2025@gmail.com",
   },
   projects: [
+    {
+      name: "Astro-Conciencia",
+      summary: "Sitio web para una astróloga profesional dedicada a la interpretación de carta natal, revolución solar y otros servicios astrológicos personalizados. El objetivo fue crear un espacio cálido y profesional donde los visitantes puedan conocer los servicios, reservar sesiones y acceder a recursos sobre autoconocimiento y crecimiento personal a través de la astrología.",
+      link: "https://astro-conciencia.com/",
+      code: "https://github.com/pablomg-dev/astro-conciencia",
+      image: "/astrocon.png",
+    },
     {
       name: "Soy Jessi Carmona",
       summary: "Sitio web para una terapeuta de artes sanadoras. El enfoque estuvo en crear una experiencia visual armoniosa que refleje su trabajo en meditación, yoga y desarrollo personal. La web comunica cercanía, claridad y bienestar, invitando a la exploración del autoconocimiento y la conexión con la comunidad.",
