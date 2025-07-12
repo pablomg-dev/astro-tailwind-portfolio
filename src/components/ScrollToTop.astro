@@ -11,6 +11,8 @@ import ArrowUp from "@icons/ArrowUp.astro";
 </button>
 
 <script>
+  import { handleScrollAnimation } from "@scripts/scrollAnimation.js";
+
   function initScrollToTop() {
     const scrollButton = document.getElementById("scroll-to-top");
     if (!scrollButton) return;
@@ -39,6 +41,24 @@ import ArrowUp from "@icons/ArrowUp.astro";
         top: 0,
         behavior: 'smooth'
       });
+
+      // Resetear animaciones después de un breve retraso
+      setTimeout(() => {
+        const elements = document.querySelectorAll('[data-scroll-animation]');
+        elements.forEach(element => {
+          // Forzar reflow para reiniciar la animación
+          (element as HTMLElement).style.transition = 'none';
+          (element as HTMLElement).style.transform = 'translateY(4rem)'; // 4rem es equivalente a translate-y-16 de Tailwind
+          (element as HTMLElement).style.opacity = '0';
+          // Disparar un reflow
+          void (element as HTMLElement).offsetWidth;
+          // Restaurar la transición
+          (element as HTMLElement).style.transition = 'transform 1s ease, opacity 1s ease';
+        });
+
+        // Re-iniciar el observador de animaciones
+        handleScrollAnimation();
+      }, 1000); // Ajusta este tiempo si es necesario
     }
 
     // Event listeners

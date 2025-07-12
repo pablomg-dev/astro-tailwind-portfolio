@@ -52,5 +52,11 @@ const ogImgUrl = canonicalURL + socialImage;
     </main>
     <Footer author={author} socialLinks={socialLinks} />
     <ScrollToTop />
+    <script>
+      import { handleScrollAnimation } from "@scripts/scrollAnimation.js";
+      handleScrollAnimation();
+      document.addEventListener("astro:page-load", handleScrollAnimation);
+    </script>
   </body>
 </html>
+

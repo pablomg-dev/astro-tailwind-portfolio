@@ -4,7 +4,7 @@ export function handleScrollAnimation() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.transform = 'translateX(0)';
+        entry.target.style.transform = 'translateY(0)';
         entry.target.style.opacity = '1';
         observer.unobserve(entry.target);
       }

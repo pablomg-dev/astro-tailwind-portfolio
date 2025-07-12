@@ -68,9 +68,9 @@ const { navLinks } = Astro.props;
 
     const startPosition = window.scrollY;
     const targetPosition = element.getBoundingClientRect().top + window.scrollY;
-    const footerOffset = 200;
+    const footerOffset = 0;
     const distance = targetPosition - startPosition + footerOffset;
-    const duration = 1000;
+    const duration = 500;
     let start: number | null = null;
 
     function animation(currentTime: number) {

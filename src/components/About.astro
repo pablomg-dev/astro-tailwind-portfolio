@@ -32,35 +32,4 @@ const { description, name } = Astro.props;
   </div>
 </Section>
 
-<script>
-  function setupScrollAnimations() {
-    const animatedElements = document.querySelectorAll('[data-scroll-animation]');
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            (entry.target as HTMLElement).style.opacity = '1';
-            (entry.target as HTMLElement).style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        root: null,
-        threshold: 0.1,
-        rootMargin: '-50px'
-      }
-    );
 
-    animatedElements.forEach((element) => {
-      observer.observe(element);
-    });
-  }
-
-  // Ejecutar al cargar la página
-  setupScrollAnimations();
-
-  // Ejecutar después de la navegación de Astro
-  document.addEventListener('astro:page-load', setupScrollAnimations);
-</script>

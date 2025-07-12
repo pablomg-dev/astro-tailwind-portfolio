@@ -57,38 +57,4 @@ const { projects } = Astro.props;
   }
 </Section>
 
-<script>
-  function setupScrollAnimations() {
-    const animatedElements = document.querySelectorAll('[data-scroll-animation]');
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const element = entry.target as HTMLElement;
-            if (element) {
-              element.style.opacity = '1';
-              element.style.transform = 'translateY(0)';
-            }
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        root: null,
-        threshold: 0.1,
-        rootMargin: '-50px'
-      }
-    );
 
-    animatedElements.forEach((element) => {
-      observer.observe(element);
-    });
-  }
-
-  // Ejecutar al cargar la página
-  setupScrollAnimations();
-
-  // Ejecutar después de la navegación de Astro
-  document.addEventListener('astro:page-load', setupScrollAnimations);
-</script>
