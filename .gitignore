@@ -10,6 +10,9 @@ build/
 node_modules/
 .pnpm-store/
 
+# Lockfile no usado
+package-lock.json
+
 # Logs y debugging
 logs/
 *.log
@@ -55,6 +58,10 @@ Desktop.ini
 .temp/
 tmp/
 temp/
+
+# Cache linters y formatters
+.eslintcache
+.prettiercache
 
 # Cobertura y testing
 coverage/
