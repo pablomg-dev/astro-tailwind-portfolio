@@ -45,18 +45,18 @@ export const SITE_CONTENT: SiteContent = {
       image: "/soyjessi.png",
     },
     {
-      name: "Cora Astrología Viva",
-      summary: "Este sitio web está diseñado para reflejar la esencia y los servicios de una terapeuta holística, combinando un enfoque visual relajante con información clara y accesible.",
-      link: "https://corastrologiaviva.netlify.app/",
-      code: "https://github.com/pmg369/CoraAstrologiaViva",
-      image: "/corastro.png",
-    },
-    {
       name: "Espacio Luminem",
       summary: "Sitio personal para terapeuta holístico. La página busca transmitir serenidad y confianza desde el primer momento, creando un espacio donde los visitantes se sientan en paz y acogidos.",
       link: "https://espacio-luminem.com/",
       code: "https://github.com/pmg369/espacio-luminem",
       image: "/esplum.png",
+    },
+    {
+      name: "Cora Astrología Viva",
+      summary: "Este sitio web está diseñado para reflejar la esencia y los servicios de una terapeuta holística, combinando un enfoque visual relajante con información clara y accesible.",
+      link: "https://corastrologiaviva.netlify.app/",
+      code: "https://github.com/pmg369/CoraAstrologiaViva",
+      image: "/corastro.png",
     },
     {
       name: "Plataforma Disco Music",
