@@ -6,7 +6,7 @@ export const SITE_CONFIG: SiteConfig = {
   description:
     "Soy Pablo 🙋‍♂️, Web Developer 🧑‍💻",
   lang: "es",
-  siteLogo: "/pablo-small.png",
+  siteLogo: "/foto-perfil.jpg",
   navLinks: [
     { text: "Projectos", href: "#projects" },
     { text: "Sobre mi", href: "#about" },
@@ -80,6 +80,6 @@ export const SITE_CONTENT: SiteContent = {
 
       ¿Listo/a para llevar tu proyecto al siguiente nivel?
     `,
-    image: "/pablo-big.jpg",
+    image: "/foto-perfil.jpg",
   },
 };
