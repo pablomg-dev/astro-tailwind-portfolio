@@ -31,6 +31,13 @@ export const SITE_CONTENT: SiteContent = {
   },
   projects: [
     {
+      name: "Nu Spacio Web",
+      summary: "Sitio web moderno y minimalista para Nu Spacio, un espacio de coworking y bienestar. El objetivo fue crear una presencia digital que transmita profesionalismo, calidez y comunidad, permitiendo a los usuarios conocer los servicios, reservar espacios y contactar fácilmente. Diseño adaptable, limpio y enfocado en la experiencia del usuario.",
+      link: "https://www.nu-spacio.com/",
+      code: "https://github.com/pablomg-dev/nu-spacio",
+      image: "/nuspacioweb.png",
+    },
+    {
       name: "Astro-Conciencia",
       summary: "Sitio web para una astróloga profesional dedicada a la interpretación de carta natal, revolución solar y otros servicios astrológicos personalizados. El objetivo fue crear un espacio cálido y profesional donde los visitantes puedan conocer los servicios, reservar sesiones y acceder a recursos sobre autoconocimiento y crecimiento personal a través de la astrología.",
       link: "https://astro-conciencia.com/",
