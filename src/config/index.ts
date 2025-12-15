@@ -83,3 +83,4 @@ export const SITE_CONTENT: SiteContent = {
     image: "/foto-perfil.jpg",
   },
 };
+
