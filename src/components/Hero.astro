@@ -27,49 +27,17 @@ const { name, specialty, summary } = Astro.props;
     <div class="flex justify-center mt-20">
       <div class="relative w-64 h-10">
         <div
-          class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-lg opacity-60 animate-gradient-move"
+          class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-lg opacity-60 animate-gradient-move bg-[length:200%_200%]"
         >
         </div>
         <div class="absolute inset-0 flex items-center justify-center">
           <span
-            class="text-white font-semibold tracking-wide drop-shadow-lg animate-text-glow"
+            class="text-white font-semibold tracking-wide drop-shadow-lg animate-text-glow from-primary to-secondary"
             >Este es mi Portfolio</span
           >
         </div>
       </div>
     </div>
-    <style>
-      @keyframes gradientMove {
-        0% {
-          background-position: 0% 50%;
-        }
-        100% {
-          background-position: 100% 50%;
-        }
-      }
-      .animate-gradient-move {
-        background-size: 200% 200%;
-        animation: gradientMove 3s linear infinite alternate;
-      }
-      @keyframes textGlow {
-        0%,
-        100% {
-          text-shadow:
-            0 0 8px #fff,
-            0 0 16px var(--tw-gradient-from),
-            0 0 32px var(--tw-gradient-to);
-        }
-        50% {
-          text-shadow:
-            0 0 16px #fff,
-            0 0 32px var(--tw-gradient-from),
-            0 0 64px var(--tw-gradient-to);
-        }
-      }
-      .animate-text-glow {
-        animation: textGlow 2.5s ease-in-out infinite;
-      }
-    </style>
   </div>
 
   <div

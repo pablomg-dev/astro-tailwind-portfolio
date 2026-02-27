@@ -30,10 +30,10 @@ export default {
         tight: "-0.25px",
       },
       colors: {
-        primary: "#2563EB",
-        neutral: "#94A3B8",
-        white: "#E2E8F0",
-        black: "#0E141B",
+        primary: "#d97706", // Amber 600 - Tono dorado/cálido que resalta la piel
+        neutral: "#a8a29e", // Stone 400 - Gris cálido terroso
+        white: "#fafaf9", // Stone 50 - Blanco cremoso suave
+        black: "#1c1917", // Stone 900 - Negro/café muy oscuro
       },
       animation: {
         'fade-in': 'fadeIn 1s ease-out forwards',
@@ -53,7 +53,9 @@ export default {
         'flip': 'flip 2s ease-in-out infinite',
         'rubber-band': 'rubberBand 1s ease-in-out infinite',
         'jello': 'jello 1s ease-in-out infinite',
-        'heart-beat': 'heartBeat 1.5s ease-in-out infinite'
+        'heart-beat': 'heartBeat 1.5s ease-in-out infinite',
+        'gradient-move': 'gradientMove 3s linear infinite alternate',
+        'text-glow': 'textGlow 2.5s ease-in-out infinite'
       },
       keyframes: {
         fadeIn: {
@@ -87,13 +89,13 @@ export default {
           '100%': { transform: 'scale(1) rotate(0)', opacity: '1' },
         },
         pulseGlow: {
-          '0%, 100%': { 
+          '0%, 100%': {
             opacity: '1',
-            boxShadow: '0 0 20px rgba(37, 99, 235, 0.5)',
+            boxShadow: '0 0 20px rgba(217, 119, 6, 0.5)',
           },
-          '50%': { 
+          '50%': {
             opacity: '0.7',
-            boxShadow: '0 0 40px rgba(37, 99, 235, 0.8)',
+            boxShadow: '0 0 40px rgba(217, 119, 6, 0.8)',
           },
         },
         float: {
@@ -159,24 +161,32 @@ export default {
           '70%': { transform: 'scale(1)' },
         },
         revealFromLeft: {
-          '0%': { 
+          '0%': {
             transform: 'translateX(-100px)',
             opacity: '0'
           },
-          '100%': { 
+          '100%': {
             transform: 'translateX(0)',
             opacity: '1'
           }
         },
         revealFromRight: {
-          '0%': { 
+          '0%': {
             transform: 'translateX(100px)',
             opacity: '0'
           },
-          '100%': { 
+          '100%': {
             transform: 'translateX(0)',
             opacity: '1'
           }
+        },
+        gradientMove: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '100%': { backgroundPosition: '100% 50%' },
+        },
+        textGlow: {
+          '0%, 100%': { textShadow: '0 0 8px #fff, 0 0 16px var(--tw-gradient-from), 0 0 32px var(--tw-gradient-to)' },
+          '50%': { textShadow: '0 0 16px #fff, 0 0 32px var(--tw-gradient-from), 0 0 64px var(--tw-gradient-to)' },
         },
       },
     },

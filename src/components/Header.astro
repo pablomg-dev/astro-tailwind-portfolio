@@ -8,7 +8,9 @@ type Props = HeaderProps;
 const { navLinks } = Astro.props;
 ---
 
-<header class="max-w-5xl mx-auto flex items-center justify-between px-5 py-8 relative border-b border-neutral/20">
+<header
+  class="max-w-5xl mx-auto flex items-center justify-between px-5 py-8 relative border-b border-neutral/20"
+>
   <a href="/" aria-label="Home link" class="flex items-center">
     <AnimatedText text="💻 Creo tu Sitio Web 🚀" />
   </a>
@@ -34,6 +36,7 @@ const { navLinks } = Astro.props;
             <a
               class={`font-medium text-base px-4 py-2 block hover:text-primary nav-item transition-colors duration-300`}
               href={link.href}
+              aria-label={`Go to ${link.text}`}
               data-nav-link
             >
               {link.text}
@@ -95,7 +98,9 @@ const { navLinks } = Astro.props;
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      const target = (e.currentTarget as HTMLAnchorElement).getAttribute("href");
+      const target = (e.currentTarget as HTMLAnchorElement).getAttribute(
+        "href",
+      );
       if (target) {
         smoothScroll(target);
       }

@@ -1,6 +1,7 @@
 ---
 import Section from "./Section.astro";
 import type { AboutProps, HeroProps } from "@types";
+import { Image } from "astro:assets";
 
 type Props = AboutProps & Pick<HeroProps, "name">;
 
@@ -9,7 +10,7 @@ const { description, name } = Astro.props;
 
 <Section text="Sobre mi" href="about">
   <div class="flex gap-12 md:gap-8 flex-col items-center md:flex-row">
-    <div 
+    <div
       class="text-neutral w-auto text-base md:pr-5 opacity-0 transition-all duration-700 translate-y-16 whitespace-pre-line"
       data-scroll-animation
     >
@@ -19,7 +20,7 @@ const { description, name } = Astro.props;
       class="w-64 h-80 flex-shrink-0 rotate-[5deg] md:rotate-[7deg] opacity-0 transition-all duration-700 translate-y-16"
       data-scroll-animation
     >
-      <img
+      <Image
         class="object-cover rounded-lg shadow-lg"
         src="/foto-perfil.jpg"
         width="260"
@@ -31,5 +32,3 @@ const { description, name } = Astro.props;
     </div>
   </div>
 </Section>
-
-
