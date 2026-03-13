@@ -5,8 +5,8 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     fontFamily: {
-      sans: ["Be Vietnam Pro", ...defaultTheme.fontFamily.sans],
-      serif: ["Gabarito Variable", ...defaultTheme.fontFamily.serif],
+      sans: ["Outfit", "Inter", ...defaultTheme.fontFamily.sans],
+      serif: ["Cormorant Garamond", ...defaultTheme.fontFamily.serif],
     },
     fontSize: {
       xs: ["0.875rem", "1.125rem"],
@@ -30,10 +30,22 @@ export default {
         tight: "-0.25px",
       },
       colors: {
-        primary: "#d97706", // Amber 600 - Tono dorado/cálido que resalta la piel
-        neutral: "#a8a29e", // Stone 400 - Gris cálido terroso
-        white: "#fafaf9", // Stone 50 - Blanco cremoso suave
-        black: "#1c1917", // Stone 900 - Negro/café muy oscuro
+        primary: "#D4AF37", // Dorado suave (acentos y estrellas)
+        sage: "#B2AC88",    // Verde Sage (acentos secundarios)
+        space: "#080812",   // Negro Espacial Profundo (fondo)
+        nebula: "#1a1a3a",  // Azul Nebulosa
+        cream: "#F5F5DC",   // Crema/Arena (texto principal)
+        midnight: "#050508", // Negro absoluto para sombras profundas
+        white: "#FAF9F6",   // Blanco roto
+        gold: "#D4AF37",
+      },
+      transitionDuration: {
+        DEFAULT: '500ms',
+      },
+      boxShadow: {
+        'aura': '0 0 30px 5px rgba(212, 175, 55, 0.25)',
+        'aura-lg': '0 0 50px 10px rgba(212, 175, 55, 0.35)',
+        'cosmic': '0 0 40px rgba(178, 172, 136, 0.1)',
       },
       animation: {
         'fade-in': 'fadeIn 1s ease-out forwards',

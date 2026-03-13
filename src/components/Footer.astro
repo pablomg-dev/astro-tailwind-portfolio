@@ -8,7 +8,7 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer
-  class="text-white w-full text-center pb-8 pt-5 px-5 border-t border-neutral/20"
+  class="text-cream/40 w-full text-center pb-8 pt-5 px-5 border-t border-primary/10"
 >
   <ul class="flex flex-wrap gap-x-5 justify-center mb-5 text-xs">
     {
@@ -18,7 +18,7 @@ const currentYear = new Date().getFullYear();
             href={href}
             target="_blank"
             aria-label={`Visit my ${text} profile`}
-            class="hover:text-primary inline-block py-3 px-4 after:relative after:bottom-[-4px] after:content-[url(/external.svg)]"
+            class="hover:text-primary inline-block py-3 px-4 transition-all duration-500 hover:scale-110 after:relative after:bottom-[-4px] after:content-[url(/external.svg)]"
           >
             {text}
           </a>
@@ -26,7 +26,7 @@ const currentYear = new Date().getFullYear();
       ))
     }
   </ul>
-  <p class="text-xs">
-    {author} © 2024 - {currentYear}.
+  <p class="text-xs font-light tracking-widest">
+    {author} © {currentYear} — Co-creando con el Universo.
   </p>
 </footer>

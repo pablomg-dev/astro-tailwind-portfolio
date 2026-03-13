@@ -11,17 +11,17 @@ const { description, name } = Astro.props;
 <Section text="Sobre mi" href="about">
   <div class="flex gap-12 md:gap-8 flex-col items-center md:flex-row">
     <div
-      class="text-neutral w-auto text-base md:pr-5 opacity-0 transition-all duration-700 translate-y-16 whitespace-pre-line"
+      class="text-cream/90 w-auto text-lg font-light md:pr-5 opacity-0 transition-all duration-1000 translate-y-16 whitespace-pre-line leading-relaxed"
       data-scroll-animation
     >
       {description}
     </div>
     <div
-      class="w-64 h-80 flex-shrink-0 rotate-[5deg] md:rotate-[7deg] opacity-0 transition-all duration-700 translate-y-16"
+      class="w-64 h-80 flex-shrink-0 rotate-[2deg] md:rotate-[7deg] opacity-0 transition-all duration-1000 translate-y-16"
       data-scroll-animation
     >
       <Image
-        class="object-cover rounded-lg shadow-lg"
+        class="object-cover rounded-[2.5rem] shadow-aura-lg border-4 border-midnight w-full h-full"
         src="/foto-perfil.jpg"
         width="260"
         height="260"

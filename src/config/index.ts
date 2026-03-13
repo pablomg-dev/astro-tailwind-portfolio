@@ -8,7 +8,7 @@ export const SITE_CONFIG: SiteConfig = {
   lang: "es",
   siteLogo: "/foto-perfil.jpg",
   navLinks: [
-    { text: "Projectos", href: "#projects" },
+    { text: "Proyectos", href: "#projects" },
     { text: "Sobre mi", href: "#about" },
   ],
   socialLinks: [
@@ -24,9 +24,9 @@ export const SITE_CONFIG: SiteConfig = {
 export const SITE_CONTENT: SiteContent = {
   hero: {
     name: "Pablo M.G.",
-    specialty: "Web Developer",
+    specialty: "Arquitecto de Espacios Digitales Conscientes",
     summary:
-      "¡Bienvenido/a!, Soy Pablo 🙋‍♂️, te ayudo a crear tu sitio 🧑‍💻",
+      "Acompaño a terapeutas y emprendedores holísticos a materializar su propósito en el mundo digital con serenidad y estructura.",
     email: "pablomartingonzalez2025@gmail.com",
   },
   projects: [
@@ -65,13 +65,6 @@ export const SITE_CONTENT: SiteContent = {
       code: "https://github.com/pmg369/CoraAstrologiaViva",
       image: "/corastro.png",
     },
-    {
-      name: "Plataforma Disco Music",
-      summary: "Este proyecto está inspirado en mi banda favorita, Audioslave. Permite a los usuarios registrarse, editar álbumes y canciones, agregar nuevos elementos, y ofrece la opción de escuchar canciones en streaming o enlazarlas a videos de YouTube.",
-      link: "https://audioslave-fanpage-p5.onrender.com/",
-      code: "https://github.com/pmg369/plataforma-disco-music",
-      image: "/platdismu.png",
-    },
   ],
   about: {
     description: `
@@ -79,9 +72,9 @@ export const SITE_CONTENT: SiteContent = {
 
       Creo soluciones digitales para proyectos personales y emprendimientos. Especializado en:
 
-      - Páginas personales que destaquen tu marca
-      - Proyectos a medida
-      - Optimización de tu sitio web
+      - Portales digitales que respiran tu esencia
+      - Estructura y automatización para tu propósito
+      - Optimización energética y técnica de tu sitio web
 
       Me enfoco en calidad y funcionalidad, trabajando de cerca con cada cliente.
 

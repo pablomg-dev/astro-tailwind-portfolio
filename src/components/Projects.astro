@@ -15,7 +15,7 @@ const { projects } = Astro.props;
     {
       projects.map((project) => (
         <div
-          class="group relative flex flex-col overflow-hidden rounded-2xl bg-[#1c1917]/95 backdrop-blur-xl border border-white/5 transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_30px_-10px_rgba(217,119,6,0.3)] opacity-0 translate-y-16"
+          class="group relative flex flex-col overflow-hidden rounded-[2rem] bg-midnight/40 backdrop-blur-md transition-all duration-500 hover:shadow-aura hover:bg-midnight/60 opacity-0 translate-y-16 border border-primary/10"
           data-scroll-animation
         >
           <div class="relative aspect-video overflow-hidden">
@@ -29,11 +29,11 @@ const { projects } = Astro.props;
             <div class="absolute inset-0 bg-gradient-to-t from-[#1c1917] via-transparent to-transparent opacity-80" />
           </div>
 
-          <div class="flex flex-col flex-grow p-6">
-            <h3 class="text-2xl font-bold font-serif mb-3 text-white transition-colors duration-300 group-hover:text-primary">
+          <div class="flex flex-col flex-grow p-8">
+            <h3 class="text-3xl font-serif mb-4 text-cream transition-colors duration-500 group-hover:text-primary">
               {project.name}
             </h3>
-            <p class="text-neutral text-sm line-clamp-3 mb-6 flex-grow leading-relaxed">
+            <p class="text-cream/70 text-base font-light mb-8 flex-grow leading-relaxed">
               {project.summary}
             </p>
 
@@ -42,18 +42,18 @@ const { projects } = Astro.props;
                 <a
                   href={project.link}
                   target="_blank"
-                  class="flex-1 text-center py-2.5 rounded-xl bg-primary text-white text-sm font-medium transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
+                  class="flex-1 text-center py-3 rounded-full bg-primary text-midnight text-sm font-semibold transition-all duration-500 hover:scale-105 hover:shadow-aura"
                 >
-                  Ir a Sitio
+                  Conocer Espacio
                 </a>
               )}
               {project.code && (
                 <a
                   href={project.code}
                   target="_blank"
-                  class="flex-1 text-center py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-sm font-medium transition-all duration-300 hover:bg-white hover:text-black"
+                  class="flex-1 text-center py-3 rounded-full border border-primary/20 text-cream text-sm font-medium transition-all duration-500 hover:bg-white/5"
                 >
-                  Ver Código
+                  Ver Detalles
                 </a>
               )}
             </div>

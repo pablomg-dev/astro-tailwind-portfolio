@@ -34,13 +34,37 @@ import ArrowUp from "@icons/ArrowUp.astro";
       }
     }
 
-    // Función de scroll suave hacia arriba
+    // Función de scroll suave hacia arriba personalizada
     function smoothScrollToTop(e: Event) {
       e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      
+      // Respetar preferencia de movimiento reducido
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        window.scrollTo(0, 0);
+        return;
+      }
+
+      const startPosition = window.scrollY;
+      const duration = 1000; // Un poco más lento para que sea más fluido
+      let start: number | null = null;
+
+      function animation(currentTime: number) {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const run = easeInOutQuad(timeElapsed, startPosition, -startPosition, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      }
+
+      function easeInOutQuad(t: number, b: number, c: number, d: number) {
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+      }
+
+      requestAnimationFrame(animation);
 
       // Resetear animaciones después de un breve retraso
       setTimeout(() => {

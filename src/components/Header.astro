@@ -9,16 +9,18 @@ const { navLinks } = Astro.props;
 ---
 
 <header
-  class="max-w-5xl mx-auto flex items-center justify-between px-5 py-8 relative border-b border-neutral/20"
+  class="max-w-3xl mx-auto flex items-center justify-between px-5 py-8 relative border-b border-sage/10 font-sans"
 >
   <a href="/" aria-label="Home link" class="flex items-center">
-    <AnimatedText text="💻 Creo tu Sitio Web 🚀" />
+    <div class="font-serif text-2xl text-cream italic drop-shadow-[0_0_8px_rgba(212,175,55,0.3)]">
+      Portales con Propósito
+    </div>
   </a>
 
   <button
     type="button"
     id="menu-button"
-    class="sm:hidden text-neutral px-2 py-1"
+    class="sm:hidden text-cream px-2 py-1 transition-colors duration-500 hover:text-primary"
     aria-expanded="false"
     aria-controls="main-menu"
   >
@@ -26,7 +28,7 @@ const { navLinks } = Astro.props;
   </button>
 
   <nav
-    class="hidden text-neutral border absolute right-5 top-24 bg-black border-neutral/40 py-6 px-4 rounded-xl sm:block sm:border-0 sm:p-0 sm:static sm:bg-transparent"
+    class="hidden text-cream border absolute right-5 top-24 bg-midnight/90 backdrop-blur-xl border-primary/20 py-6 px-4 rounded-[2rem] sm:block sm:border-0 sm:p-0 sm:static sm:bg-transparent shadow-aura-lg sm:shadow-none"
     id="main-menu"
   >
     <ul class="sm:flex gap-4">
@@ -34,7 +36,7 @@ const { navLinks } = Astro.props;
         navLinks.map((link) => (
           <li class="relative">
             <a
-              class={`font-medium text-base px-4 py-2 block hover:text-primary nav-item transition-colors duration-300`}
+              class={`font-medium text-base px-4 py-2 block hover:text-primary nav-item transition-all duration-500 text-cream/80 hover:drop-shadow-[0_0_5px_rgba(212,175,55,0.5)]`}
               href={link.href}
               aria-label={`Go to ${link.text}`}
               data-nav-link
@@ -49,61 +51,84 @@ const { navLinks } = Astro.props;
 </header>
 
 <script>
-  const button = document.querySelector("#menu-button");
-  const menu = document.querySelector("#main-menu");
-  const navItems = document.querySelectorAll("#main-menu > ul > li");
+  function initHeader() {
+    const button = document.querySelector("#menu-button");
+    const menu = document.querySelector("#main-menu");
 
-  const toggleMenu = () => {
-    menu?.classList.toggle("hidden");
-    const isHidden = menu?.classList.contains("hidden");
-    button?.setAttribute("aria-expanded", `${!isHidden}`);
-  };
+    if (!button || !menu) return;
 
-  button?.addEventListener("click", toggleMenu);
-  navItems.forEach((item) => {
-    item?.addEventListener("click", toggleMenu);
-  });
+    const toggleMenu = () => {
+      menu.classList.toggle("hidden");
+      const isHidden = menu.classList.contains("hidden");
+      button.setAttribute("aria-expanded", isHidden ? "false" : "true");
+    };
 
-  function smoothScroll(target: string) {
-    if (!target) return;
-    const element = document.querySelector(target);
-    if (!element) return;
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
 
-    const startPosition = window.scrollY;
-    const targetPosition = element.getBoundingClientRect().top + window.scrollY;
-    const footerOffset = 0;
-    const distance = targetPosition - startPosition + footerOffset;
-    const duration = 500;
-    let start: number | null = null;
-
-    function animation(currentTime: number) {
-      if (start === null) start = currentTime;
-      const timeElapsed = currentTime - start;
-      const run = ease(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-
-    function ease(t: number, b: number, c: number, d: number) {
-      t /= d / 2;
-      if (t < 1) return (c / 2) * t * t + b;
-      t--;
-      return (-c / 2) * (t * (t - 2) - 1) + b;
-    }
-
-    requestAnimationFrame(animation);
-  }
-
-  const links = document.querySelectorAll('a[href^="#"]');
-  links.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const target = (e.currentTarget as HTMLAnchorElement).getAttribute(
-        "href",
-      );
-      if (target) {
-        smoothScroll(target);
+    // Cerrar el menú si se hace click fuera
+    document.addEventListener("click", (e) => {
+      const isHidden = menu.classList.contains("hidden");
+      if (!isHidden && !menu.contains(e.target as Node) && !button.contains(e.target as Node)) {
+        toggleMenu();
       }
     });
-  });
+
+    function smoothScroll(target: string) {
+      if (!target) return;
+      const element = document.querySelector(target);
+      if (!element) return;
+
+      const targetPosition = element.getBoundingClientRect().top + window.scrollY;
+
+      // Respetar preferencia de movimiento reducido
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        window.scrollTo(0, targetPosition);
+        return;
+      }
+
+      const startPosition = window.scrollY;
+      const duration = 1000;
+      let start: number | null = null;
+
+      function animation(currentTime: number) {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const run = easeInOutQuad(timeElapsed, startPosition, targetPosition - startPosition, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      }
+
+      function easeInOutQuad(t: number, b: number, c: number, d: number) {
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+      }
+
+      requestAnimationFrame(animation);
+    }
+
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = (e.currentTarget as HTMLAnchorElement).getAttribute("href");
+        if (target) {
+          smoothScroll(target);
+          // Cerrar menú móvil al navegar
+          if (!menu.classList.contains("hidden")) {
+            toggleMenu();
+          }
+        }
+      });
+    });
+  }
+
+  // Inicializar en cada carga de página (importante para ViewTransitions)
+  initHeader();
+  document.addEventListener("astro:page-load", initHeader);
 </script>
