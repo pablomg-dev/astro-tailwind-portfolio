@@ -28,6 +28,7 @@ export const SITE_CONTENT: SiteContent = {
     summary:
       "Acompaño a terapeutas y emprendedores holísticos a materializar su propósito en el mundo digital con serenidad y estructura.",
     email: "pablomartingonzalez2025@gmail.com",
+    image: "/foto-perfil.jpg",
   },
   projects: [
     {
