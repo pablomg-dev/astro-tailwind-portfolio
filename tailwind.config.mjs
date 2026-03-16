@@ -102,12 +102,12 @@ export default {
         },
         pulseGlow: {
           '0%, 100%': {
-            opacity: '1',
-            boxShadow: '0 0 20px rgba(217, 119, 6, 0.5)',
+            opacity: '0.6',
+            transform: 'translate(-50%, -50%) scale(1)',
           },
           '50%': {
-            opacity: '0.7',
-            boxShadow: '0 0 40px rgba(217, 119, 6, 0.8)',
+            opacity: '0.8',
+            transform: 'translate(-50%, -50%) scale(1.05)',
           },
         },
         float: {
