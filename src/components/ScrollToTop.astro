@@ -15,35 +15,8 @@ import ArrowUp from "@icons/ArrowUp.astro";
 
   function initScrollToTop() {
     const scrollButton = document.getElementById("scroll-to-top");
-    if (!scrollButton) return;
-
-    // Throttle helper to reduce main thread work
-    function throttle(func: Function, limit: number) {
-      let inThrottle: boolean;
-      return function(this: any) {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-          func.apply(context, args);
-          inThrottle = true;
-          setTimeout(() => inThrottle = false, limit);
-        }
-      }
-    }
-    
-    // Función para manejar la visibilidad del botón
-    function toggleScrollButton() {
-      const scrollPosition = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      const scrollThreshold = viewportHeight * 0.3;
-
-      if (scrollPosition > scrollThreshold) {
-        scrollButton?.classList.remove("invisible", "opacity-0", "translate-y-10");
-        (scrollButton as HTMLElement).style.willChange = 'transform, opacity';
-      } else {
-        scrollButton?.classList.add("invisible", "opacity-0", "translate-y-10");
-      }
-    }
+    if (!scrollButton || (scrollButton as any)._initialized) return;
+    (scrollButton as any)._initialized = true;
 
     // Función de scroll suave hacia arriba personalizada
     function smoothScrollToTop(e: Event) {
@@ -55,22 +28,49 @@ import ArrowUp from "@icons/ArrowUp.astro";
       });
     }
 
-    // Event listeners con throttle y passive: true
-    const throttledToggle = throttle(toggleScrollButton, 100);
-    window.addEventListener("scroll", throttledToggle, { passive: true });
     scrollButton.addEventListener("click", smoothScrollToTop);
-
-    // Inicializar estado del botón
-    toggleScrollButton();
   }
 
-  // Inicializar cuando el DOM está listo
+  // Global scroll listener for the scroll-to-top button
+  if (!(window as any)._scrollListenerAdded) {
+    (window as any)._scrollListenerAdded = true;
+    
+    const throttle = (func: Function, limit: number) => {
+      let inThrottle: boolean;
+      return function(this: any) {
+        if (!inThrottle) {
+          func.apply(this, arguments);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      }
+    }
+
+    const toggleScrollButton = () => {
+      const scrollButton = document.getElementById("scroll-to-top");
+      if (!scrollButton) return;
+      
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const scrollThreshold = viewportHeight * 0.3;
+
+      if (scrollPosition > scrollThreshold) {
+        scrollButton.classList.remove("invisible", "opacity-0", "translate-y-10");
+        scrollButton.style.willChange = 'transform, opacity';
+      } else {
+        scrollButton.classList.add("invisible", "opacity-0", "translate-y-10");
+      }
+    }
+
+    window.addEventListener("scroll", throttle(toggleScrollButton, 100), { passive: true });
+  }
+
+  // Inicializar cuando el DOM esté listo
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initScrollToTop);
   } else {
     initScrollToTop();
   }
 
-  // También inicializar en navegación de Astro
   document.addEventListener('astro:page-load', initScrollToTop);
 </script> 

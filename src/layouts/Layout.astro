@@ -30,7 +30,6 @@ const ogImgUrl = canonicalURL + socialImage;
     <meta name="author" content={author} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" href="/foto-perfil.jpg" as="image" fetchpriority="high" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
@@ -45,27 +44,12 @@ const ogImgUrl = canonicalURL + socialImage;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImgUrl} />
     <ViewTransitions />
-    <style is:global>
-      :root {
-        --font-display: swap;
-      }
-      /* Pre-render critical fonts */
-      @font-face {
-        font-family: 'Be Vietnam Pro';
-        font-display: swap;
-      }
-      @font-face {
-        font-family: 'Gabarito Variable';
-        font-display: swap;
-      }
-    </style>
   </head>
   <body class="font-sans bg-space text-cream relative overflow-x-hidden">
     <!-- Cosmic Background Elements -->
     <div class="fixed inset-0 pointer-events-none -z-20">
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-nebula/20 via-space to-space"></div>
-      <!-- CSS-only stars to avoid external texture request -->
-      <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(white 1px, transparent 0); background-size: 40px 40px;"></div>
+      <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(white 0.5px, transparent 0); background-size: 50px 50px;"></div>
     </div>
     
     <Header siteLogo={siteLogo} navLinks={navLinks} />
@@ -76,7 +60,11 @@ const ogImgUrl = canonicalURL + socialImage;
     <ScrollToTop />
     <script>
       import { handleScrollAnimation } from "@scripts/scrollAnimation.ts";
-      document.addEventListener("astro:page-load", handleScrollAnimation);
+      
+      // Use a more robust initialization pattern for ViewTransitions
+      const setup = () => handleScrollAnimation();
+      
+      document.addEventListener("astro:page-load", setup);
     </script>
   </body>
 </html>
