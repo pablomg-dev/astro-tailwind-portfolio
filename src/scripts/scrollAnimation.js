@@ -10,8 +10,8 @@ export function handleScrollAnimation() {
       }
     });
   }, {
-    threshold: 0.1,
-    rootMargin: '-50px'
+    threshold: 0.05,
+    rootMargin: '0px'
   });
 
   elements.forEach(element => {

@@ -68,17 +68,17 @@ export const SITE_CONTENT: SiteContent = {
   ],
   about: {
     description: `
-      ¡Hola! Soy Pablo, Desarrollador Web.
+      ¡Hola! Soy Pablo, Arquitecto Digital para el Bienestar. 🌿
+Ayudo a terapeutas y espacios holísticos a traducir su esencia en webs de alto rendimiento. Mi enfoque une la sensibilidad de tu propósito con la solidez técnica (Astro & TypeScript).
 
-      Creo soluciones digitales para proyectos personales y emprendimientos. Especializado en:
+Me especializo en:
+✨ Diseño Consciente: Portales que respiran tu energía.
+⚡ Velocidad Zen: Sitios ultra-rápidos que transmiten calma.
+📅 Automatización: Sistemas de turnos para liberar tu tiempo.
 
-      - Portales digitales que respiran tu esencia
-      - Estructura y automatización para tu propósito
-      - Optimización energética y técnica de tu sitio web
+Creo en el código limpio para que tu proyecto crezca sin límites.
 
-      Me enfoco en calidad y funcionalidad, trabajando de cerca con cada cliente.
-
-      ¿Listo/a para llevar tu proyecto al siguiente nivel?
+¿Llevamos tu consulta al siguiente nivel?
     `,
     image: "/foto-perfil.jpg",
   },
