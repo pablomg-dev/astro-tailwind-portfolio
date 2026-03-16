@@ -32,21 +32,21 @@ export const SITE_CONTENT: SiteContent = {
   projects: [
     {
       name: "Nu Spacio Web",
-      summary: "Sitio web moderno y minimalista para Nu Spacio, un espacio de coworking y bienestar. El objetivo fue crear una presencia digital que transmita profesionalismo, calidez y comunidad, permitiendo a los usuarios conocer los servicios, reservar espacios y contactar fácilmente. Diseño adaptable, limpio y enfocado en la experiencia del usuario.",
+      summary: "Espacio de coworking y bienestar con diseño minimalista. Presencia digital profesional y cálida que facilita el contacto y la reserva de espacios con un enfoque centrado en el usuario.",
       link: "https://www.nu-spacio.com/",
       code: "https://github.com/pablomg-dev/nu-spacio",
       image: "/nuspacioweb.png",
     },
     {
       name: "Astro-Conciencia",
-      summary: "Sitio web para una astróloga profesional dedicada a la interpretación de carta natal, revolución solar y otros servicios astrológicos personalizados. El objetivo fue crear un espacio cálido y profesional donde los visitantes puedan conocer los servicios, reservar sesiones y acceder a recursos sobre autoconocimiento y crecimiento personal a través de la astrología.",
+      summary: "Sitio web para una astróloga profesional especializado en cartas natales. Un portal cálido diseñado para reservar sesiones y acceder a recursos de crecimiento personal con claridad.",
       link: "https://astro-conciencia.com/",
       code: "https://github.com/pablomg-dev/astro-conciencia",
       image: "/astrocon.png",
     },
     {
       name: "Soy Jessi Carmona",
-      summary: "Sitio web para una terapeuta de artes sanadoras. El enfoque estuvo en crear una experiencia visual armoniosa que refleje su trabajo en meditación, yoga y desarrollo personal. La web comunica cercanía, claridad y bienestar, invitando a la exploración del autoconocimiento y la conexión con la comunidad.",
+      summary: "Plataforma para una terapeuta de artes sanadoras. Experiencia visual armoniosa que refleja el bienestar y la meditación, invitando a la conexión con la comunidad y el autoconocimiento.",
       link: "https://soyjessicarmona.com/",
       code: "https://github.com/pablomg-dev/jessiCarmona",
       image: "/soyjessi.png",
