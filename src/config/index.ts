@@ -53,14 +53,14 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "Espacio Luminem",
-      summary: "Sitio personal para terapeuta holístico. La página busca transmitir serenidad y confianza desde el primer momento, creando un espacio donde los visitantes se sientan en paz y acogidos.",
+      summary: "Sitio personal para terapeuta holístico diseñado para transmitir paz y confianza. Un refugio digital que combina una estética visual relajante con herramientas para facilitar la conexión con los pacientes.",
       link: "https://espacio-luminem.com/",
       code: "https://github.com/pmg369/espacio-luminem",
       image: "/esplum.png",
     },
     {
       name: "Cora Astrología Viva",
-      summary: "Este sitio web está diseñado para reflejar la esencia y los servicios de una terapeuta holística, combinando un enfoque visual relajante con información clara y accesible.",
+      summary: "Portal dedicado a la astrología y terapia holística. Refleja la esencia del servicio mediante una interfaz intuitiva que integra recursos educativos, agenda de sesiones y un diseño en sintonía con el cosmos.",
       link: "https://corastrologiaviva.netlify.app/",
       code: "https://github.com/pmg369/CoraAstrologiaViva",
       image: "/corastro.png",
