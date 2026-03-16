@@ -10,7 +10,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
     "@astrojs/tailwind": "^5.1.2",
     "@fontsource-variable/gabarito": "^5.1.0",
     "@fontsource/be-vietnam-pro": "^5.1.0",
@@ -21,8 +20,10 @@
     "zod": "^3.25.67"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.4",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
+    "sharp": "^0.34.5",
     "vite": "^8.0.0",
     "vitest": "^4.1.0"
   }

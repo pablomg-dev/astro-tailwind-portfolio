@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 
 type Props = AboutProps & Pick<HeroProps, "name">;
 
-const { description, name } = Astro.props;
+const { description, name, image } = Astro.props;
 ---
 
 <Section text="Sobre mi" href="about">
@@ -22,9 +22,9 @@ const { description, name } = Astro.props;
     >
       <Image
         class="object-cover rounded-[2.5rem] shadow-aura-lg border-4 border-midnight w-full h-full"
-        src="/foto-perfil.jpg"
-        width="260"
-        height="260"
+        src={image}
+        width={260}
+        height={260}
         alt={name}
         loading="lazy"
         decoding="async"

@@ -19,20 +19,20 @@ export interface HeroProps {
   specialty: string;
   summary: string;
   email: string;
-  image: string;
+  image: any;
 }
 
 export interface ProjectProps {
   name: string;
   summary: string;
-  image: string;
+  image: any;
   link?: string;
   code?: string;
 }
 
 export interface AboutProps {
   description: string;
-  image: string;
+  image: any;
 }
 
 export interface HeaderProps {

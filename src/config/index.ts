@@ -1,4 +1,10 @@
 import type { SiteConfig, SiteContent } from "../types";
+import profileImage from "../assets/foto-perfil.jpg";
+import nuspacioImage from "../assets/nuspacioweb.png";
+import astroconImage from "../assets/astrocon.png";
+import soyjessiImage from "../assets/soyjessi.png";
+import esplumImage from "../assets/esplum.png";
+import corastroImage from "../assets/corastro.png";
 
 export const SITE_CONFIG: SiteConfig = {
   title: "Pablo M.G. — Web Developer",
@@ -28,7 +34,7 @@ export const SITE_CONTENT: SiteContent = {
     summary:
       "Acompaño a terapeutas y emprendedores holísticos a materializar su propósito en el mundo digital con serenidad y estructura.",
     email: "pablomartingonzalez2025@gmail.com",
-    image: "/foto-perfil.jpg",
+    image: profileImage,
   },
   projects: [
     {
@@ -36,35 +42,35 @@ export const SITE_CONTENT: SiteContent = {
       summary: "Espacio de coworking y bienestar con diseño minimalista. Presencia digital profesional y cálida que facilita el contacto y la reserva de espacios con un enfoque centrado en el usuario.",
       link: "https://www.nu-spacio.com/",
       code: "https://github.com/pablomg-dev/nu-spacio",
-      image: "/nuspacioweb.png",
+      image: nuspacioImage,
     },
     {
       name: "Astro-Conciencia",
       summary: "Sitio web para una astróloga profesional especializado en cartas natales. Un portal cálido diseñado para reservar sesiones y acceder a recursos de crecimiento personal con claridad.",
       link: "https://astro-conciencia.com/",
       code: "https://github.com/pablomg-dev/astro-conciencia",
-      image: "/astrocon.png",
+      image: astroconImage,
     },
     {
       name: "Soy Jessi Carmona",
       summary: "Plataforma para una terapeuta de artes sanadoras. Experiencia visual armoniosa que refleja el bienestar y la meditación, invitando a la conexión con la comunidad y el autoconocimiento.",
       link: "https://soyjessicarmona.com/",
       code: "https://github.com/pablomg-dev/jessiCarmona",
-      image: "/soyjessi.png",
+      image: soyjessiImage,
     },
     {
       name: "Espacio Luminem",
       summary: "Sitio personal para terapeuta holístico diseñado para transmitir paz y confianza. Un refugio digital que combina una estética visual relajante con herramientas para facilitar la conexión con los pacientes.",
       link: "https://espacio-luminem.com/",
       code: "https://github.com/pmg369/espacio-luminem",
-      image: "/esplum.png",
+      image: esplumImage,
     },
     {
       name: "Cora Astrología Viva",
       summary: "Portal dedicado a la astrología y terapia holística. Refleja la esencia del servicio mediante una interfaz intuitiva que integra recursos educativos, agenda de sesiones y un diseño en sintonía con el cosmos.",
       link: "https://corastrologiaviva.netlify.app/",
       code: "https://github.com/pmg369/CoraAstrologiaViva",
-      image: "/corastro.png",
+      image: corastroImage,
     },
   ],
   about: {
@@ -81,7 +87,6 @@ Creo en el código limpio para que tu proyecto crezca sin límites.
 
 ¿Llevamos tu consulta al siguiente nivel?
     `,
-    image: "/foto-perfil.jpg",
+    image: profileImage,
   },
 };
-
