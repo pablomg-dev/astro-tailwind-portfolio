@@ -1,29 +1,44 @@
 ---
+/**
+ * Layout principal con soporte para i18n y SEO hreflang
+ */
 import { ViewTransitions } from "astro:transitions";
 import Header from "@components/Header.astro";
+import LanguagePicker from "@components/LanguagePicker.astro";
 import "@fontsource/be-vietnam-pro";
 import "@fontsource-variable/gabarito";
-import { SITE_CONFIG } from "@config";
 import Footer from "@components/Footer.astro";
 import ScrollToTop from "@components/ScrollToTop.astro";
+import type { Locale } from "../i18n/ui";
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  navLinks: { text: string; href: string }[];
+  socialLinks: { text: string; href: string }[];
+  author: string;
+}
 
 const {
   title,
   description,
-  siteLogo,
+  locale,
   navLinks,
-  lang,
-  author,
   socialLinks,
-  socialImage,
-  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
-} = SITE_CONFIG;
+  author,
+} = Astro.props;
 
-const ogImgUrl = canonicalURL + socialImage;
+const defaultSite = "https://pablomgdev.netlify.app";
+const siteUrl = Astro.site?.href || defaultSite;
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
+const alternateUrls = {
+  es: siteUrl.endsWith("/") ? `${siteUrl}es/` : `${siteUrl}/es/`,
+  en: siteUrl.endsWith("/") ? `${siteUrl}en/` : `${siteUrl}/en/`,
+};
 ---
 
-<!doctype html>
-<html lang={lang} class="scroll-smooth overflow-x-hidden">
+<!doctype html lang={locale} class="scroll-smooth overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -36,36 +51,50 @@ const ogImgUrl = canonicalURL + socialImage;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content={ogImgUrl} />
+    <meta property="og:image" content={`${canonicalURL}vistaprevia.png`} />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImgUrl} />
+    <meta property="twitter:image" content={`${canonicalURL}vistaprevia.png`} />
+
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="es" href={alternateUrls.es} />
+    <link rel="alternate" hreflang="en" href={alternateUrls.en} />
+    <link rel="alternate" hreflang="x-default" href={alternateUrls.es} />
+
     <ViewTransitions />
   </head>
   <body class="font-sans bg-space text-cream relative overflow-x-hidden">
-    <!-- Cosmic Background Elements -->
     <div class="fixed inset-0 pointer-events-none -z-20">
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-nebula/20 via-space to-space"></div>
-      <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(white 0.5px, transparent 0); background-size: 50px 50px;"></div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-nebula/20 via-space to-space"
+      >
+      </div>
+      <div
+        class="absolute inset-0 opacity-10"
+        style="background-image: radial-gradient(white 0.5px, transparent 0); background-size: 50px 50px;"
+      >
+      </div>
     </div>
-    
-    <Header siteLogo={siteLogo} navLinks={navLinks} />
-    <main class="max-w-3xl px-5 mx-auto relative">
+
+    <div class="fixed top-4 right-4 z-[200]" transition:animate="none">
+      <LanguagePicker currentLocale={locale} />
+    </div>
+
+    <Header {navLinks} locale={locale} />
+    <main class="max-w-3xl px-5 mx-auto relative" transition:animate="none">
       <slot />
     </main>
-    <Footer author={author} socialLinks={socialLinks} />
+    <Footer {author} {socialLinks} />
     <ScrollToTop />
     <script>
       import { handleScrollAnimation } from "@scripts/scrollAnimation.ts";
-      
-      // Use a more robust initialization pattern for ViewTransitions
+
       const setup = () => handleScrollAnimation();
-      
+
       document.addEventListener("astro:page-load", setup);
     </script>
   </body>
 </html>
-

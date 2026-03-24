@@ -1,7 +1,11 @@
 ---
-import type { SiteConfig } from "@types";
-
-type Props = Pick<SiteConfig, "author" | "socialLinks">;
+/**
+ * Footer con props traducibles
+ */
+interface Props {
+  author: string;
+  socialLinks: { text: string; href: string }[];
+}
 
 const { author, socialLinks } = Astro.props;
 const currentYear = new Date().getFullYear();
@@ -9,18 +13,19 @@ const currentYear = new Date().getFullYear();
 
 <footer
   class="text-cream/40 w-full text-center pb-8 pt-5 px-5 border-t border-primary/10"
+  transition:animate="none"
 >
   <ul class="flex flex-wrap gap-x-5 justify-center mb-5 text-xs">
     {
-      socialLinks.map(({ text, href }) => (
+      socialLinks.map((link) => (
         <li>
           <a
-            href={href}
+            href={link.href}
             target="_blank"
-            aria-label={`Visit my ${text} profile`}
+            aria-label={`Visit my ${link.text} profile`}
             class="hover:text-primary inline-block py-3 px-4 transition-all duration-500 hover:scale-110 after:relative after:bottom-[-4px] after:content-[url(/external.svg)]"
           >
-            {text}
+            {link.text}
           </a>
         </li>
       ))

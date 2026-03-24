@@ -1,20 +1,54 @@
 ---
 import Section from "./Section.astro";
-import type { AboutProps, HeroProps } from "@types";
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
-type Props = AboutProps & Pick<HeroProps, "name">;
+interface Props {
+  title: string;
+  description: string;
+  greeting: string;
+  specialtiesTitle: string;
+  specialties: string[];
+  closing: string;
+  cta: string;
+  name: string;
+  image: ImageMetadata;
+}
 
-const { description, name, image } = Astro.props;
+const {
+  title,
+  description,
+  greeting,
+  specialtiesTitle,
+  specialties,
+  closing,
+  cta,
+  name,
+  image,
+} = Astro.props;
+
+const specialtiesList = [
+  specialtiesTitle,
+  ...specialties,
+  "",
+  closing,
+  cta,
+].join("\n");
+
+const fullText = [
+  greeting,
+  description,
+  specialtiesList,
+].join("\n\n");
 ---
 
-<Section text="Sobre mi" href="about">
+<Section text={title} href="about">
   <div class="flex gap-12 md:gap-8 flex-col items-center md:flex-row">
     <div
       class="text-cream/90 w-auto text-lg font-light md:pr-5 opacity-0 transition-all duration-1000 translate-y-16 whitespace-pre-line leading-relaxed"
       data-scroll-animation
     >
-      {description}
+      {fullText}
     </div>
     <div
       class="w-64 h-80 flex-shrink-0 rotate-[2deg] md:rotate-[7deg] opacity-0 transition-all duration-1000 translate-y-16"

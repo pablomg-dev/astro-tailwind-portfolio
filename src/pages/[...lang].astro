@@ -1,0 +1,90 @@
+---
+/**
+ * Página dinámica para rutas /es/ y /en/
+ * Utiliza el sistema de i18n nativo de Astro
+ */
+import Layout from "@layouts/Layout.astro";
+import Hero from "@components/Hero.astro";
+import About from "@components/About.astro";
+import Projects from "@components/Projects.astro";
+import SpecialtyCard from "@components/SpecialtyCard.astro";
+import { getTranslations } from "@i18n/utils";
+import type { Locale } from "@i18n/ui";
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: "es" } },
+    { params: { lang: "en" } },
+  ];
+}
+
+const { lang } = Astro.params;
+const locale: Locale = lang === "en" ? "en" : "es";
+const t = getTranslations(locale);
+
+const navLinks = [
+  { text: t.nav.projects, href: "#projects" },
+  { text: t.nav.about, href: "#about" },
+];
+
+const socialLinks = [...t.footer.socialLinks];
+
+const specialties = [
+  t.about.specialties.design,
+  t.about.specialties.speed,
+  t.about.specialties.automation,
+];
+---
+
+<Layout
+  title={t.seo.title}
+  description={t.seo.description}
+  locale={locale}
+  navLinks={navLinks}
+  socialLinks={socialLinks}
+  author={t.seo.author}
+>
+  <Hero
+    name={t.hero.name}
+    specialty={t.hero.specialty}
+    summary={t.hero.summary}
+    image={t.hero.image}
+  />
+
+  <div class="py-12"></div>
+
+  <Projects
+    title={t.projects.title}
+    projects={t.projects.items}
+    viewProject={t.projects.viewProject}
+    viewCode={t.projects.viewCode}
+  />
+
+  <section class="py-20 relative">
+    <div class="absolute inset-0 bg-primary/5 blur-[60px] -z-10"></div>
+    <h2 class="text-4xl font-serif text-cream text-center mb-16 tracking-widest uppercase opacity-80 opacity-0 translate-y-16 transition-all duration-1000" data-scroll-animation>
+      {t.specialties.title}
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      {t.specialties.items.map((item) => (
+        <SpecialtyCard
+          title={item.title}
+          description={item.description}
+          icon={item.icon}
+        />
+      ))}
+    </div>
+  </section>
+
+  <About
+    title={t.about.title}
+    description={t.about.description}
+    greeting={t.about.greeting}
+    specialtiesTitle={t.about.specialties.title}
+    specialties={specialties}
+    closing={t.about.closing}
+    cta={t.about.cta}
+    name={t.hero.name}
+    image={t.about.image}
+  />
+</Layout>

@@ -1,17 +1,23 @@
 ---
+/**
+ * Sección de proyectos con props traducibles
+ */
 import type { ProjectProps } from "../types";
 import Section from "./Section.astro";
 import { Image } from "astro:assets";
+import { getLoadingStrategy } from "@scripts/performance";
 
 interface Props {
+  title: string;
   projects: ProjectProps[];
+  viewProject: string;
+  viewCode: string;
 }
 
-const { projects } = Astro.props;
-import { getLoadingStrategy } from "@scripts/performance";
+const { title, projects, viewProject, viewCode } = Astro.props;
 ---
 
-<Section text="Proyectos" href="projects">
+<Section text={title} href="projects">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     {
       projects.map((project, index) => (
@@ -46,7 +52,7 @@ import { getLoadingStrategy } from "@scripts/performance";
                   target="_blank"
                   class="flex-1 text-center py-3 rounded-full bg-primary text-midnight text-sm font-semibold transition-all duration-500 hover:scale-105 hover:shadow-aura"
                 >
-                  Conocer Espacio
+                  {viewProject}
                 </a>
               )}
               {project.code && (
@@ -55,13 +61,12 @@ import { getLoadingStrategy } from "@scripts/performance";
                   target="_blank"
                   class="flex-1 text-center py-3 rounded-full border border-primary/20 text-cream text-sm font-medium transition-all duration-500 hover:bg-white/5"
                 >
-                  Ver Detalles
+                  {viewCode}
                 </a>
               )}
             </div>
           </div>
 
-          {/* Subtle background pattern */}
           <div class="absolute inset-0 z-[-1] opacity-[3%] pointer-events-none bg-[url(/raja.png)] bg-repeat bg-[length:128px]" />
         </div>
       ))

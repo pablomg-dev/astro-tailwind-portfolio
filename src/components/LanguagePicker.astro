@@ -1,0 +1,75 @@
+---
+/**
+ * Selector de idioma con persistencia en localStorage
+ */
+import { LOCALES } from "@i18n/ui";
+import type { Locale } from "@i18n/ui";
+
+interface Props {
+  currentLocale: Locale;
+}
+
+const { currentLocale } = Astro.props;
+---
+
+<div 
+  class="language-picker flex items-center gap-1" 
+  id="lang-picker" 
+  transition:animate="none"
+>
+  {(["es", "en"] as Locale[]).map((code) => (
+    <a
+      href={`/${code}/`}
+      transition:animate="none"
+      class:list={[
+        "lang-btn px-2 py-1 text-xs font-medium rounded transition-all duration-300",
+        currentLocale === code
+          ? "bg-primary/20 text-primary"
+          : "text-cream/60 hover:text-cream hover:bg-white/5",
+      ]}
+      data-lang={code}
+      aria-label={`Switch to ${LOCALES[code]}`}
+    >
+      {code.toUpperCase()}
+    </a>
+  ))}
+</div>
+
+<script>
+  function updateActiveState() {
+    const path = window.location.pathname;
+    const isEnglish = path.startsWith("/en");
+    const buttons = document.querySelectorAll(".lang-btn");
+    
+    buttons.forEach((btn) => {
+      const lang = (btn as HTMLElement).dataset.lang;
+      if (lang === "en" && isEnglish) {
+        btn.classList.add("bg-primary/20", "text-primary");
+        btn.classList.remove("text-cream/60");
+      } else if (lang === "es" && !isEnglish) {
+        btn.classList.add("bg-primary/20", "text-primary");
+        btn.classList.remove("text-cream/60");
+      } else {
+        btn.classList.remove("bg-primary/20", "text-primary");
+        btn.classList.add("text-cream/60");
+      }
+    });
+  }
+
+  function initLanguagePicker() {
+    updateActiveState();
+    
+    const links = document.querySelectorAll(".lang-btn");
+    links.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const lang = (e.currentTarget as HTMLElement).dataset.lang;
+        if (lang) {
+          localStorage.setItem("preferred-lang", lang);
+        }
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initLanguagePicker);
+  document.addEventListener("astro:before-swap", updateActiveState);
+</script>

@@ -1,33 +1,33 @@
 ---
-import { SITE_CONTENT } from "@config";
-import Layout from "@layouts/Layout.astro";
-import Hero from "@components/Hero.astro";
-import About from "@components/About.astro";
-import Projects from "@components/Projects.astro";
-import SpecialtyCard from "@components/SpecialtyCard.astro";
+/**
+ * Redirect root to detected language
+ * Priority: localStorage > navigator.language > fallback "es"
+ * Client-side redirect for browser detection
+ */
 ---
 
-<Layout>
-  <Hero {...SITE_CONTENT.hero} />
-  <div class="py-12"></div>
-  <Projects projects={SITE_CONTENT.projects} />
-  
-  <section class="py-20 relative">
-    <div class="absolute inset-0 bg-primary/5 blur-[60px] -z-10"></div>
-    <h2 class="text-4xl font-serif text-cream text-center mb-16 tracking-widest uppercase opacity-80">Expansión Digital</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <SpecialtyCard 
-        title="Sincronía Astral" 
-        description="Capacidad de integrar APIs de astrología para personalización mística de la experiencia del usuario." 
-        icon="🌌"
-      />
-      <SpecialtyCard 
-        title="Escalabilidad Energética" 
-        description="Entiendo el dinero como energía en movimiento. Co-creamos sistemas digitales que permiten que tu abundancia escale con propósito y coherencia." 
-        icon="✨"
-      />
-    </div>
-  </section>
-
-  <About {...SITE_CONTENT.about} name={SITE_CONTENT.hero.name} />
-</Layout>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0;url=/es/" />
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem("preferred-lang");
+        if (stored === "en" || stored === "es") {
+          window.location.href = "/" + stored + "/";
+          return;
+        }
+        const browserLang = navigator.language.toLowerCase();
+        if (browserLang.startsWith("en")) {
+          window.location.href = "/en/";
+          return;
+        }
+        window.location.href = "/es/";
+      })();
+    </script>
+  </body>
+</html>

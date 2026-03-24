@@ -1,4 +1,7 @@
 ---
+/**
+ * Componente Section wrapper con título traducible
+ */
 interface Props {
   text: string;
   href: string;
@@ -6,10 +9,10 @@ interface Props {
 }
 
 const { text, href, class: className } = Astro.props;
-const sectionId = href.startsWith('#') ? href.slice(1) : href;
+const sectionId = href.startsWith("#") ? href.slice(1) : href;
 ---
 
-<section id={sectionId} class={`pb-10 scroll-mt-24 ${className || ''}`}>
+<section id={sectionId} class={`pb-10 scroll-mt-24 ${className || ""}`}>
   <h2
     class="text-4xl md:text-5xl font-serif font-light tracking-tight text-cream mb-12 drop-shadow-[0_0_10px_rgba(245,245,220,0.2)]"
   >

@@ -1,4 +1,9 @@
-export interface SiteConfig extends HeaderProps {
+/**
+ * Tipos globales del proyecto
+ */
+import type { ImageMetadata } from "astro";
+
+export interface SiteConfig {
   title: string;
   description: string;
   lang: string;
@@ -18,25 +23,23 @@ export interface HeroProps {
   name: string;
   specialty: string;
   summary: string;
-  email: string;
-  image: any;
+  image: ImageMetadata;
 }
 
 export interface ProjectProps {
   name: string;
   summary: string;
-  image: any;
+  image: ImageMetadata;
   link?: string;
   code?: string;
 }
 
 export interface AboutProps {
   description: string;
-  image: any;
+  image: ImageMetadata;
 }
 
 export interface HeaderProps {
-  siteLogo: string;
   navLinks: { text: string; href: string }[];
 }
 
@@ -46,4 +49,21 @@ export interface AnimatedTextProps {
 
 export interface LogoProps {
   name: string;
+}
+
+export interface SpecialtyCardProps {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface SectionProps {
+  text: string;
+  href: string;
+  class?: string;
+}
+
+export interface FooterProps {
+  author: string;
+  socialLinks: { text: string; href: string }[];
 }
