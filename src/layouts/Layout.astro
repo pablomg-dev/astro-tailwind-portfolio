@@ -4,7 +4,6 @@
  */
 import { ViewTransitions } from "astro:transitions";
 import Header from "@components/Header.astro";
-import LanguagePicker from "@components/LanguagePicker.astro";
 import "@fontsource/be-vietnam-pro";
 import "@fontsource-variable/gabarito";
 import Footer from "@components/Footer.astro";
@@ -77,10 +76,6 @@ const alternateUrls = {
         style="background-image: radial-gradient(white 0.5px, transparent 0); background-size: 50px 50px;"
       >
       </div>
-    </div>
-
-    <div class="fixed top-4 right-4 z-[200]" transition:animate="none">
-      <LanguagePicker currentLocale={locale} />
     </div>
 
     <Header {navLinks} locale={locale} />
