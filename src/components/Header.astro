@@ -22,7 +22,7 @@ const { navLinks, locale } = Astro.props;
     <div
       class="font-serif text-2xl text-cream italic drop-shadow-[0_0_8px_rgba(212,175,55,0.3)]"
     >
-      Portales con Propósito
+      Pablo M.G.
     </div>
   </a>
 
@@ -92,11 +92,22 @@ const { navLinks, locale } = Astro.props;
       if (!target) return;
       const element = document.querySelector(target);
       if (!element) return;
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      element.scrollIntoView({
-        behavior: prefersReducedMotion ? "auto" : "smooth",
-        block: "start",
-      });
+      const start = window.scrollY;
+      const end = element.getBoundingClientRect().top + start;
+      const duration = 2000;
+      const startTime = performance.now();
+
+      function animate(currentTime: number) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        window.scrollTo(0, start + (end - start) * ease);
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      }
+
+      requestAnimationFrame(animate);
     }
 
     const links = document.querySelectorAll('a[href^="#"]');
