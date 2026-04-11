@@ -1,19 +1,14 @@
 ---
-/**
- * Layout principal con soporte para i18n y SEO hreflang
- */
 import { ViewTransitions } from "astro:transitions";
 import Header from "@components/Header.astro";
 import "@fontsource/be-vietnam-pro";
 import "@fontsource-variable/gabarito";
 import Footer from "@components/Footer.astro";
 import ScrollToTop from "@components/ScrollToTop.astro";
-import type { Locale } from "../i18n/ui";
 
 interface Props {
   title: string;
   description: string;
-  locale: Locale;
   navLinks: { text: string; href: string }[];
   socialLinks: { text: string; href: string }[];
   author: string;
@@ -22,7 +17,6 @@ interface Props {
 const {
   title,
   description,
-  locale,
   navLinks,
   socialLinks,
   author,
@@ -31,13 +25,9 @@ const {
 const defaultSite = "https://pablomgdev.netlify.app";
 const siteUrl = Astro.site?.href || defaultSite;
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
-const alternateUrls = {
-  es: siteUrl.endsWith("/") ? `${siteUrl}es/` : `${siteUrl}/es/`,
-  en: siteUrl.endsWith("/") ? `${siteUrl}en/` : `${siteUrl}/en/`,
-};
 ---
 
-<!doctype html lang={locale} class="scroll-smooth overflow-x-hidden">
+<!doctype html lang="es" class="scroll-smooth overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -59,9 +49,6 @@ const alternateUrls = {
     <meta property="twitter:image" content={`${canonicalURL}vistaprevia.png`} />
 
     <link rel="canonical" href={canonicalURL} />
-    <link rel="alternate" hreflang="es" href={alternateUrls.es} />
-    <link rel="alternate" hreflang="en" href={alternateUrls.en} />
-    <link rel="alternate" hreflang="x-default" href={alternateUrls.es} />
 
     <ViewTransitions />
   </head>
@@ -78,7 +65,7 @@ const alternateUrls = {
       </div>
     </div>
 
-    <Header {navLinks} locale={locale} />
+    <Header {navLinks} />
     <main class="max-w-3xl px-5 mx-auto relative" transition:animate="none">
       <slot />
     </main>

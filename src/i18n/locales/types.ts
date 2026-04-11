@@ -3,7 +3,6 @@
  */
 
 import type { ES } from "./es";
-import type { EN } from "./en";
 
 export type TranslationKeys = typeof ES;
-export type Translation = typeof ES | typeof EN;
+export type Translation = typeof ES;
