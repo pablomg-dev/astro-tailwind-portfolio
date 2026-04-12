@@ -38,7 +38,7 @@ const { navLinks } = Astro.props;
   </div>
 
   <nav
-    class="hidden text-cream border absolute right-5 top-24 bg-midnight/90 backdrop-blur-xl border-primary/20 py-6 px-4 rounded-[2rem] sm:block sm:border-0 sm:p-0 sm:static sm:bg-transparent shadow-aura-lg sm:shadow-none z-[100]"
+    class="fixed opacity-0 invisible transition-all duration-300 ease-out scale-95 text-cream border top-24 right-5 bg-midnight/90 backdrop-blur-xl border-primary/20 py-6 px-4 rounded-[2rem] sm:block sm:border-0 sm:p-0 sm:static sm:bg-transparent sm:shadow-none sm:opacity-100 sm:visible sm:scale-100 shadow-aura-lg z-[100]"
     id="main-menu"
   >
     <ul class="sm:flex gap-4">
@@ -65,16 +65,21 @@ const { navLinks } = Astro.props;
     const button = document.querySelector("#menu-button");
     const menu = document.querySelector("#main-menu");
 
-    if (!button || !menu || (button as unknown as { _initialized?: boolean })._initialized) return;
+    if (
+      !button ||
+      !menu ||
+      (button as unknown as { _initialized?: boolean })._initialized
+    )
+      return;
     (button as unknown as { _initialized: boolean })._initialized = true;
 
     const toggleMenu = () => {
       const isExpanded = button.getAttribute("aria-expanded") === "true";
       if (isExpanded) {
-        menu.classList.add("hidden");
+        menu.classList.add("opacity-0", "invisible", "scale-95");
         button.setAttribute("aria-expanded", "false");
       } else {
-        menu.classList.remove("hidden");
+        menu.classList.remove("opacity-0", "invisible", "scale-95");
         button.setAttribute("aria-expanded", "true");
       }
     };
@@ -110,36 +115,43 @@ const { navLinks } = Astro.props;
     links.forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
-        const target = (e.currentTarget as HTMLAnchorElement).getAttribute("href");
+        const target = (e.currentTarget as HTMLAnchorElement).getAttribute(
+          "href",
+        );
         if (target) {
           smoothScroll(target);
-          menu.classList.add("hidden");
+          menu.classList.add("opacity-0", "invisible", "scale-95");
           button.setAttribute("aria-expanded", "false");
         }
       });
     });
   }
 
-  if (!(window as unknown as { _headerListenerAdded?: boolean })._headerListenerAdded) {
-    (window as unknown as { _headerListenerAdded: boolean })._headerListenerAdded = true;
+  if (
+    !(window as unknown as { _headerListenerAdded?: boolean })
+      ._headerListenerAdded
+  ) {
+    (
+      window as unknown as { _headerListenerAdded: boolean }
+    )._headerListenerAdded = true;
     document.addEventListener(
       "click",
       (e) => {
         const menu = document.querySelector("#main-menu");
         const button = document.querySelector("#menu-button");
         if (menu && button) {
-          const isHidden = menu.classList.contains("hidden");
+          const isHidden = menu.classList.contains("opacity-0");
           if (
             !isHidden &&
             !menu.contains(e.target as Node) &&
             !button.contains(e.target as Node)
           ) {
-            menu.classList.add("hidden");
+            menu.classList.add("opacity-0", "invisible", "scale-95");
             button.setAttribute("aria-expanded", "false");
           }
         }
       },
-      { passive: true }
+      { passive: true },
     );
   }
 

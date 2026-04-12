@@ -3,6 +3,7 @@
  */
 
 import type { ProjectProps } from "../../types";
+import tiendanubeImage from "../../assets/tiendanube1.png";
 import nuspacioImage from "../../assets/nuspacioweb.png";
 import astroconImage from "../../assets/astrocon.png";
 import soyjessiImage from "../../assets/soyjessi.png";
@@ -11,6 +12,13 @@ import corastroImage from "../../assets/corastro.png";
 import profileImage from "../../assets/foto-perfil.jpg";
 
 const projects: ProjectProps[] = [
+  {
+    name: "Günün a küna",
+    summary:
+      "Tienda online especializada en productos de bienestar. Ecommerce con integración de MercadoPago permitiendo a los clientes comprar de forma segura y rápida.",
+    link: "https://gununakuna.mitiendanube.com/",
+    image: tiendanubeImage,
+  },
   {
     name: "Nu Spacio Web",
     summary:
@@ -22,7 +30,7 @@ const projects: ProjectProps[] = [
   {
     name: "Astro-Conciencia",
     summary:
-      "Sitio web para una astróloga profesional especializado en cartas natales. Un portal cálido diseñado para reservar sesiones y acceder a recursos de crecimiento personal con claridad.",
+      "Sitio Web para una astróloga profesional especializado en cartas natales. Un portal cálido diseñado para reservar sesiones y acceder a recursos de crecimiento personal con claridad.",
     link: "https://astro-conciencia.com/",
     code: "https://github.com/pablomg-dev/astro-conciencia",
     image: astroconImage,
@@ -62,35 +70,37 @@ export const ES = {
     name: "Pablo M.G.",
     specialty: "Desarrollador Web Freelance en Argentina",
     summary:
-      "Creo sitios web profesionales, landing pages y ecommerce a medida para pymes y emprendedores en Buenos Aires y todo Argentina. Especializado en React, Astro y Next.js.",
+      "Creo sitios Web profesionales, Landing Pages y Ecommerce a medida para Pymes y emprendedores en Buenos Aires y todo Argentina. Especializado en React, Astro y Next.js.",
     email: "pablomartingonzalez2025@gmail.com",
     image: profileImage,
   },
   projects: {
     title: "Proyectos",
-    viewProject: "Conocer Espacio",
+    viewProject: "Ir a Sitio",
     viewCode: "Ver Detalles",
     items: projects,
   },
   about: {
     title: "Sobre mí",
     greeting:
-      "¡Hola! Soy Pablo, desarrollador web freelance en Buenos Aires, Argentina. 👋",
+      "¡Hola! Soy Pablo, Desarrollador Web Freelance en Buenos Aires, Argentina. 👋",
     description:
-      "Ayudo a pymes, emprendedores y profesionales a crear presencia digital efectiva. Mi enfoque combina diseño atractivo con desarrollo técnico sólido (React, Astro, Next.js) para resultados que realmente impulsan tu negocio.",
+      "Ayudo a Pymes, emprendedores y profesionales a crear presencia digital efectiva. Mi enfoque combina diseño atractivo con desarrollo técnico sólido (React, Astro, Next.js) para resultados que realmente impulsan tu negocio.",
     image: profileImage,
     specialties: {
       title: "Especialidades:",
       design:
-        "Diseño web profesional y responsive para todos los dispositivos.",
+        "Diseño Web profesional y responsive para todos los dispositivos.",
       speed:
-        "Sitios web ultrarrápidos que mejoran el posicionamiento en Google.",
+        "Sitios Web ultrarrápidos que mejoran el posicionamiento en Google.",
       automation:
         "Sistemas de reservas, formularios y automatización de procesos.",
+      ecommerce:
+        "Tiendas online con Tienda Nube, Mércado Pago y otras plataformas de pago.",
     },
     closing:
-      "Cada proyecto es único, y mi objetivo es crear una web que refleje la esencia de tu negocio.",
-    cta: "¿Listo para crear tu página web profesional? Hablemos.",
+      "Cada proyecto es único, y mi objetivo es crear una Web que refleje la esencia de tu negocio.",
+    cta: "¿Listo para crear tu página Web profesional? Hablemos.",
   },
   specialties: {
     title: "Expansión Digital",
@@ -98,13 +108,13 @@ export const ES = {
       {
         title: "Desarrollo con Tecnologías Modernas",
         description:
-          "Trabajo con React, Astro y Next.js para crear sitios web rápidos, seguros y escalables que funcionan perfectamente en cualquier dispositivo.",
+          "Trabajo con React, Astro y Next.js para crear sitios Web rápidos, seguros y escalables que funcionan perfectamente en cualquier dispositivo.",
         icon: "💻",
       },
       {
         title: "Diseño que Convierte",
         description:
-          "Cada sitio web está diseñado para convertir visitantes en clientes. Diseño UX/UI profesional que refleja la identidad de tu marca.",
+          "Cada sitio Web está diseñado para convertir visitantes en clientes. Diseño UX/UI profesional que refleja la identidad de tu marca.",
         icon: "🎨",
       },
     ],
@@ -115,7 +125,7 @@ export const ES = {
       {
         title: "Landing Pages Profesionales",
         description:
-          "Landing pages optimizadas para convertir visitantes en clientes. Diseños atractivos, carga rápida y llamados a la acción efectivos para tu negocio.",
+          "Landing Pages optimizadas para convertir visitantes en clientes. Diseños atractivos, carga rápida y llamados a la acción efectivos para tu negocio.",
       },
       {
         title: "Ecommerce con MercadoPago",
@@ -130,24 +140,24 @@ export const ES = {
       {
         title: "Mantenimiento Web",
         description:
-          "Actualizaciones, modificaciones y soporte técnico continuo para tu sitio. Me ocupo de que tu web siempre esté actualizada y funcionando perfectamente.",
+          "Actualizaciones, modificaciones y soporte técnico continuo para tu sitio. Me ocupo de que tu Web siempre esté actualizada y funcionando perfectamente.",
       },
     ],
   },
   footer: {
-    tagline: "Co-creando con el Universo",
+    tagline: "",
     socialLinks: [
-      { text: "LinkedIn", href: "https://www.linkedin.com/in/pablomgdev/" },
-      { text: "Github", href: "https://github.com/pablomg-dev" },
       { text: "Instagram", href: "https://www.instagram.com/pablomg.dev/" },
       { text: "TikTok", href: "https://www.tiktok.com/@pablomg.dev" },
+      { text: "LinkedIn", href: "https://www.linkedin.com/in/pablomgdev/" },
+      { text: "Github", href: "https://github.com/pablomg-dev" },
     ],
   },
   seo: {
     title:
       "Desarrollador Web Freelance Argentina | Pablo M.G. - React, Astro & Next.js",
     description:
-      "Desarrollador Web Freelance en Buenos Aires, Argentina. Creo páginas web profesionales, Landing Pages, Ecommerce con MercadoPago y Sitios Web a medida para Pymes y Emprendedores. Especializado en React, Astro y Next.js. Servicio de Mantenimiento Web incluido.",
+      "Desarrollador Web Freelance en Buenos Aires, Argentina. Creo páginas Web profesionales, Landing Pages, Ecommerce con MercadoPago y Sitios Web a medida para Pymes y Emprendedores. Especializado en React, Astro y Next.js. Servicio de Mantenimiento Web incluido.",
     author: "Pablo M.G.",
   },
 } as const;

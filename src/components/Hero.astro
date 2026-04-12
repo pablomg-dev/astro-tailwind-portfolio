@@ -13,7 +13,10 @@ const { name, specialty, summary, image } = Astro.props;
 <section
   class="min-h-[85vh] flex flex-col justify-center items-center text-center pt-24 pb-12 relative w-full overflow-hidden"
 >
-  <div class="animate-fade-in w-full px-4 flex flex-col items-center" style="animation-delay: 0.2s">
+  <div
+    class="animate-fade-in w-full px-4 flex flex-col items-center"
+    style="animation-delay: 0.2s"
+  >
     <div class="relative mb-8 group">
       <div
         class="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-110 group-hover:scale-125 transition-transform duration-1000"
@@ -21,7 +24,7 @@ const { name, specialty, summary, image } = Astro.props;
       </div>
       <Image
         src={image}
-        alt={`Foto de ${name}, desarrollador web freelance en Argentina especializado en desarrollo web con React, Astro y Next.js`}
+        alt={`Foto de ${name}, Desarrollador Web Freelance en Argentina especializado en Desarrollo Web con React, Astro y Next.js`}
         width={160}
         height={160}
         loading="eager"

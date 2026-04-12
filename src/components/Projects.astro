@@ -29,7 +29,7 @@ const { title, projects, viewProject, viewCode } = Astro.props;
             <Image
               class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
               src={project.image}
-              alt={`Proyecto ${project.name} - ${project.summary.split('.')[0]}`}
+              alt={`Proyecto ${project.name} - ${project.summary.split(".")[0]}`}
               width={800}
               height={450}
               {...getLoadingStrategy(index)}
@@ -50,18 +50,9 @@ const { title, projects, viewProject, viewCode } = Astro.props;
                 <a
                   href={project.link}
                   target="_blank"
-                  class="flex-1 text-center py-3 rounded-full bg-primary text-midnight text-sm font-semibold transition-all duration-500 hover:scale-105 hover:shadow-aura"
+                  class="w-full text-center py-3 rounded-full bg-primary text-midnight text-sm font-semibold transition-all duration-500 hover:scale-105 hover:shadow-aura"
                 >
                   {viewProject}
-                </a>
-              )}
-              {project.code && (
-                <a
-                  href={project.code}
-                  target="_blank"
-                  class="flex-1 text-center py-3 rounded-full border border-primary/20 text-cream text-sm font-medium transition-all duration-500 hover:bg-white/5"
-                >
-                  {viewCode}
                 </a>
               )}
             </div>

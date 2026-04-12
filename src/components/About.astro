@@ -35,11 +35,7 @@ const specialtiesList = [
   cta,
 ].join("\n");
 
-const fullText = [
-  greeting,
-  description,
-  specialtiesList,
-].join("\n\n");
+const fullText = [greeting, description, specialtiesList].join("\n\n");
 ---
 
 <Section text={title} href="about">
@@ -51,11 +47,11 @@ const fullText = [
       {fullText}
     </div>
     <div
-      class="w-64 h-80 flex-shrink-0 rotate-[2deg] md:rotate-[7deg] opacity-0 transition-all duration-1000 translate-y-16"
+      class="w-64 h-80 flex-shrink-0 rotate-[2deg] md:rotate-[7deg] opacity-0 transition-all duration-1000 translate-y-16 group hover:shadow-aura hover:-translate-y-1"
       data-scroll-animation
     >
       <Image
-        class="object-cover rounded-[2.5rem] shadow-aura-lg border-4 border-midnight w-full h-full"
+        class="object-cover rounded-[2.5rem] shadow-aura-lg border-4 border-midnight w-full h-full transition-all duration-500 group-hover:shadow-aura"
         src={image}
         alt={`Foto de ${name}, desarrollador web freelance en Buenos Aires, Argentina`}
         width={260}

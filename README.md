@@ -15,7 +15,8 @@ Portfolio web personal construido con Astro y TailwindCSS, optimizado para rendi
 - ⌨️ **TypeScript** - Tipado estático para mayor seguridad
 - 🎭 **Animaciones Suaves** - Transiciones y animaciones de scroll
 - 🔧 **Fácil Personalización** - Configuración centralizada
-- ♿️ **Accesibilidad** - Siguiendo mejores prácticas WCAG
+- ♿️ **Accesibilidad** - Siguiendo mejores prácticas WCAG- 😐 **Portafolio Completo** - Proyectos, habilidades y sobre mí
+- 💵 **Integración Tienda Nube** - Creación de ecommerce profesionales
 
 ## 🚀 Inicio Rápido
 
@@ -27,29 +28,32 @@ Portfolio web personal construido con Astro y TailwindCSS, optimizado para rendi
 ### Instalación
 
 1. Clona el repositorio:
+
 ```bash
 git clone https://github.com/pmg369/astro-tailwind-portfolio.git
 cd astro-tailwind-portfolio
 ```
 
 2. Instala las dependencias:
+
 ```bash
 pnpm install
 ```
 
 3. Inicia el servidor de desarrollo:
+
 ```bash
 pnpm dev
 ```
 
 ## 📝 Comandos Disponibles
 
-| Comando           | Descripción                                       |
-| :---------------- | :------------------------------------------------ |
-| `pnpm install`    | Instala las dependencias del proyecto             |
-| `pnpm dev`        | Inicia servidor de desarrollo en `localhost:4321` |
-| `pnpm build`      | Construye el sitio para producción en `./dist/`   |
-| `pnpm preview`    | Previsualiza la build de producción localmente    |
+| Comando        | Descripción                                       |
+| :------------- | :------------------------------------------------ |
+| `pnpm install` | Instala las dependencias del proyecto             |
+| `pnpm dev`     | Inicia servidor de desarrollo en `localhost:4321` |
+| `pnpm build`   | Construye el sitio para producción en `./dist/`   |
+| `pnpm preview` | Previsualiza la build de producción localmente    |
 
 ## 🎨 Personalización
 
