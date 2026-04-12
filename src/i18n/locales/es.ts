@@ -60,9 +60,9 @@ export const ES = {
   },
   hero: {
     name: "Pablo M.G.",
-    specialty: "Arquitecto de Espacios Digitales Conscientes",
+    specialty: "Desarrollador Web Freelance en Argentina",
     summary:
-      "Acompaño a terapeutas y emprendedores holísticos a materializar su propósito en el mundo digital con serenidad y estructura.",
+      "Creo sitios web profesionales, landing pages y ecommerce a medida para pymes y emprendedores en Buenos Aires y todo Argentina. Especializado en React, Astro y Next.js.",
     email: "pablomartingonzalez2025@gmail.com",
     image: profileImage,
   },
@@ -74,34 +74,63 @@ export const ES = {
   },
   about: {
     title: "Sobre mí",
-    greeting: "¡Hola! Soy Pablo, Arquitecto Digital para el Bienestar. 🌿",
+    greeting:
+      "¡Hola! Soy Pablo, desarrollador web freelance en Buenos Aires, Argentina. 👋",
     description:
-      "Ayudo a terapeutas y espacios holísticos a traducir su esencia en webs de alto rendimiento. Mi enfoque une la sensibilidad de tu propósito con la solidez técnica (Astro & TypeScript).",
+      "Ayudo a pymes, emprendedores y profesionales a crear presencia digital efectiva. Mi enfoque combina diseño atractivo con desarrollo técnico sólido (React, Astro, Next.js) para resultados que realmente impulsan tu negocio.",
     image: profileImage,
     specialties: {
-      title: "Me especializo en:",
-      design: "Diseño Consciente: Portales que respiran tu energía.",
-      speed: "Velocidad Zen: Sitios ultra-rápidos que transmiten calma.",
-      automation: "Automatización: Sistemas de turnos para liberar tu tiempo.",
+      title: "Especialidades:",
+      design:
+        "Diseño web profesional y responsive para todos los dispositivos.",
+      speed:
+        "Sitios web ultrarrápidos que mejoran el posicionamiento en Google.",
+      automation:
+        "Sistemas de reservas, formularios y automatización de procesos.",
     },
     closing:
-      "Creo en el código limpio para que tu proyecto crezca sin límites.",
-    cta: "¿Llevamos tu consulta al siguiente nivel?",
+      "Cada proyecto es único, y mi objetivo es crear una web que refleje la esencia de tu negocio.",
+    cta: "¿Listo para crear tu página web profesional? Hablemos.",
   },
   specialties: {
     title: "Expansión Digital",
     items: [
       {
-        title: "Sincronía Astral",
+        title: "Desarrollo con Tecnologías Modernas",
         description:
-          "Capacidad de integrar APIs de astrología para personalización mística de la experiencia del usuario.",
-        icon: "🌌",
+          "Trabajo con React, Astro y Next.js para crear sitios web rápidos, seguros y escalables que funcionan perfectamente en cualquier dispositivo.",
+        icon: "💻",
       },
       {
-        title: "Escalabilidad Energética",
+        title: "Diseño que Convierte",
         description:
-          "Entiendo el dinero como energía en movimiento. Co-creamos sistemas digitales que permiten que tu abundancia escale con propósito y coherencia.",
-        icon: "✨",
+          "Cada sitio web está diseñado para convertir visitantes en clientes. Diseño UX/UI profesional que refleja la identidad de tu marca.",
+        icon: "🎨",
+      },
+    ],
+  },
+  services: {
+    title: "Servicios",
+    items: [
+      {
+        title: "Landing Pages Profesionales",
+        description:
+          "Landing pages optimizadas para convertir visitantes en clientes. Diseños atractivos, carga rápida y llamados a la acción efectivos para tu negocio.",
+      },
+      {
+        title: "Ecommerce con MercadoPago",
+        description:
+          "Tienda online completa con integración de MercadoPago para que tus clientes puedan pagar con tarjeta, Mercado Pago o efectivo de forma segura.",
+      },
+      {
+        title: "Sitios Web para Pymes y Emprendedores",
+        description:
+          "Presencia digital profesional para tu empresa. Sitios corporativos, portfolios y blogs diseñados para comunicar el valor de tu negocio.",
+      },
+      {
+        title: "Mantenimiento Web",
+        description:
+          "Actualizaciones, modificaciones y soporte técnico continuo para tu sitio. Me ocupo de que tu web siempre esté actualizada y funcionando perfectamente.",
       },
     ],
   },
@@ -115,8 +144,10 @@ export const ES = {
     ],
   },
   seo: {
-    title: "Pablo M.G. — Web Developer",
-    description: "Soy Pablo 🙋‍♂️, Web Developer 🧑‍💻",
+    title:
+      "Desarrollador Web Freelance Argentina | Pablo M.G. - React, Astro & Next.js",
+    description:
+      "Desarrollador Web Freelance en Buenos Aires, Argentina. Creo páginas web profesionales, Landing Pages, Ecommerce con MercadoPago y Sitios Web a medida para Pymes y Emprendedores. Especializado en React, Astro y Next.js. Servicio de Mantenimiento Web incluido.",
     author: "Pablo M.G.",
   },
 } as const;

@@ -29,7 +29,7 @@ const { title, projects, viewProject, viewCode } = Astro.props;
             <Image
               class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
               src={project.image}
-              alt={project.name}
+              alt={`Proyecto ${project.name} - ${project.summary.split('.')[0]}`}
               width={800}
               height={450}
               {...getLoadingStrategy(index)}

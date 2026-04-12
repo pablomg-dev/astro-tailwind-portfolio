@@ -57,6 +57,11 @@ export interface SpecialtyCardProps {
   icon: string;
 }
 
+export interface ServiceProps {
+  title: string;
+  description: string;
+}
+
 export interface SectionProps {
   text: string;
   href: string;

@@ -6,11 +6,12 @@ import Projects from "@components/Projects.astro";
 import SpecialtyCard from "@components/SpecialtyCard.astro";
 import { getTranslations } from "@i18n/utils";
 
-const t = getTranslations("es");
+const t = getTranslations("es") as any;
 
 const navLinks = [
   { text: t.nav.projects, href: "#projects" },
   { text: t.nav.about, href: "#about" },
+  { text: t.services.title, href: "#services" },
 ];
 
 const socialLinks = [...t.footer.socialLinks];
@@ -45,13 +46,28 @@ const specialties = [
     viewCode={t.projects.viewCode}
   />
 
+  <section class="py-20 relative" id="services">
+    <div class="absolute inset-0 bg-primary/5 blur-[60px] -z-10"></div>
+    <h2 class="text-4xl font-serif text-cream text-center mb-16 tracking-widest uppercase opacity-80 opacity-0 translate-y-16 transition-all duration-1000" data-scroll-animation>
+      {t.services?.title || "Servicios"}
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {(t.services?.items || []).map((service: any) => (
+        <div class="p-8 rounded-2xl bg-midnight/40 backdrop-blur-md border border-primary/10 opacity-0 translate-y-16 transition-all duration-1000" data-scroll-animation>
+          <h3 class="text-2xl font-serif text-cream mb-4">{service.title}</h3>
+          <p class="text-cream/70 font-light leading-relaxed">{service.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
   <section class="py-20 relative">
     <div class="absolute inset-0 bg-primary/5 blur-[60px] -z-10"></div>
     <h2 class="text-4xl font-serif text-cream text-center mb-16 tracking-widest uppercase opacity-80 opacity-0 translate-y-16 transition-all duration-1000" data-scroll-animation>
       {t.specialties.title}
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      {t.specialties.items.map((item) => (
+      {t.specialties.items.map((item: any) => (
         <SpecialtyCard
           title={item.title}
           description={item.description}
