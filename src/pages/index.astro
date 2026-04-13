@@ -4,9 +4,7 @@ import Hero from "@components/Hero.astro";
 import About from "@components/About.astro";
 import Projects from "@components/Projects.astro";
 import SpecialtyCard from "@components/SpecialtyCard.astro";
-import { getTranslations } from "@i18n/utils";
-
-const t = getTranslations("es") as any;
+import { translations as t } from "@config/translations";
 
 const navLinks = [
   { text: t.nav.projects, href: "#projects" },

@@ -1,15 +1,15 @@
 /**
- * Traducciones en español
+ * Traducciones en español (es-AR)
  */
 
-import type { ProjectProps } from "../../types";
-import tiendanubeImage from "../../assets/tiendanube1.png";
-import nuspacioImage from "../../assets/nuspacioweb.png";
-import astroconImage from "../../assets/astrocon.png";
-import soyjessiImage from "../../assets/soyjessi.png";
-import esplumImage from "../../assets/esplum.png";
-import corastroImage from "../../assets/corastro.png";
-import profileImage from "../../assets/foto-perfil.jpg";
+import type { ProjectProps } from "../types";
+import tiendanubeImage from "../assets/tiendanube1.png";
+import nuspacioImage from "../assets/nuspacioweb.png";
+import astroconImage from "../assets/astrocon.png";
+import soyjessiImage from "../assets/soyjessi.png";
+import esplumImage from "../assets/esplum.png";
+import corastroImage from "../assets/corastro.png";
+import profileImage from "../assets/foto-perfil.jpg";
 
 const projects: ProjectProps[] = [
   {
@@ -61,7 +61,7 @@ const projects: ProjectProps[] = [
   },
 ];
 
-export const ES = {
+export const translations = {
   nav: {
     projects: "Proyectos",
     about: "Sobre mí",

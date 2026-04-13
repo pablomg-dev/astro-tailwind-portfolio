@@ -1,6 +1,6 @@
 /**
- * Configuración del sitio (usado para referencias de imágenes)
- * El contenido textual está en src/i18n/locales/
+ * Configuración del sitio
+ * El contenido textual está en src/config/translations.ts
  */
 export const SITE_CONFIG = {
   title: "Pablo M.G. — Web Developer",

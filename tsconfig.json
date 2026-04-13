@@ -8,8 +8,7 @@
       "@icons/*": ["src/icons/*"],
       "@scripts/*": ["src/scripts/*"],
       "@types": ["src/types/index.ts"],
-      "@config": ["src/config/index.ts"],
-      "@i18n/*": ["src/i18n/*"]
+      "@config/*": ["src/config/*"]
     }
   }
 }

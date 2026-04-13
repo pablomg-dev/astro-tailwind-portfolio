@@ -6,6 +6,11 @@ import "@fontsource-variable/gabarito";
 import Footer from "@components/Footer.astro";
 import ScrollToTop from "@components/ScrollToTop.astro";
 
+// Estilos para optimizar fuentes
+const fontOptimizationStyles = `
+  @font-face { font-display: swap; }
+`;
+
 interface Props {
   title: string;
   description: string;
@@ -14,20 +19,15 @@ interface Props {
   author: string;
 }
 
-const {
-  title,
-  description,
-  navLinks,
-  socialLinks,
-  author,
-} = Astro.props;
+const { title, description, navLinks, socialLinks, author } = Astro.props;
 
 const defaultSite = "https://pablomgdev.netlify.app";
 const siteUrl = Astro.site?.href || defaultSite;
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
 ---
 
-<!doctype html lang="es-AR" class="scroll-smooth overflow-x-hidden">
+<!doctype html>
+<html lang="es-AR" class="scroll-smooth overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -36,6 +36,9 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <!-- Preconnect para fuentes locales -->
+    <link rel="preconnect" href="/fonts/" crossorigin />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -48,7 +51,10 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={`${canonicalURL}vistaprevia.png`} />
 
-    <meta name="keywords" content="Desarrollador Web Freelance Argentina, Programador Web Freelance, Desarrollo Web a Medida, Crear Página Web Profesional, Diseño y Desarrollo Web, Desarrollador React Argentina, Landing Page Profesional, Web para Emprendedores, Ecommerce a Medida, Sitio Web para Empresas" />
+    <meta
+      name="keywords"
+      content="Desarrollador Web Freelance Argentina, Programador Web Freelance, Desarrollo Web a Medida, Crear Página Web Profesional, Diseño y Desarrollo Web, Desarrollador React Argentina, Landing Page Profesional, Web para Emprendedores, Ecommerce a Medida, Sitio Web para Empresas"
+    />
 
     <meta property="og:locale" content="es_AR" />
 
@@ -61,7 +67,15 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
         "name": "Pablo M.G.",
         "url": "https://pablomgdev.lat",
         "jobTitle": "Desarrollador Web Freelance",
-        "knowsAbout": ["React", "Astro", "Next.js", "Desarrollo Web", "Landing Pages", "Ecommerce", "MercadoPago"],
+        "knowsAbout": [
+          "React",
+          "Astro",
+          "Next.js",
+          "Desarrollo Web",
+          "Landing Pages",
+          "Ecommerce",
+          "MercadoPago"
+        ],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Buenos Aires",
