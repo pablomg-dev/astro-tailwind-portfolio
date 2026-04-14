@@ -9,7 +9,7 @@ import astroconImage from "../assets/astrocon.png";
 import soyjessiImage from "../assets/soyjessi.png";
 import esplumImage from "../assets/esplum.png";
 import corastroImage from "../assets/corastro.png";
-import profileImage from "../assets/foto-perfil.jpg";
+import profileImage from "../assets/foto-pablo.jpg";
 
 const projects: ProjectProps[] = [
   {

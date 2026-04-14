@@ -4,6 +4,7 @@ import Hero from "@components/Hero.astro";
 import About from "@components/About.astro";
 import Projects from "@components/Projects.astro";
 import SpecialtyCard from "@components/SpecialtyCard.astro";
+import type { ServiceProps, SpecialtyCardProps } from "@types";
 import { translations as t } from "@config/translations";
 
 const navLinks = [
@@ -54,7 +55,7 @@ const specialties = [
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {
-        (t.services?.items || []).map((service: any) => (
+        (t.services?.items || []).map((service: ServiceProps) => (
           <div
             class="group p-8 rounded-2xl bg-midnight/40 backdrop-blur-md border border-primary/10 opacity-0 translate-y-16 transition-all duration-1000 hover:shadow-aura hover:-translate-y-1 hover:bg-midnight/50"
             data-scroll-animation
@@ -81,7 +82,7 @@ const specialties = [
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
       {
-        t.specialties.items.map((item: any) => (
+        t.specialties.items.map((item: SpecialtyCardProps) => (
           <SpecialtyCard
             title={item.title}
             description={item.description}

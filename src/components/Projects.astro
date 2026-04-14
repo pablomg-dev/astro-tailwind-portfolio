@@ -5,7 +5,7 @@
 import type { ProjectProps } from "../types";
 import Section from "./Section.astro";
 import { Image } from "astro:assets";
-import { getLoadingStrategy } from "@scripts/performance";
+
 
 interface Props {
   title: string;
@@ -32,7 +32,9 @@ const { title, projects, viewProject, viewCode } = Astro.props;
               alt={`Proyecto ${project.name} - ${project.summary.split(".")[0]}`}
               width={800}
               height={450}
-              {...getLoadingStrategy(index)}
+              loading={index < 2 ? "eager" : "lazy"}
+              fetchpriority={index < 2 ? "high" : "auto"}
+              decoding="async"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-[#1c1917] via-transparent to-transparent opacity-60" />
           </div>
