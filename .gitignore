@@ -40,7 +40,7 @@ Desktop.ini
 
 # IDEs y editores
 .idea/
-.vscode/
+.vscode
 *.swp
 *.swo
 *.swn
