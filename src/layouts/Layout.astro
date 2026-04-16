@@ -43,13 +43,13 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content={`${canonicalURL}vistaprevia.png`} />
+    <meta property="og:image" content={new URL("/vistaprevia.png", siteUrl)} />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={`${canonicalURL}vistaprevia.png`} />
+    <meta property="twitter:image" content={new URL("/vistaprevia.png", siteUrl)} />
 
     <meta
       name="keywords"
