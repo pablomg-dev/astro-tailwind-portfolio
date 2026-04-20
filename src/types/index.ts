@@ -70,5 +70,4 @@ export interface SectionProps {
 
 export interface FooterProps {
   author: string;
-  socialLinks: { text: string; href: string }[];
 }

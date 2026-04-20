@@ -15,11 +15,10 @@ interface Props {
   title: string;
   description: string;
   navLinks: { text: string; href: string }[];
-  socialLinks: { text: string; href: string }[];
   author: string;
 }
 
-const { title, description, navLinks, socialLinks, author } = Astro.props;
+const { title, description, navLinks, author } = Astro.props;
 
 const defaultSite = "https://pablomgdev.netlify.app";
 const siteUrl = Astro.site?.href || defaultSite;
@@ -107,7 +106,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
     <main class="max-w-3xl px-5 mx-auto relative" transition:animate="none">
       <slot />
     </main>
-    <Footer {author} {socialLinks} />
+    <Footer {author} />
     <ScrollToTop />
     <script>
       import { handleScrollAnimation } from "@scripts/scrollAnimation.ts";

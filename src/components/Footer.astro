@@ -4,10 +4,9 @@
  */
 interface Props {
   author: string;
-  socialLinks: { text: string; href: string }[];
 }
 
-const { author, socialLinks } = Astro.props;
+const { author } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
@@ -15,22 +14,6 @@ const currentYear = new Date().getFullYear();
   class="text-cream/70 w-full text-center pb-8 pt-5 px-5 border-t border-primary/10"
   transition:animate="none"
 >
-  <ul class="flex flex-wrap gap-x-5 justify-center mb-5 text-xs">
-    {
-      socialLinks.map((link) => (
-        <li>
-          <a
-            href={link.href}
-            target="_blank"
-            aria-label={`Visit my ${link.text} profile`}
-            class="text-cream/70 hover:text-primary inline-block py-3 px-4 transition-all duration-500 hover:scale-110 after:relative after:bottom-[-4px] after:content-[url(/external.svg)]"
-          >
-            {link.text}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
   <p class="text-xs font-light tracking-widest text-cream/70">
     {author} © {currentYear}
   </p>
