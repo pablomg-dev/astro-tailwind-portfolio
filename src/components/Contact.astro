@@ -47,7 +47,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
     >
       <input type="hidden" name="form-name" value="contact" />
       <p class="hidden">
-        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        <label>Este campo no debe ser completado: <input name="bot-field" /></label>
       </p>
       
       <div>
@@ -121,7 +121,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
 
     <div 
       id="form-success" 
-      class="hidden mt-6 p-6 bg-primary/10 border border-primary/20 rounded-2xl text-primary text-center font-light animate-in fade-in zoom-in duration-500"
+      class="hidden mt-6 p-6 bg-primary/10 border border-primary/20 rounded-2xl text-primary text-center font-light animate-in fade-in zoom-in duration-500 hover:outline-none"
       role="status"
       aria-live="polite"
       tabindex="-1"
@@ -138,7 +138,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
 
     <div 
       id="form-error" 
-      class="hidden mt-6 p-6 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-center font-light animate-in fade-in zoom-in duration-500"
+      class="hidden mt-6 p-6 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-center font-light animate-in fade-in zoom-in duration-500 hover:outline-none"
       role="alert"
       aria-live="assertive"
       tabindex="-1"
@@ -171,37 +171,46 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Estado de carga
+        // 1. Estado de carga: Deshabilitar botón y cambiar texto
         submitBtn.disabled = true;
-        btnText.textContent = "Enviando...";
+        btnText.textContent = "Enviando…";
         if (btnIcon) btnIcon.classList.add('hidden');
         errorMsg.classList.add('hidden');
         
+        // 4. Content-Type: URLSearchParams
         const formData = new FormData(form);
+        const body = new URLSearchParams(formData as any).toString();
         
         try {
           const response = await fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData as any).toString(),
+            body: body,
           });
           
+          // 2. Manejo de errores: Respuesta != 200
           if (response.ok) {
             form.classList.add('hidden');
             successMsg.classList.remove('hidden');
+            
+            // 5. Accesibilidad: focus y scroll
             successMsg.focus();
             successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
           } else {
-            throw new Error('Error en el servidor');
+            throw new Error('Netlify respondio con error');
           }
         } catch (error) {
-          console.error('Error:', error);
-          // Restaurar botón y mostrar error
+          console.error('Error al enviar formulario:', error);
+          
+          // 1. Restaurar el botón si ocurre un error
           submitBtn.disabled = false;
           btnText.textContent = originalBtnText;
           if (btnIcon) btnIcon.classList.remove('hidden');
           
+          // 2. Mostrar mensaje de error visible
           errorMsg.classList.remove('hidden');
+          
+          // 5. Accesibilidad: focus y scroll
           errorMsg.focus();
           errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
@@ -220,3 +229,4 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
 
   document.addEventListener("astro:page-load", initContact);
 </script>
+
