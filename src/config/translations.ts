@@ -65,13 +65,14 @@ export const translations = {
   nav: {
     projects: "Proyectos",
     about: "Sobre mí",
+    contact: "Contacto",
   },
   hero: {
     name: "Pablo M.G.",
     specialty: "Desarrollador Web Freelance en Argentina",
     summary:
       "Creo sitios Web profesionales, Landing Pages y Ecommerce a medida para Pymes y emprendedores en Buenos Aires y todo Argentina. Especializado en React, Astro y Next.js.",
-    email: "pablomartingonzalez2025@gmail.com",
+    email: "pablomg.developer@gmail.com",
     image: profileImage,
   },
   projects: {
@@ -101,6 +102,15 @@ export const translations = {
     closing:
       "Cada proyecto es único, y mi objetivo es crear una Web que refleje la esencia de tu negocio.",
     cta: "¿Listo para crear tu página Web profesional? Hablemos.",
+  },
+  contact: {
+    title: "Contacto",
+    subtitle: "¿Tienes un proyecto en mente? Escríbeme y trabajemos juntos.",
+    nameLabel: "Nombre",
+    emailLabel: "Email",
+    messageLabel: "Mensaje",
+    sendButton: "Enviar Mensaje",
+    successMessage: "¡Gracias! Tu mensaje ha sido enviado correctamente.",
   },
   specialties: {
     title: "Expansión Digital",
