@@ -6,15 +6,13 @@ import type { ProjectProps } from "../types";
 import Section from "./Section.astro";
 import { Image } from "astro:assets";
 
-
 interface Props {
   title: string;
   projects: ProjectProps[];
   viewProject: string;
-  viewCode: string;
 }
 
-const { title, projects, viewProject, viewCode } = Astro.props;
+const { title, projects, viewProject } = Astro.props;
 ---
 
 <Section text={title} href="projects">
@@ -52,6 +50,7 @@ const { title, projects, viewProject, viewCode } = Astro.props;
                 <a
                   href={project.link}
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="w-full text-center py-3 rounded-full bg-primary text-midnight text-sm font-semibold transition-all duration-500 hover:scale-105 hover:shadow-aura"
                 >
                   {viewProject}

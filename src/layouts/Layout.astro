@@ -31,13 +31,11 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080812" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-
-    <!-- Preconnect para fuentes locales -->
-    <link rel="preconnect" href="/fonts/" crossorigin />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -48,7 +46,10 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL("/vistaprevia.png", siteUrl)} />
+    <meta
+      property="twitter:image"
+      content={new URL("/vistaprevia.png", siteUrl)}
+    />
 
     <meta
       name="keywords"
