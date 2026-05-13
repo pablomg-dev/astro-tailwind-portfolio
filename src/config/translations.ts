@@ -9,20 +9,29 @@ import astroconImage from "../assets/astrocon.png";
 import soyjessiImage from "../assets/soyjessi.png";
 import esplumImage from "../assets/esplum.png";
 import corastroImage from "../assets/corastro.png";
+import eliwebImage from "../assets/eliweb.png";
+import florwebImage from "../assets/florweb.png";
 import profileImage from "../assets/foto-pablo.jpg";
 
 const projects: ProjectProps[] = [
   {
+    name: "Florencia Villeneuve",
+    summary:
+      "Sitio Web para mentora y guía en simbología, arte y psicología. Un portal diseñado para acompañar procesos de transformación personal con un enfoque profundo y humano.",
+    link: "https://florenciavilleneuve.com/",
+    image: florwebImage,
+  },
+  {
     name: "Günün a küna",
     summary:
-      "Tienda online especializada en productos de bienestar. Ecommerce con integración de MercadoPago permitiendo a los clientes comprar de forma segura y rápida.",
+      "Tienda online especializada en productos de bienestar. Ecommerce con integración de MercadoPago que permite a los clientes comprar de forma segura y rápida.",
     link: "https://gununakuna.mitiendanube.com/",
     image: tiendanubeImage,
   },
   {
     name: "Nu Spacio Web",
     summary:
-      "Espacio de coworking y bienestar con diseño minimalista. Presencia digital profesional y cálida que facilita el contacto y la reserva de espacios con un enfoque centrado en el usuario.",
+      "Espacio de coworking y bienestar con diseño minimalista. Presencia digital profesional y cálida que facilita el contacto y la reserva de espacios de forma intuitiva.",
     link: "https://www.nu-spacio.com/",
     code: "https://github.com/pablomg-dev/nu-spacio",
     image: nuspacioImage,
@@ -30,15 +39,22 @@ const projects: ProjectProps[] = [
   {
     name: "Astro-Conciencia",
     summary:
-      "Sitio Web para una astróloga profesional especializado en cartas natales. Un portal cálido diseñado para reservar sesiones y acceder a recursos de crecimiento personal con claridad.",
+      "Sitio Web para astróloga profesional especializada en cartas natales. Un portal cálido diseñado para reservar sesiones y acceder a recursos de crecimiento personal.",
     link: "https://astro-conciencia.com/",
     code: "https://github.com/pablomg-dev/astro-conciencia",
     image: astroconImage,
   },
   {
+    name: "Elizabeth Gilardini",
+    summary:
+      "Sitio personal para profesional de coaching y desarrollo personal. Un espacio dedicado a las constelaciones familiares y decodificación bioemocional para facilitar la sanación.",
+    link: "https://elizabethgilardini.netlify.app/",
+    image: eliwebImage,
+  },
+  {
     name: "Soy Jessi Carmona",
     summary:
-      "Plataforma para una terapeuta de artes sanadoras. Experiencia visual armoniosa que refleja el bienestar y la meditación, invitando a la conexión con la comunidad y el autoconocimiento.",
+      "Plataforma para terapeuta de artes sanadoras. Experiencia visual armoniosa que refleja el bienestar y la meditación, invitando a la conexión con la comunidad.",
     link: "https://soyjessicarmona.com/",
     code: "https://github.com/pablomg-dev/jessiCarmona",
     image: soyjessiImage,
@@ -46,7 +62,7 @@ const projects: ProjectProps[] = [
   {
     name: "Espacio Luminem",
     summary:
-      "Sitio personal para terapeuta holístico diseñado para transmitir paz y confianza. Un refugio digital que combina una estética visual relajante con herramientas para facilitar la conexión con los pacientes.",
+      "Sitio personal para terapeuta holístico diseñado para transmitir paz y confianza. Un refugio digital con estética visual relajante y herramientas de conexión con pacientes.",
     link: "https://espacio-luminem.com/",
     code: "https://github.com/pmg369/espacio-luminem",
     image: esplumImage,
@@ -54,7 +70,7 @@ const projects: ProjectProps[] = [
   {
     name: "Cora Astrología Viva",
     summary:
-      "Portal dedicado a la astrología y terapia holística. Refleja la esencia del servicio mediante una interfaz intuitiva que integra recursos educativos, agenda de sesiones y un diseño en sintonía con el cosmos.",
+      "Portal dedicado a la astrología y terapia holística. Refleja la esencia del servicio mediante una interfaz intuitiva que integra recursos educativos y agenda de sesiones.",
     link: "https://corastrologiaviva.netlify.app/",
     code: "https://github.com/pmg369/CoraAstrologiaViva",
     image: corastroImage,
