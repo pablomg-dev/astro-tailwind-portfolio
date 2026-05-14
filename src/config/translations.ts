@@ -37,19 +37,19 @@ const projects: ProjectProps[] = [
     image: nuspacioImage,
   },
   {
+    name: "Elizabeth Gilardini",
+    summary:
+      "Sitio personal para profesional de coaching y desarrollo personal. Un espacio dedicado a las constelaciones familiares y decodificación bioemocional para facilitar la sanación.",
+    link: "https://elizabethgilardini.netlify.app/",
+    image: eliwebImage,
+  },
+  {
     name: "Astro-Conciencia",
     summary:
       "Sitio Web para astróloga profesional especializada en cartas natales. Un portal cálido diseñado para reservar sesiones y acceder a recursos de crecimiento personal.",
     link: "https://astro-conciencia.com/",
     code: "https://github.com/pablomg-dev/astro-conciencia",
     image: astroconImage,
-  },
-  {
-    name: "Elizabeth Gilardini",
-    summary:
-      "Sitio personal para profesional de coaching y desarrollo personal. Un espacio dedicado a las constelaciones familiares y decodificación bioemocional para facilitar la sanación.",
-    link: "https://elizabethgilardini.netlify.app/",
-    image: eliwebImage,
   },
   {
     name: "Soy Jessi Carmona",
@@ -85,9 +85,9 @@ export const translations = {
   },
   hero: {
     name: "Pablo M.G.",
-    specialty: "Desarrollador Web Freelance en Argentina",
+    specialty: "Desarrollador Web Freelance",
     summary:
-      "Creo sitios Web profesionales, Landing Pages y Ecommerce a medida para Pymes y emprendedores en Buenos Aires y todo Argentina. Especializado en React, Astro y Next.js.",
+      "Creo sitios Web profesionales, Landing Pages y Ecommerce a medida para Pymes y emprendedores de habla hispana en todo el mundo.",
     email: "pablomg.developer@gmail.com",
     image: profileImage,
   },
@@ -100,9 +100,9 @@ export const translations = {
   about: {
     title: "Sobre mí",
     greeting:
-      "¡Hola! Soy Pablo, Desarrollador Web Freelance en Buenos Aires, Argentina. 👋",
+      "¡Hola! Soy Pablo, Desarrollador Web Freelance. 👋",
     description:
-      "Ayudo a Pymes, emprendedores y profesionales a crear presencia digital efectiva. Mi enfoque combina diseño atractivo con desarrollo técnico sólido (React, Astro, Next.js) para resultados que realmente impulsan tu negocio.",
+      "Ayudo a Pymes, emprendedores y profesionales de todo el mundo a crear una presencia digital efectiva. Trabajo de forma remota para ofrecer soluciones personalizadas que combinan un diseño atractivo con un desarrollo técnico sólido, impulsando resultados sin importar las fronteras.",
     image: profileImage,
     specialties: {
       title: "Especialidades:",
@@ -134,7 +134,7 @@ export const translations = {
       {
         title: "Desarrollo con Tecnologías Modernas",
         description:
-          "Trabajo con React, Astro y Next.js para crear sitios Web rápidos, seguros y escalables que funcionan perfectamente en cualquier dispositivo.",
+          "Trabajo con las últimas tecnologías para crear sitios Web rápidos, seguros y escalables que funcionan perfectamente en cualquier dispositivo.",
         icon: "💻",
       },
       {
@@ -178,9 +178,9 @@ export const translations = {
   },
   seo: {
     title:
-      "Desarrollador Web Freelance Argentina | Pablo M.G. - React, Astro & Next.js",
+      "Desarrollador Web Freelance | Pablo M.G.",
     description:
-      "Desarrollador Web Freelance en Buenos Aires, Argentina. Creo páginas Web profesionales, Landing Pages, Ecommerce con MercadoPago y Sitios Web a medida para Pymes y Emprendedores. Especializado en React, Astro y Next.js. Servicio de Mantenimiento Web incluido.",
+      "Desarrollador Web Freelance. Creo páginas Web profesionales, Landing Pages, Ecommerce con MercadoPago y Sitios Web a medida para Pymes y Emprendedores de habla hispana. Servicio de Mantenimiento Web incluido.",
     author: "Pablo M.G.",
   },
 } as const;
