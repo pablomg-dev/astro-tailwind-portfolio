@@ -113,7 +113,7 @@ export const translations = {
       automation:
         "Sistemas de reservas, formularios y automatización de procesos.",
       ecommerce:
-        "Tiendas online con Tienda Nube, Mércado Pago y otras plataformas de pago.",
+        "Tiendas online con Tienda Nube, integrando pagos, logística y gestión de stock.",
     },
     closing:
       "Cada proyecto es único, y mi objetivo es crear una Web que refleje la esencia de tu negocio.",
@@ -154,9 +154,9 @@ export const translations = {
           "Landing Pages optimizadas para convertir visitantes en clientes. Diseños atractivos, carga rápida y llamados a la acción efectivos para tu negocio.",
       },
       {
-        title: "Ecommerce con MercadoPago",
+        title: "Tiendas Online con Tienda Nube",
         description:
-          "Tienda online completa con integración de MercadoPago para que tus clientes puedan pagar con tarjeta, Mercado Pago o efectivo de forma segura.",
+          "Implementación de tiendas online con Tienda Nube, integrando múltiples formas de pago, sistemas de logística y todo lo necesario para empezar a vender de inmediato.",
       },
       {
         title: "Sitios Web para Pymes y Emprendedores",
@@ -180,7 +180,7 @@ export const translations = {
     title:
       "Desarrollador Web Freelance | Pablo M.G.",
     description:
-      "Desarrollador Web Freelance. Creo páginas Web profesionales, Landing Pages, Ecommerce con MercadoPago y Sitios Web a medida para Pymes y Emprendedores de habla hispana. Servicio de Mantenimiento Web incluido.",
+      "Desarrollador Web Freelance. Creo páginas Web profesionales, Landing Pages, Tiendas Online con Tienda Nube y Sitios Web a medida para Pymes y Emprendedores de habla hispana. Servicio de Mantenimiento Web incluido.",
     author: "Pablo M.G.",
   },
 } as const;
