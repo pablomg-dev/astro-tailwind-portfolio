@@ -6,6 +6,8 @@ import "@fontsource-variable/gabarito";
 import Footer from "@components/Footer.astro";
 import ScrollToTop from "@components/ScrollToTop.astro";
 
+import Background from "@components/Background.astro";
+
 // Estilos para optimizar fuentes
 const fontOptimizationStyles = `
   @font-face { font-display: swap; }
@@ -87,17 +89,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
     <ViewTransitions />
   </head>
   <body class="font-sans bg-space text-cream relative overflow-x-hidden">
-    <div class="fixed inset-0 pointer-events-none -z-20">
-      <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-nebula/20 via-space to-space"
-      >
-      </div>
-      <div
-        class="absolute inset-0 opacity-10"
-        style="background-image: radial-gradient(white 0.5px, transparent 0); background-size: 50px 50px;"
-      >
-      </div>
-    </div>
+    <Background />
 
     <Header {navLinks} />
     <main class="max-w-3xl px-5 mx-auto relative" transition:animate="none">

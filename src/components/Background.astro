@@ -1,0 +1,92 @@
+---
+/**
+ * Animated Background with Nebula Blobs (Option 2)
+ */
+---
+
+<div class="fixed inset-0 overflow-hidden pointer-events-none -z-20 bg-space">
+  <!-- Dynamic Nebula Blobs -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <!-- Noise Texture for premium feel -->
+  <div class="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none bg-[url(/raja.png)] bg-repeat"></div>
+  
+  <!-- Content Overlay (Gradient) -->
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-space/20 to-space"></div>
+</div>
+
+<style>
+  .blob {
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    animation: move 25s infinite alternate ease-in-out;
+  }
+
+  .blob-1 {
+    background: var(--color-nebula, #1a1a3a);
+    top: -10%;
+    left: -10%;
+    animation-duration: 30s;
+  }
+
+  .blob-2 {
+    background: var(--color-primary, #D4AF37);
+    bottom: -10%;
+    right: -10%;
+    width: 50vw;
+    height: 50vw;
+    animation-duration: 25s;
+    animation-delay: -5s;
+  }
+
+  .blob-3 {
+    background: var(--color-sage, #B2AC88);
+    top: 40%;
+    left: 30%;
+    width: 40vw;
+    height: 40vw;
+    opacity: 0.1;
+    animation-duration: 35s;
+    animation-delay: -10s;
+  }
+
+  .blob-4 {
+    background: #4a1a4a; /* Subtle purple deep nebula */
+    bottom: 20%;
+    left: -5%;
+    width: 45vw;
+    height: 45vw;
+    opacity: 0.08;
+    animation-duration: 28s;
+    animation-delay: -15s;
+  }
+
+  @keyframes move {
+    0% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    33% {
+      transform: translate(10%, 15%) scale(1.1) rotate(120deg);
+    }
+    66% {
+      transform: translate(-5%, 20%) scale(0.9) rotate(240deg);
+    }
+    100% {
+      transform: translate(0, 0) scale(1) rotate(360deg);
+    }
+  }
+
+  /* Support for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .blob {
+      animation: none;
+    }
+  }
+</style>

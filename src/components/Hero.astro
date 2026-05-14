@@ -18,10 +18,7 @@ const { name, specialty, summary, image } = Astro.props;
     style="animation-delay: 0.2s"
   >
     <div class="relative mb-8 group">
-      <div
-        class="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-110 group-hover:scale-125 transition-transform duration-1000"
-      >
-      </div>
+
       <Image
         src={image}
         alt={`Foto de ${name}, Desarrollador Web Freelance de habla hispana`}
@@ -53,8 +50,4 @@ const { name, specialty, summary, image } = Astro.props;
     </p>
   </div>
 
-  <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[600px] aspect-square bg-primary/10 rounded-full filter blur-[60px] md:blur-[80px] -z-10 animate-pulse-glow"
-  >
-  </div>
 </section>

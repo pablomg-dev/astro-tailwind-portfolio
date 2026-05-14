@@ -49,22 +49,11 @@ export default {
       },
       animation: {
         "fade-in": "fadeIn 1s ease-out forwards",
-        "pulse-glow": "pulseGlow 2s infinite",
       },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
-        },
-        pulseGlow: {
-          "0%, 100%": {
-            opacity: "0.6",
-            transform: "translate(-50%, -50%) scale(1)",
-          },
-          "50%": {
-            opacity: "0.8",
-            transform: "translate(-50%, -50%) scale(1.05)",
-          },
         },
       },
     },
