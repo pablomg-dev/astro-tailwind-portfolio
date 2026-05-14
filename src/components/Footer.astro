@@ -2,6 +2,8 @@
 /**
  * Footer con props traducibles
  */
+import { translations as t } from "@config/translations";
+
 interface Props {
   author: string;
 }
@@ -14,7 +16,23 @@ const currentYear = new Date().getFullYear();
   class="text-cream/70 w-full text-center pb-8 pt-5 px-5 border-t border-primary/10"
   transition:animate="none"
 >
-  <p class="text-xs font-light tracking-widest text-cream/70">
-    {author} © {currentYear}
-  </p>
+  <div class="flex flex-col items-center gap-4">
+    <nav class="flex gap-6">
+      {
+        t.footer.socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-light text-cream/70 hover:text-primary transition-colors duration-300"
+          >
+            {link.text}
+          </a>
+        ))
+      }
+    </nav>
+    <p class="text-xs font-light tracking-widest text-cream/70">
+      {author} © {currentYear}
+    </p>
+  </div>
 </footer>
