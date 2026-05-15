@@ -11,7 +11,7 @@
     "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.1.2",
+    "@astrojs/sitemap": "3.7.2",
     "@astrojs/tailwind": "^5.1.2",
     "@fontsource-variable/gabarito": "^5.1.0",
     "@fontsource/be-vietnam-pro": "^5.1.0",
