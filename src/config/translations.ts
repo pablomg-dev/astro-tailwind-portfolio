@@ -174,6 +174,7 @@ export const translations = {
     tagline: "",
     socialLinks: [
       { text: "Instagram", href: "https://www.instagram.com/pablomg.dev/" },
+      { text: "GitHub", href: "https://github.com/pablomg-dev" },
     ],
   },
   seo: {
