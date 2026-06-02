@@ -99,8 +99,7 @@ export const translations = {
   },
   about: {
     title: "Sobre mí",
-    greeting:
-      "¡Hola! Soy Pablo, Desarrollador Web Freelance. 👋",
+    greeting: "¡Hola! Soy Pablo, Desarrollador Web Freelance. 👋",
     description:
       "Ayudo a Pymes, emprendedores y profesionales de todo el mundo a crear una presencia digital efectiva. Trabajo de forma remota para ofrecer soluciones personalizadas que combinan un diseño atractivo con un desarrollo técnico sólido, impulsando resultados sin importar las fronteras.",
     image: profileImage,
@@ -175,11 +174,14 @@ export const translations = {
     socialLinks: [
       { text: "Instagram", href: "https://www.instagram.com/pablomg.dev/" },
       { text: "GitHub", href: "https://github.com/pablomg-dev" },
+      {
+        text: "LinkedIn",
+        href: "https://www.linkedin.com/in/pablomg-developer/",
+      },
     ],
   },
   seo: {
-    title:
-      "Desarrollador Web Freelance | Pablo M.G.",
+    title: "Desarrollador Web Freelance | Pablo M.G.",
     description:
       "Desarrollador Web Freelance. Creo páginas Web profesionales, Landing Pages, Tiendas Online con Tienda Nube y Sitios Web a medida para Pymes y Emprendedores de habla hispana. Servicio de Mantenimiento Web incluido.",
     author: "Pablo M.G.",
