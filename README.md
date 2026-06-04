@@ -2,11 +2,12 @@
 
 # Pablo MG — Portfolio
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1ad2be2e-13b8-4ae9-a52c-256fcc520054/deploy-status)](https://pablomgdev.lat)
 [![Astro](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=fff&style=for-the-badge)](https://astro.build)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=for-the-badge)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff&style=for-the-badge)](https://typescriptlang.org)
 
-**Sitio web personal** construido con Astro — estático, rápido, y fácil de personalizar.
+**Sitio web personal** construido con Astro — estático, rápido y fácil de personalizar.
 
 🔗 [Ver en vivo →](https://pablomgdev.lat/)
 
@@ -18,7 +19,7 @@ Portfolio web con generación estática, SEO optimizado y diseño minimalista. B
 
 ---
 
-## 🚀 Inicio rápido
+## Inicio rápido
 
 ```bash
 git clone https://github.com/pmg369/astro-tailwind-portfolio.git
@@ -32,7 +33,7 @@ pnpm dev
 
 ---
 
-## 🛠️ Comandos
+## Comandos
 
 | Comando | Descripción |
 |---|---|
@@ -42,29 +43,30 @@ pnpm dev
 
 ---
 
-## 🎨 Personalización
+## Personalización
 
 El contenido está centralizado — no hay que tocar los componentes para actualizarlo:
 
-- **Contenido** → `src/data/`
-- **Estilos** → `src/styles/`
-- **Imágenes** → `public/images/`
-- **SEO y metadatos** → `astro.config.mjs`
+| Qué | Dónde |
+|---|---|
+| Contenido | `src/data/` |
+| Estilos | `src/styles/` |
+| Imágenes | `public/images/` |
+| SEO y metadatos | `astro.config.mjs` |
 
 ---
 
-## ✨ Características
+## Características
 
-- ⚡️ **Generación estática** con Astro — carga instantánea
-- 🔍 **SEO optimizado** — metadatos, sitemap y estructura semántica
-- 📱 **Responsive** — funciona en cualquier dispositivo
-- ♿️ **Accesible** — siguiendo buenas prácticas WCAG
-- 🎭 **Animaciones de scroll** suaves y no invasivas
-- 💵 **Integración con Tienda Nube** para proyectos de ecommerce
+- **Generación estática** con Astro — carga instantánea.
+- **SEO optimizado** — metadatos, sitemap y estructura semántica.
+- **Responsive** — funciona en cualquier dispositivo.
+- **Accesible** — siguiendo buenas prácticas WCAG.
+- **Animaciones de scroll** suaves y no invasivas.
 
 ---
 
-## 🤝 Contribuciones
+## Contribuciones
 
 Abrí un issue o un PR si encontrás algo para mejorar. Todo feedback es bienvenido.
 
@@ -72,6 +74,6 @@ Abrí un issue o un PR si encontrás algo para mejorar. Todo feedback es bienven
 
 <div align="center">
 
-Hecho por [Pablo MG](https://github.com/pmg369) · ⭐️ Si te sirve, dejá una estrella
+Hecho por [Pablo MG](https://github.com/pmg369) · Si te sirve, dejá una estrella ⭐️
 
 </div>
