@@ -108,15 +108,23 @@ const { navLinks } = Astro.props;
       if (!target) return;
       const element = document.querySelector(target);
       if (!element) return;
+      // Prefer native smooth scrolling when available
+      if ('scrollIntoView' in element) {
+        try {
+          (element as Element).scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return;
+        } catch {}
+      }
       const start = window.scrollY;
       const end = element.getBoundingClientRect().top + start;
-      const duration = 2000;
+      const duration = 500;
       const startTime = performance.now();
 
       function animate(currentTime: number) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
+        // easing: easeOutQuad for smoother feel
+        const ease = 1 - Math.pow(1 - progress, 2);
         window.scrollTo(0, start + (end - start) * ease);
         if (progress < 1) {
           requestAnimationFrame(animate);
