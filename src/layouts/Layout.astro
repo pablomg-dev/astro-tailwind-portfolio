@@ -8,11 +8,6 @@ import ScrollToTop from "@components/ScrollToTop.astro";
 
 import Background from "@components/Background.astro";
 
-// Estilos para optimizar fuentes
-const fontOptimizationStyles = `
-  @font-face { font-display: swap; }
-`;
-
 interface Props {
   title: string;
   description: string;
@@ -87,12 +82,17 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
     </script>
 
     <!-- Google Analytics (GA4) con Partytown -->
-    <script is:inline type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-06GL1V332X"></script>
+    <script
+      is:inline
+      type="text/partytown"
+      src="https://www.googletagmanager.com/gtag/js?id=G-06GL1V332X"></script>
     <script is:inline type="text/partytown">
       window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-06GL1V332X');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-06GL1V332X");
     </script>
 
     <ViewTransitions />
@@ -106,8 +106,39 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
     </main>
     <Footer {author} />
     <ScrollToTop />
-    <script>
-      import { handleScrollAnimation } from "@scripts/scrollAnimation.ts";
+    <script is:inline type="module">
+      let observer = null;
+
+      function handleScrollAnimation() {
+        const elements = document.querySelectorAll(
+          "[data-scroll-animation]:not([data-observed])",
+        );
+
+        if (!observer) {
+          observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const target = entry.target;
+                  target.style.transform = "translateY(0)";
+                  target.style.opacity = "1";
+                  observer?.unobserve(target);
+                }
+              });
+            },
+            {
+              threshold: 0.1,
+              rootMargin: "50px",
+            },
+          );
+        }
+
+        elements.forEach((element) => {
+          element.dataset.observed = "true";
+          element.style.willChange = "transform, opacity";
+          observer?.observe(element);
+        });
+      }
 
       const setup = () => handleScrollAnimation();
 
