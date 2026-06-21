@@ -1,41 +1,58 @@
 ---
-import Section from "./Section.astro";
-import { Image } from "astro:assets";
-import type { ImageMetadata } from "astro";
+import Section from './Section.astro'
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
 
 interface Props {
-  title: string;
-  description: string;
-  greeting: string;
-  specialtiesTitle: string;
-  specialties: string[];
-  closing: string;
-  cta: string;
-  name: string;
-  image: ImageMetadata;
+  title: string
+  description: string
+  greeting: string
+  specialtiesTitle: string
+  specialties: string[]
+  closing: string
+  cta: string
+  name: string
+  image: ImageMetadata
 }
 
-const {
-  title,
-  description,
-  greeting,
-  specialtiesTitle,
-  specialties,
-  closing,
-  cta,
-  name,
-  image,
-} = Astro.props;
+const { title, description, greeting, specialtiesTitle, specialties, closing, cta, name, image } =
+  Astro.props
 
-const specialtiesList = [
-  specialtiesTitle,
-  ...specialties,
-  "",
-  closing,
-  cta,
-].join("\n");
+function validateAboutProps(props: Props): asserts props is Props {
+  if (!props.title || typeof props.title !== 'string') {
+    throw new Error('AboutProps.title es requerido y debe ser una cadena')
+  }
+  if (!props.description || typeof props.description !== 'string') {
+    throw new Error('AboutProps.description es requerido y debe ser una cadena')
+  }
+  if (!props.greeting || typeof props.greeting !== 'string') {
+    throw new Error('AboutProps.greeting es requerido y debe ser una cadena')
+  }
+  if (!props.specialtiesTitle || typeof props.specialtiesTitle !== 'string') {
+    throw new Error('AboutProps.specialtiesTitle es requerido y debe ser una cadena')
+  }
+  if (!Array.isArray(props.specialties)) {
+    throw new Error('AboutProps.specialties debe ser un arreglo')
+  }
+  if (!props.closing || typeof props.closing !== 'string') {
+    throw new Error('AboutProps.closing es requerido y debe ser una cadena')
+  }
+  if (!props.cta || typeof props.cta !== 'string') {
+    throw new Error('AboutProps.cta es requerido y debe ser una cadena')
+  }
+  if (!props.name || typeof props.name !== 'string') {
+    throw new Error('AboutProps.name es requerido y debe ser una cadena')
+  }
+  if (!props.image) {
+    throw new Error('AboutProps.image es requerido')
+  }
+}
 
-const fullText = [greeting, description, specialtiesList].join("\n\n");
+validateAboutProps(Astro.props)
+
+const specialtiesList = [specialtiesTitle, ...specialties, '', closing, cta].join('\n')
+
+const fullText = [greeting, description, specialtiesList].join('\n\n')
 ---
 
 <Section text={title} href="about">

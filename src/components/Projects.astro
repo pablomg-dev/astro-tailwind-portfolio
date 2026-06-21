@@ -2,17 +2,17 @@
 /**
  * Sección de proyectos con props traducibles
  */
-import type { ProjectProps } from "../types";
-import Section from "./Section.astro";
-import { Image } from "astro:assets";
+import type { ProjectProps } from '../types'
+import Section from './Section.astro'
+import { Image } from 'astro:assets'
 
 interface Props {
-  title: string;
-  projects: ProjectProps[];
-  viewProject: string;
+  title: string
+  projects: ProjectProps[]
+  viewProject: string
 }
 
-const { title, projects, viewProject } = Astro.props;
+const { title, projects, viewProject } = Astro.props
 ---
 
 <Section text={title} href="projects">
@@ -27,11 +27,11 @@ const { title, projects, viewProject } = Astro.props;
             <Image
               class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
               src={project.image}
-              alt={`Proyecto ${project.name} - ${project.summary.split(".")[0]}`}
+              alt={`Proyecto ${project.name} - ${project.summary.split('.')[0]}`}
               width={800}
               height={450}
-              loading={index < 2 ? "eager" : "lazy"}
-              fetchpriority={index < 2 ? "high" : "auto"}
+              loading={index < 2 ? 'eager' : 'lazy'}
+              fetchpriority={index < 2 ? 'high' : 'auto'}
               decoding="async"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-[#1c1917] via-transparent to-transparent opacity-60" />

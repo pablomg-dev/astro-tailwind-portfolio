@@ -1,5 +1,5 @@
 ---
-import ArrowUp from "@icons/ArrowUp.astro";
+import ArrowUp from '@icons/ArrowUp.astro'
 ---
 
 <button
@@ -11,90 +11,94 @@ import ArrowUp from "@icons/ArrowUp.astro";
 </button>
 
 <script>
-  let isScrolling = false; // Flag para evitar el ciclo scroll → evento → scroll
+  let isScrolling = false // Flag para evitar el ciclo scroll → evento → scroll
 
   function showButton(btn: HTMLElement) {
-    btn.classList.remove("invisible", "opacity-0", "translate-y-10");
+    btn.classList.remove('invisible', 'opacity-0', 'translate-y-10')
   }
 
   function hideButton(btn: HTMLElement) {
-    btn.classList.add("invisible", "opacity-0", "translate-y-10");
+    btn.classList.add('invisible', 'opacity-0', 'translate-y-10')
   }
 
   function initScrollToTop() {
-    const scrollButton = document.getElementById(
-      "scroll-to-top",
-    ) as HTMLElement | null;
-    if (!scrollButton) return;
-    if ((scrollButton as any)._initialized) return;
-    (scrollButton as any)._initialized = true;
+    const scrollButton = document.getElementById('scroll-to-top') as HTMLElement | null
+    if (!scrollButton) {
+      return
+    }
+    if ((scrollButton as any)._initialized) {
+      return
+    }
+    ;(scrollButton as any)._initialized = true
 
     // Scroll listener pasivo — { passive: true } evita el flooding
     const onScroll = () => {
-      if (isScrolling) return; // Ignorar eventos disparados por nuestra propia animación
+      if (isScrolling) {
+        return
+      } // Ignorar eventos disparados por nuestra propia animación
       if (window.scrollY > window.innerHeight * 0.3) {
-        showButton(scrollButton);
+        showButton(scrollButton)
       } else {
-        hideButton(scrollButton);
+        hideButton(scrollButton)
       }
-    };
+    }
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    (scrollButton as any)._scrollHandler = onScroll;
+    window.addEventListener('scroll', onScroll, { passive: true })
+    ;(scrollButton as any)._scrollHandler = onScroll
 
     // Click: scroll suave con flag para no disparar el observer
-    scrollButton.addEventListener("click", (e: Event) => {
-      e.preventDefault();
-      const start = window.scrollY;
-      const duration = 600;
-      const startTime = performance.now();
-      isScrolling = true; // Activar flag antes de animar
+    scrollButton.addEventListener('click', (e: Event) => {
+      e.preventDefault()
+      const start = window.scrollY
+      const duration = 600
+      const startTime = performance.now()
+      isScrolling = true // Activar flag antes de animar
 
       function animate(currentTime: number) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        window.scrollTo(0, start * (1 - ease));
+        const elapsed = currentTime - startTime
+        const progress = Math.min(elapsed / duration, 1)
+        const ease = 1 - Math.pow(1 - progress, 3)
+        window.scrollTo(0, start * (1 - ease))
 
         if (progress < 1) {
-          requestAnimationFrame(animate);
+          requestAnimationFrame(animate)
         } else {
-          isScrolling = false; // Desactivar flag al terminar
-          hideButton(scrollButton!);
+          isScrolling = false // Desactivar flag al terminar
+          hideButton(scrollButton!)
         }
       }
 
-      requestAnimationFrame(animate);
-    });
+      requestAnimationFrame(animate)
+    })
 
     // Estado inicial
-    onScroll();
+    onScroll()
   }
 
   function cleanup() {
-    const scrollButton = document.getElementById("scroll-to-top") as any;
+    const scrollButton = document.getElementById('scroll-to-top') as any
     if (scrollButton?._scrollHandler) {
-      window.removeEventListener("scroll", scrollButton._scrollHandler);
-      scrollButton._initialized = false;
-      scrollButton._scrollHandler = null;
+      window.removeEventListener('scroll', scrollButton._scrollHandler)
+      scrollButton._initialized = false
+      scrollButton._scrollHandler = null
     }
   }
 
   // Inicialización normal
-  document.addEventListener("astro:page-load", () => {
-    initScrollToTop();
-  });
+  document.addEventListener('astro:page-load', () => {
+    initScrollToTop()
+  })
 
   // View Transitions: limpiar el listener viejo y reiniciar
-  document.addEventListener("astro:after-swap", () => {
-    cleanup();
-    initScrollToTop();
-  });
+  document.addEventListener('astro:after-swap', () => {
+    cleanup()
+    initScrollToTop()
+  })
 
   // Fallback si no hay View Transitions
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initScrollToTop);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollToTop)
   } else {
-    initScrollToTop();
+    initScrollToTop()
   }
 </script>

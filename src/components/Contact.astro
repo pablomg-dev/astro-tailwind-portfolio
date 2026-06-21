@@ -3,21 +3,22 @@
  * Sección de Contacto con formulario de Netlify
  */
 interface Props {
-  title: string;
-  subtitle: string;
-  nameLabel: string;
-  emailLabel: string;
-  messageLabel: string;
-  sendButton: string;
-  successMessage: string;
+  title: string
+  subtitle: string
+  nameLabel: string
+  emailLabel: string
+  messageLabel: string
+  sendButton: string
+  successMessage: string
 }
 
-const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, successMessage } = Astro.props;
+const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, successMessage } =
+  Astro.props
 ---
 
 <section class="py-20 relative" id="contact">
   <div class="absolute inset-0 bg-primary/5 blur-[80px] -z-10"></div>
-  
+
   <div class="text-center mb-16">
     <h2
       class="text-4xl font-serif text-cream mb-4 tracking-widest uppercase opacity-0 translate-y-16 transition-all duration-1000"
@@ -25,7 +26,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
     >
       {title}
     </h2>
-    <p 
+    <p
       class="text-cream/60 font-light opacity-0 translate-y-16 transition-all duration-1000 delay-200"
       data-scroll-animation
     >
@@ -33,7 +34,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
     </p>
   </div>
 
-  <div 
+  <div
     class="max-w-xl mx-auto bg-midnight/40 backdrop-blur-xl border border-primary/10 p-8 rounded-3xl shadow-aura-lg opacity-0 translate-y-16 transition-all duration-1000 delay-300"
     data-scroll-animation
   >
@@ -48,7 +49,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
       <p class="hidden">
         <label>Este campo no debe ser completado: <input name="bot-field" /></label>
       </p>
-      
+
       <div>
         <label for="name" class="block text-sm font-medium text-cream/80 mb-2 ml-1">
           {nameLabel}
@@ -89,8 +90,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
           rows="5"
           required
           class="w-full bg-space/50 border border-primary/10 rounded-2xl px-5 py-4 text-cream focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-all duration-300 resize-none"
-          placeholder="¿En qué puedo ayudarte?"
-        ></textarea>
+          placeholder="¿En qué puedo ayudarte?"></textarea>
       </div>
 
       <button
@@ -99,17 +99,17 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
         class="w-full bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary font-serif text-lg py-4 rounded-2xl transition-all duration-500 hover:shadow-aura group flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <span id="btn-text">{sendButton}</span>
-        <svg 
+        <svg
           id="btn-icon"
-          xmlns="http://www.w3.org/2000/svg" 
-          width="20" 
-          height="20" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          stroke-width="2" 
-          stroke-linecap="round" 
-          stroke-linejoin="round" 
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
           class="group-hover:translate-x-1 transition-transform"
         >
           <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -118,8 +118,8 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
       </button>
     </form>
 
-    <div 
-      id="form-success" 
+    <div
+      id="form-success"
       class="hidden mt-6 p-6 bg-primary/10 border border-primary/20 rounded-2xl text-primary text-center font-light animate-in fade-in zoom-in duration-500 hover:outline-none"
       role="status"
       aria-live="polite"
@@ -127,7 +127,18 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
     >
       <div class="flex flex-col items-center gap-4">
         <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-primary"
+          >
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
         </div>
@@ -135,8 +146,8 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
       </div>
     </div>
 
-    <div 
-      id="form-error" 
+    <div
+      id="form-error"
       class="hidden mt-6 p-6 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-center font-light animate-in fade-in zoom-in duration-500 hover:outline-none"
       role="alert"
       aria-live="assertive"
@@ -144,7 +155,18 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
     >
       <div class="flex flex-col items-center gap-4">
         <div class="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-red-400">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-red-400"
+          >
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -157,75 +179,80 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
 
 <script>
   function initContact() {
-    const form = document.querySelector('form[name="contact"]') as HTMLFormElement;
-    const successMsg = document.getElementById('form-success');
-    const errorMsg = document.getElementById('form-error');
-    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
-    const btnText = document.getElementById('btn-text');
-    const btnIcon = document.getElementById('btn-icon');
-    
-    if (form && successMsg && errorMsg && submitBtn && btnText) {
-      const originalBtnText = btnText.textContent;
+    const form = document.querySelector('form[name="contact"]') as HTMLFormElement
+    const successMsg = document.getElementById('form-success')
+    const errorMsg = document.getElementById('form-error')
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement
+    const btnText = document.getElementById('btn-text')
+    const btnIcon = document.getElementById('btn-icon')
 
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
+    if (form && successMsg && errorMsg && submitBtn && btnText) {
+      const originalBtnText = btnText.textContent
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault()
+
         // 1. Estado de carga: Deshabilitar botón y cambiar texto
-        submitBtn.disabled = true;
-        btnText.textContent = "Enviando…";
-        if (btnIcon) btnIcon.classList.add('hidden');
-        errorMsg.classList.add('hidden');
-        
+        submitBtn.disabled = true
+        btnText.textContent = 'Enviando…'
+        if (btnIcon) {
+          btnIcon.classList.add('hidden')
+        }
+        errorMsg.classList.add('hidden')
+
         // 4. Content-Type: URLSearchParams
-        const formData = new FormData(form);
-        const body = new URLSearchParams(formData as any).toString();
-        
+        const formData = new FormData(form)
+        const body = new URLSearchParams(formData as any).toString()
+
         try {
-          const response = await fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          const response = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: body,
-          });
-          
+          })
+
           // 2. Manejo de errores: Respuesta != 200
           if (response.ok) {
-            form.classList.add('hidden');
-            successMsg.classList.remove('hidden');
-            
+            form.classList.add('hidden')
+            successMsg.classList.remove('hidden')
+
             // 5. Accesibilidad: focus y scroll
-            successMsg.focus();
-            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            successMsg.focus()
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' })
           } else {
-            throw new Error('Netlify respondio con error');
+            throw new Error('Netlify respondio con error')
           }
         } catch (error) {
-          console.error('Error al enviar formulario:', error);
-          
+          console.error('Error al enviar formulario:', error)
+
           // 1. Restaurar el botón si ocurre un error
-          submitBtn.disabled = false;
-          btnText.textContent = originalBtnText;
-          if (btnIcon) btnIcon.classList.remove('hidden');
-          
+          submitBtn.disabled = false
+          btnText.textContent = originalBtnText
+          if (btnIcon) {
+            btnIcon.classList.remove('hidden')
+          }
+
           // 2. Mostrar mensaje de error visible
-          errorMsg.classList.remove('hidden');
-          
+          errorMsg.classList.remove('hidden')
+
           // 5. Accesibilidad: focus y scroll
-          errorMsg.focus();
-          errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          errorMsg.focus()
+          errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' })
         }
-      });
+      })
     }
 
     // Soporte para redirección (legacy)
-    const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(window.location.search)
     if (urlParams.get('success') === 'true') {
       if (successMsg) {
-        successMsg.classList.remove('hidden');
-        if (form) form.classList.add('hidden');
+        successMsg.classList.remove('hidden')
+        if (form) {
+          form.classList.add('hidden')
+        }
       }
     }
   }
 
-  document.addEventListener("astro:page-load", initContact);
+  document.addEventListener('astro:page-load', initContact)
 </script>
-

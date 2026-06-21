@@ -1,25 +1,25 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-import Header from "@components/Header.astro";
-import "@fontsource/be-vietnam-pro";
-import "@fontsource-variable/gabarito";
-import Footer from "@components/Footer.astro";
-import ScrollToTop from "@components/ScrollToTop.astro";
+import { ViewTransitions } from 'astro:transitions'
+import Header from '@components/Header.astro'
+import '@fontsource/be-vietnam-pro'
+import '@fontsource-variable/gabarito'
+import Footer from '@components/Footer.astro'
+import ScrollToTop from '@components/ScrollToTop.astro'
 
-import Background from "@components/Background.astro";
+import Background from '@components/Background.astro'
 
 interface Props {
-  title: string;
-  description: string;
-  navLinks: { text: string; href: string }[];
-  author: string;
+  title: string
+  description: string
+  navLinks: { text: string; href: string }[]
+  author: string
 }
 
-const { title, description, navLinks, author } = Astro.props;
+const { title, description, navLinks, author } = Astro.props
 
-const defaultSite = "https://pablomgdev.netlify.app";
-const siteUrl = Astro.site?.href || defaultSite;
-const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
+const defaultSite = 'https://pablomgdev.lat'
+const siteUrl = Astro.site?.href || defaultSite
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).href
 ---
 
 <!doctype html>
@@ -37,16 +37,13 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content={new URL("/vistaprevia.png", siteUrl)} />
+    <meta property="og:image" content={new URL('/vistaprevia.png', siteUrl)} />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta
-      property="twitter:image"
-      content={new URL("/vistaprevia.png", siteUrl)}
-    />
+    <meta property="twitter:image" content={new URL('/vistaprevia.png', siteUrl)} />
 
     <meta
       name="keywords"
@@ -64,20 +61,12 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
         "name": "Pablo M.G.",
         "url": "https://pablomgdev.lat",
         "jobTitle": "Desarrollador Web Freelance",
-        "knowsAbout": [
-          "Desarrollo Web",
-          "Landing Pages",
-          "Ecommerce",
-          "Tienda Nube"
-        ],
+        "knowsAbout": ["Desarrollo Web", "Landing Pages", "Ecommerce", "Tienda Nube"],
         "address": {
           "@type": "PostalAddress",
           "addressCountry": "AR"
         },
-        "sameAs": [
-          "https://www.linkedin.com/in/pablomgdev/",
-          "https://github.com/pablomg-dev"
-        ]
+        "sameAs": ["https://www.linkedin.com/in/pablomgdev/", "https://github.com/pablomg-dev"]
       }
     </script>
 
@@ -87,12 +76,12 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
       type="text/partytown"
       src="https://www.googletagmanager.com/gtag/js?id=G-06GL1V332X"></script>
     <script is:inline type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
+      window.dataLayer = window.dataLayer || []
       function gtag() {
-        dataLayer.push(arguments);
+        dataLayer.push(arguments)
       }
-      gtag("js", new Date());
-      gtag("config", "G-06GL1V332X");
+      gtag('js', new Date())
+      gtag('config', 'G-06GL1V332X')
     </script>
 
     <ViewTransitions />
@@ -107,42 +96,50 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
     <Footer {author} />
     <ScrollToTop />
     <script is:inline type="module">
-      let observer = null;
+      let observer = null
 
-      function handleScrollAnimation() {
-        const elements = document.querySelectorAll(
-          "[data-scroll-animation]:not([data-observed])",
-        );
+      function setupScrollAnimation() {
+        try {
+          const elements = document.querySelectorAll('[data-scroll-animation]:not([data-observed])')
 
-        if (!observer) {
-          observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  const target = entry.target;
-                  target.style.transform = "translateY(0)";
-                  target.style.opacity = "1";
-                  observer?.unobserve(target);
-                }
-              });
-            },
-            {
-              threshold: 0.1,
-              rootMargin: "50px",
-            },
-          );
+          if (!observer) {
+            observer = new IntersectionObserver(
+              entries => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    const target = entry.target
+                    target.style.transform = 'translateY(0)'
+                    target.style.opacity = '1'
+                    observer?.unobserve(target)
+                  }
+                })
+              },
+              {
+                threshold: 0.1,
+                rootMargin: '50px',
+              }
+            )
+          }
+
+          elements.forEach(element => {
+            element.dataset.observed = 'true'
+            element.style.willChange = 'transform, opacity'
+            observer?.observe(element)
+          })
+        } catch (error) {
+          console.error('Error en animación de scroll:', error)
         }
-
-        elements.forEach((element) => {
-          element.dataset.observed = "true";
-          element.style.willChange = "transform, opacity";
-          observer?.observe(element);
-        });
       }
 
-      const setup = () => handleScrollAnimation();
+      const setup = () => {
+        try {
+          setupScrollAnimation()
+        } catch (error) {
+          console.error('Error configurando animación de scroll:', error)
+        }
+      }
 
-      document.addEventListener("astro:page-load", setup);
+      document.addEventListener('astro:page-load', setup)
     </script>
   </body>
 </html>

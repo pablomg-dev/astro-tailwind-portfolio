@@ -1,25 +1,25 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Hero from "@components/Hero.astro";
-import About from "@components/About.astro";
-import Projects from "@components/Projects.astro";
-import SpecialtyCard from "@components/SpecialtyCard.astro";
-import Contact from "@components/Contact.astro";
-import type { ServiceProps, SpecialtyCardProps } from "@types";
-import { translations as t } from "@config/translations";
+import Layout from '@layouts/Layout.astro'
+import Hero from '@components/Hero.astro'
+import About from '@components/About.astro'
+import Projects from '@components/Projects.astro'
+import SpecialtyCard from '@components/SpecialtyCard.astro'
+import Contact from '@components/Contact.astro'
+import type { ServiceProps, SpecialtyCardProps } from '@types'
+import { translations as t } from '@config/translations'
 
 const navLinks = [
-  { text: t.nav.projects, href: "#projects" },
-  { text: t.services.title, href: "#services" },
-  { text: t.nav.about, href: "#about" },
-  { text: t.nav.contact, href: "#contact" },
-];
+  { text: t.nav.projects, href: '#projects' },
+  { text: t.services.title, href: '#services' },
+  { text: t.nav.about, href: '#about' },
+  { text: t.nav.contact, href: '#contact' },
+]
 
 const specialties = [
   t.about.specialties.design,
   t.about.specialties.speed,
   t.about.specialties.automation,
-];
+]
 ---
 
 <Layout
@@ -49,7 +49,7 @@ const specialties = [
       class="text-4xl font-serif text-cream text-center mb-16 tracking-widest uppercase opacity-0 translate-y-16 transition-all duration-1000"
       data-scroll-animation
     >
-      {t.services?.title || "Servicios"}
+      {t.services?.title || 'Servicios'}
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {
@@ -61,9 +61,7 @@ const specialties = [
             <h3 class="text-2xl font-serif text-cream mb-4 transition-colors duration-500 group-hover:text-primary">
               {service.title}
             </h3>
-            <p class="text-cream/70 font-light leading-relaxed">
-              {service.description}
-            </p>
+            <p class="text-cream/70 font-light leading-relaxed">{service.description}</p>
           </div>
         ))
       }
@@ -81,11 +79,7 @@ const specialties = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
       {
         t.specialties.items.map((item: SpecialtyCardProps) => (
-          <SpecialtyCard
-            title={item.title}
-            description={item.description}
-            icon={item.icon}
-          />
+          <SpecialtyCard title={item.title} description={item.description} icon={item.icon} />
         ))
       }
     </div>

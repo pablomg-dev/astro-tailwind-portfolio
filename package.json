@@ -10,7 +10,11 @@
     "astro": "astro",
     "optimize-images": "node scripts/optimize-images.js",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "lint": "eslint src/ --ext .ts,.tsx,.js,.astro",
+    "lint:fix": "eslint src/ --ext .ts,.tsx,.js,.astro --fix",
+    "prebuild": "node scripts/validate-build.js",
+    "validate": "node scripts/validate-build.js"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.7",
@@ -24,6 +28,10 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^8.0.0",
+    "eslint-plugin-astro": "^1.7.0",
     "jsdom": "^29.1.1",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",

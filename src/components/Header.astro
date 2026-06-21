@@ -2,15 +2,15 @@
 /**
  * Header con navegación
  */
-import { Image } from "astro:assets";
-import profileImage from "../assets/foto-pablo.jpg";
-import Menu from "@icons/Menu.astro";
+import { Image } from 'astro:assets'
+import profileImage from '../assets/foto-pablo.jpg'
+import Menu from '@icons/Menu.astro'
 
 interface Props {
-  navLinks: { text: string; href: string }[];
+  navLinks: { text: string; href: string }[]
 }
 
-const { navLinks } = Astro.props;
+const { navLinks } = Astro.props
 ---
 
 <header
@@ -51,16 +51,31 @@ const { navLinks } = Astro.props;
   <nav
     class="fixed opacity-0 invisible transition-all duration-300 ease-out scale-95 text-cream border top-24 right-5 bg-midnight/90 backdrop-blur-xl border-primary/20 py-6 px-4 rounded-[2rem] sm:block sm:border-0 sm:p-0 sm:static sm:bg-transparent sm:shadow-none sm:opacity-100 sm:visible sm:scale-100 shadow-aura-lg z-[100]"
     id="main-menu"
+    role="navigation"
+    aria-label="Menú principal"
   >
     <ul class="sm:flex gap-4">
       {
-        navLinks.map((link) => (
+        navLinks.map(link => (
           <li class="relative">
             <a
               class={`font-medium text-base px-4 py-2 block hover:text-primary nav-item transition-all duration-500 text-cream/80 hover:drop-shadow-[0_0_5px_rgba(212,175,55,0.5)]`}
               href={link.href}
               aria-label={`Go to ${link.text}`}
               data-nav-link
+              onFocus={() => {
+                // Manejar navegación por teclado
+                setTimeout(() => {
+                  const menu = document.querySelector('#main-menu')
+                  const button = document.querySelector('#menu-button')
+                  if (menu && button && !menu.classList.contains('opacity-0')) {
+                    const focused = document.activeElement as HTMLElement
+                    if (focused && !menu.contains(focused)) {
+                      button.focus()
+                    }
+                  }
+                }, 100)
+              }}
             >
               {link.text}
             </a>
@@ -69,118 +84,139 @@ const { navLinks } = Astro.props;
       }
     </ul>
   </nav>
-</header>
 
-<script>
-  function initHeader() {
-    const button = document.querySelector("#menu-button");
-    const menu = document.querySelector("#main-menu");
+  <script>
+    function initHeader() {
+      const button = document.querySelector('#menu-button')
+      const menu = document.querySelector('#main-menu')
 
-    if (
-      !button ||
-      !menu ||
-      (button as unknown as { _initialized?: boolean })._initialized
-    )
-      return;
-    (button as unknown as { _initialized: boolean })._initialized = true;
-
-    const toggleMenu = () => {
-      requestAnimationFrame(() => {
-        const isExpanded = button.getAttribute("aria-expanded") === "true";
-        if (isExpanded) {
-          menu.classList.add("opacity-0", "invisible", "scale-95");
-          button.setAttribute("aria-expanded", "false");
-          button.setAttribute("aria-label", "Abrir menú de navegación");
-        } else {
-          menu.classList.remove("opacity-0", "invisible", "scale-95");
-          button.setAttribute("aria-expanded", "true");
-          button.setAttribute("aria-label", "Cerrar menú de navegación");
-        }
-      });
-    };
-
-    button.addEventListener("click", (e) => {
-      e.stopPropagation();
-      toggleMenu();
-    });
-
-    function smoothScroll(target: string) {
-      if (!target) return;
-      const element = document.querySelector(target);
-      if (!element) return;
-      // Prefer native smooth scrolling when available
-      if ('scrollIntoView' in element) {
-        try {
-          (element as Element).scrollIntoView({ behavior: 'smooth', block: 'start' });
-          return;
-        } catch {}
+      if (!button || !menu || (button as unknown as { _initialized?: boolean })._initialized) {
+        return
       }
-      const start = window.scrollY;
-      const end = element.getBoundingClientRect().top + start;
-      const duration = 500;
-      const startTime = performance.now();
+      ;(button as unknown as { _initialized: boolean })._initialized = true
 
-      function animate(currentTime: number) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        // easing: easeOutQuad for smoother feel
-        const ease = 1 - Math.pow(1 - progress, 2);
-        window.scrollTo(0, start + (end - start) * ease);
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        }
+      const toggleMenu = () => {
+        requestAnimationFrame(() => {
+          const isExpanded = button.getAttribute('aria-expanded') === 'true'
+          if (isExpanded) {
+            menu.classList.add('opacity-0', 'invisible', 'scale-95')
+            button.setAttribute('aria-expanded', 'false')
+            button.setAttribute('aria-label', 'Abrir menú de navegación')
+            menu.setAttribute('aria-hidden', 'true')
+            button.focus()
+          } else {
+            menu.classList.remove('opacity-0', 'invisible', 'scale-95')
+            button.setAttribute('aria-expanded', 'true')
+            button.setAttribute('aria-label', 'Cerrar menú de navegación')
+            menu.setAttribute('aria-hidden', 'false')
+            const firstLink = menu.querySelector('a')
+            if (firstLink) {
+              firstLink.focus()
+            }
+          }
+        })
       }
 
-      requestAnimationFrame(animate);
-    }
+      button.addEventListener('click', e => {
+        e.stopPropagation()
+        toggleMenu()
+      })
 
-    const links = document.querySelectorAll('a[href^="#"]');
-    links.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const target = (e.currentTarget as HTMLAnchorElement).getAttribute(
-          "href",
-        );
-        if (target) {
-          smoothScroll(target);
-          requestAnimationFrame(() => {
-            menu.classList.add("opacity-0", "invisible", "scale-95");
-            button.setAttribute("aria-expanded", "false");
-          });
+      function smoothScroll(target: string) {
+        if (!target) {
+          return
         }
-      });
-    });
-  }
+        const element = document.querySelector(target)
+        if (!element) {
+          return
+        }
+        // Prefer native smooth scrolling when available
+        if ('scrollIntoView' in element) {
+          try {
+            ;(element as Element).scrollIntoView({ behavior: 'smooth', block: 'start' })
+            return
+          } catch {}
+        }
+        const start = window.scrollY
+        const end = element.getBoundingClientRect().top + start
+        const duration = 500
+        const startTime = performance.now()
 
-  if (
-    !(window as unknown as { _headerListenerAdded?: boolean })
-      ._headerListenerAdded
-  ) {
-    (
-      window as unknown as { _headerListenerAdded: boolean }
-    )._headerListenerAdded = true;
-    document.addEventListener(
-      "click",
-      (e) => {
-        const menu = document.querySelector("#main-menu");
-        const button = document.querySelector("#menu-button");
-        if (menu && button) {
-          const isHidden = menu.classList.contains("opacity-0");
-          if (
-            !isHidden &&
-            !menu.contains(e.target as Node) &&
-            !button.contains(e.target as Node)
-          ) {
-            requestAnimationFrame(() => {
-              menu.classList.add("opacity-0", "invisible", "scale-95");
-              button.setAttribute("aria-expanded", "false");
-            });
+        function animate(currentTime: number) {
+          const elapsed = currentTime - startTime
+          const progress = Math.min(elapsed / duration, 1)
+          // easing: easeOutQuad for smoother feel
+          const ease = 1 - Math.pow(1 - progress, 2)
+          window.scrollTo(0, start + (end - start) * ease)
+          if (progress < 1) {
+            requestAnimationFrame(animate)
           }
         }
-      },
-      { passive: true },
-    );
-  }
 
-  document.addEventListener("astro:page-load", initHeader);
-</script>
+        requestAnimationFrame(animate)
+      }
+
+      const links = document.querySelectorAll('a[href^="#"]')
+      links.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault()
+          const target = (e.currentTarget as HTMLAnchorElement).getAttribute('href')
+          if (target) {
+            smoothScroll(target)
+            requestAnimationFrame(() => {
+              menu.classList.add('opacity-0', 'invisible', 'scale-95')
+              button.setAttribute('aria-expanded', 'false')
+              button.setAttribute('aria-hidden', 'true')
+            })
+          }
+        })
+      })
+
+      // Manejar navegación por teclado
+      menu.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          toggleMenu()
+        }
+      })
+
+      // Cerrar menú al hacer clic fuera
+      document.addEventListener(
+        'click',
+        e => {
+          const menu = document.querySelector('#main-menu')
+          const button = document.querySelector('#menu-button')
+          if (menu && button) {
+            const isHidden = menu.classList.contains('opacity-0')
+            if (
+              !isHidden &&
+              !menu.contains(e.target as Node) &&
+              !button.contains(e.target as Node)
+            ) {
+              requestAnimationFrame(() => {
+                menu.classList.add('opacity-0', 'invisible', 'scale-95')
+                button.setAttribute('aria-expanded', 'false')
+                button.setAttribute('aria-hidden', 'true')
+              })
+            }
+          }
+        },
+        { passive: true }
+      )
+
+      button.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          toggleMenu()
+        }
+      })
+    }
+
+    document.addEventListener('astro:page-load', () => {
+      try {
+        initHeader()
+      } catch (error) {
+        console.error('Error inicializando header:', error)
+      }
+    })
+  </script>
+</header>

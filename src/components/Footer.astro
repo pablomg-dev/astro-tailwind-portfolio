@@ -2,14 +2,14 @@
 /**
  * Footer con props traducibles
  */
-import { translations as t } from "@config/translations";
+import { translations as t } from '@config/translations'
 
 interface Props {
-  author: string;
+  author: string
 }
 
-const { author } = Astro.props;
-const currentYear = new Date().getFullYear();
+const { author } = Astro.props
+const currentYear = new Date().getFullYear()
 ---
 
 <footer
@@ -19,7 +19,7 @@ const currentYear = new Date().getFullYear();
   <div class="flex flex-col items-center gap-4">
     <nav class="flex gap-6">
       {
-        t.footer.socialLinks.map((link) => (
+        t.footer.socialLinks.map(link => (
           <a
             href={link.href}
             target="_blank"
