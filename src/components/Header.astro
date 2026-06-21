@@ -63,19 +63,6 @@ const { navLinks } = Astro.props
               href={link.href}
               aria-label={`Go to ${link.text}`}
               data-nav-link
-              onfocus={() => {
-                // Manejar navegación por teclado
-                setTimeout(() => {
-                  const menu = document.querySelector('#main-menu')
-                  const button = document.querySelector('#menu-button') as HTMLButtonElement | null
-                  if (menu && button && !menu.classList.contains('opacity-0')) {
-                    const focused = document.activeElement as HTMLElement
-                    if (focused && !menu.contains(focused)) {
-                      button.focus()
-                    }
-                  }
-                }, 100)
-              }}
             >
               {link.text}
             </a>
@@ -158,9 +145,10 @@ const { navLinks } = Astro.props
 
       const links = document.querySelectorAll('a[href^="#"]')
       links.forEach(link => {
-        link.addEventListener('click', (e: MouseEvent) => {
-          e.preventDefault()
-          const target = (e.currentTarget as HTMLAnchorElement).getAttribute('href')
+        link.addEventListener('click', e => {
+          const me = e as MouseEvent
+          me.preventDefault()
+          const target = (me.currentTarget as HTMLAnchorElement).getAttribute('href')
           if (target) {
             smoothScroll(target)
             requestAnimationFrame(() => {
@@ -172,9 +160,27 @@ const { navLinks } = Astro.props
         })
       })
 
+      // Manejar foco por teclado en los links de navegación
+      const navLinks = document.querySelectorAll('a[data-nav-link]')
+      navLinks.forEach(link => {
+        link.addEventListener('focus', () => {
+          setTimeout(() => {
+            const menu = document.querySelector('#main-menu')
+            const button = document.querySelector('#menu-button') as HTMLButtonElement | null
+            if (menu && button && !menu.classList.contains('opacity-0')) {
+              const focused = document.activeElement as HTMLElement
+              if (focused && !menu.contains(focused)) {
+                button.focus()
+              }
+            }
+          }, 100)
+        })
+      })
+
       // Manejar navegación por teclado
-      menu.addEventListener('keydown', (e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
+      menu.addEventListener('keydown', e => {
+        const ke = e as KeyboardEvent
+        if (ke.key === 'Escape') {
           toggleMenu()
         }
       })
