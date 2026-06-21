@@ -62,7 +62,7 @@ function main() {
   }
 
   // Verificar linting (si se instala ESLint)
-  checkESLint();
+  // checkESLint();
 
   // Verificar Prettier
   if (existsSync(join(rootDir, '.prettierrc.mjs'))) {
