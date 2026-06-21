@@ -39,8 +39,8 @@ async function optimizeImage(file: string): Promise<void> {
       const savings = ((inputSize - outputSize) / inputSize * 100).toFixed(1);
       console.log(`${file}: ${inputSize.toFixed(0)}KB → ${outputSize.toFixed(0)}KB (${savings}% reduction)`);
     }
-  } catch (error) {
-    console.error(`Error optimizing ${file}:`, error.message);
+  } catch (error: unknown) {
+    console.error(`Error optimizing ${file}:`, (error as Error).message);
   }
 }
 

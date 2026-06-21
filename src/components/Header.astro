@@ -63,11 +63,11 @@ const { navLinks } = Astro.props
               href={link.href}
               aria-label={`Go to ${link.text}`}
               data-nav-link
-              onFocus={() => {
+              onfocus={() => {
                 // Manejar navegación por teclado
                 setTimeout(() => {
                   const menu = document.querySelector('#main-menu')
-                  const button = document.querySelector('#menu-button')
+                  const button = document.querySelector('#menu-button') as HTMLButtonElement | null
                   if (menu && button && !menu.classList.contains('opacity-0')) {
                     const focused = document.activeElement as HTMLElement
                     if (focused && !menu.contains(focused)) {
@@ -87,7 +87,7 @@ const { navLinks } = Astro.props
 
   <script>
     function initHeader() {
-      const button = document.querySelector('#menu-button')
+      const button = document.querySelector('#menu-button') as HTMLButtonElement | null
       const menu = document.querySelector('#main-menu')
 
       if (!button || !menu || (button as unknown as { _initialized?: boolean })._initialized) {
@@ -117,7 +117,7 @@ const { navLinks } = Astro.props
         })
       }
 
-      button.addEventListener('click', e => {
+      button.addEventListener('click', (e: MouseEvent) => {
         e.stopPropagation()
         toggleMenu()
       })
@@ -158,7 +158,7 @@ const { navLinks } = Astro.props
 
       const links = document.querySelectorAll('a[href^="#"]')
       links.forEach(link => {
-        link.addEventListener('click', e => {
+        link.addEventListener('click', (e: MouseEvent) => {
           e.preventDefault()
           const target = (e.currentTarget as HTMLAnchorElement).getAttribute('href')
           if (target) {
@@ -173,7 +173,7 @@ const { navLinks } = Astro.props
       })
 
       // Manejar navegación por teclado
-      menu.addEventListener('keydown', e => {
+      menu.addEventListener('keydown', (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
           toggleMenu()
         }
@@ -182,9 +182,9 @@ const { navLinks } = Astro.props
       // Cerrar menú al hacer clic fuera
       document.addEventListener(
         'click',
-        e => {
+        (e: MouseEvent) => {
           const menu = document.querySelector('#main-menu')
-          const button = document.querySelector('#menu-button')
+          const button = document.querySelector('#menu-button') as HTMLButtonElement | null
           if (menu && button) {
             const isHidden = menu.classList.contains('opacity-0')
             if (
@@ -203,7 +203,7 @@ const { navLinks } = Astro.props
         { passive: true }
       )
 
-      button.addEventListener('keydown', e => {
+      button.addEventListener('keydown', (e: KeyboardEvent) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault()
           toggleMenu()
