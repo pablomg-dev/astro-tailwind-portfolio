@@ -11,9 +11,25 @@ import esplumImage from '../assets/esplum.png'
 import corastroImage from '../assets/corastro.png'
 import eliwebImage from '../assets/eliweb.png'
 import florwebImage from '../assets/florweb.png'
+import olgaImage from '../assets/olga-addesso.png'
+import mariaveImage from '../assets/mariavecreativa.png'
 import profileImage from '../assets/foto-pablo.jpg'
 
 const projects: ProjectProps[] = [
+  {
+    name: 'MariaVE Creativa',
+    summary:
+      'Portal personal de María Luján Villani, escritora y facilitadora de procesos creativos. Un espacio dedicado a la investigación personal creativa, sesiones 1:1, ebooks y recursos de autoconocimiento.',
+    link: 'https://mariavecreativa.com/',
+    image: mariaveImage,
+  },
+  {
+    name: 'Olga Addesso',
+    summary:
+      'Sitio Web para asesora de prepagas y seguros en Argentina. Plataforma profesional que ofrece asesoramiento personalizado para elegir la mejor cobertura médica y seguros de vida y retiro.',
+    link: 'https://olgaaddesso.lat/',
+    image: olgaImage,
+  },
   {
     name: 'Florencia Villeneuve',
     summary:
