@@ -1,4 +1,5 @@
 import { Resend } from 'resend'
+import { sendContactEmails, type OutboundEmail } from '../src/lib/contactEmails.js'
 import {
   buildSubmissionFingerprint,
   checkDuplicateSubmission,
@@ -123,33 +124,37 @@ export async function POST(request: Request): Promise<Response> {
     }
 
     const resend = new Resend(apiKey)
-    const subject = `Nuevo contacto desde el portfolio — ${data.name}`
-    const textBody = [
-      'Nuevo mensaje desde el formulario de contacto.',
-      '',
-      `Nombre: ${data.name}`,
-      `Email: ${data.email}`,
-      '',
-      'Mensaje:',
-      data.message,
-    ].join('\n')
+    const sendEmail = async (email: OutboundEmail) => {
+      const { error } = await resend.emails.send({
+        from: email.from,
+        to: email.to,
+        ...(email.replyTo ? { replyTo: email.replyTo } : {}),
+        subject: email.subject,
+        text: email.text,
+        ...(email.html ? { html: email.html } : {}),
+      })
+      return { error: error ?? null }
+    }
 
-    const { error } = await resend.emails.send({
-      from: fromEmail,
-      to: [toEmail],
-      replyTo: data.email,
-      subject,
-      text: textBody,
-    })
+    const delivery = await sendContactEmails(
+      data,
+      { fromEmail, ownerEmail: toEmail },
+      sendEmail
+    )
 
-    if (error) {
-      logSafeError('Resend delivery failed', error)
+    if (!delivery.ok) {
+      console.error('[contact] Owner notification failed')
       return jsonResponse(
         { ok: false, error: 'No se pudo enviar el mensaje. Intentá de nuevo.' },
         502
       )
     }
 
+    if (delivery.confirmationFailed) {
+      console.error('[contact] Visitor confirmation failed after owner notification')
+    }
+
+    // Primary reception succeeded even if confirmation failed.
     return jsonResponse({ ok: true }, 200)
   } catch (error: unknown) {
     logSafeError('Unexpected error handling submission', error)
