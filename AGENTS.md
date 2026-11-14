@@ -10,7 +10,7 @@ Este proyecto es el portfolio profesional de **Pablo M.G.**, Desarrollador Web F
 El objetivo del sitio es comunicar con claridad su propuesta de valor, exhibir casos de éxito reales, generar confianza inmediata y facilitar la captación y contacto con clientes potenciales.
 
 * **Dominio en producción:** `https://pablomgdev.xyz`
-* **Plataforma de despliegue:** Netlify (integración continua desde rama `main`).
+* **Plataforma de despliegue:** Vercel (integración continua desde rama `main`).
 * **Idioma principal del sitio:** Español.
 
 ---
@@ -18,14 +18,16 @@ El objetivo del sitio es comunicar con claridad su propuesta de valor, exhibir c
 ## 2. Stack & Technologies
 
 * **Framework:** [Astro v4](https://astro.build/) (`output: "static"`).
+* **Hosting:** Vercel — sitio estático + Vercel Function en `/api/contact` (Node.js `24.x` vía `engines` en `package.json`).
 * **Estilos:** [Tailwind CSS v3](https://tailwindcss.com/) configurado mediante `@astrojs/tailwind`.
 * **Tipografías:**
-  * Serif (Títulos / Acentos): `Gabarito Variable` (`@fontsource-variable/gabarito`).
-  * Sans (Cuerpo / UI): `Be Vietnam Pro` (`@fontsource/be-vietnam-pro`).
+ * Serif (Títulos / Acentos): `Gabarito Variable` (`@fontsource-variable/gabarito`).
+ * Sans (Cuerpo / UI): `Be Vietnam Pro` (`@fontsource/be-vietnam-pro`).
 * **Lenguaje:** TypeScript estricto (`strict: true`).
 * **Linter & Formateador:** ESLint, Prettier con `prettier-plugin-astro`, validación automatizada mediante `scripts/validate-build.js`.
 * **Testing:** Vitest configurado con JSDOM.
 * **Optimización de imágenes:** Módulo nativo de Astro (`astro:assets` / `<Image />`) y procesamiento Sharp.
+* **Contacto:** Vercel Function `api/contact.ts` + Resend (`RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`). Rate limit en memoria = best-effort (no distribuido).
 
 ---
 
@@ -46,7 +48,7 @@ El objetivo del sitio es comunicar con claridad su propuesta de valor, exhibir c
 │   │   ├── About.astro         # Sección Sobre mí
 │   │   ├── Background.astro    # Fondo con gradientes cósmicos y estrellas
 │   │   ├── Benefits.astro      # Sección "Más que una web" (4 pilares de valor)
-│   │   ├── Contact.astro       # Formulario y llamada a contacto
+│   │   ├── Contact.astro       # Formulario de contacto (cliente → /api/contact)
 │   │   ├── ExperienceProof.astro # Bloque de confianza por categorías y experiencia
 │   │   ├── Footer.astro        # Pie de página y enlaces sociales
 │   │   ├── Header.astro        # Barra de navegación fija con backdrop blur
@@ -61,14 +63,21 @@ El objetivo del sitio es comunicar con claridad su propuesta de valor, exhibir c
 │   │   └── translations.ts     # Fuente única de textos, copy y metadatos
 │   ├── layouts/
 │   │   └── Layout.astro        # Layout maestro (HTML head, SEO, OpenGraph, scripts)
+│   ├── lib/
+│   │   └── contactForm.ts      # Validación, sanitización y anti-spam (best-effort rate limit)
 │   ├── pages/
 │   │   └── index.astro         # Página principal estructurada
 │   └── types/
 │       └── index.ts            # Tipado TypeScript estricto de componentes y datos
-├── astro.config.mjs            # Configuración de Astro y plugins
-├── package.json                # Dependencias y scripts del proyecto
+├── api/
+│   └── contact.ts              # Vercel Function POST /api/contact (Resend)
+├── .env.example                # Variables requeridas para Resend / contacto
+├── astro.config.mjs            # Configuración de Astro (static)
+├── package.json                # Dependencias, scripts y engines Node 24.x
 ├── tailwind.config.mjs         # Paleta de colores, sombras y tokens de diseño
-└── tsconfig.json               # Configuración estricta de TypeScript
+├── tsconfig.json               # TypeScript del sitio (incluye api/ en include)
+├── tsconfig.api.json           # Typecheck estricto NodeNext de api/ + helpers
+└── vercel.json                 # includeFiles para la Function de contacto
 ```
 
 ---
