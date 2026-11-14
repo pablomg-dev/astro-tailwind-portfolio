@@ -89,8 +89,8 @@ export function buildVisitorConfirmationEmail(
     '',
     '¡Gracias por escribirme!',
     '',
-    'Pablo M.G.',
-    'Desarrollo Web',
+    'Pablo MG Dev',
+    'Software Developer | Web & AI',
     'https://pablomgdev.xyz',
   ].join('\n')
 
@@ -109,8 +109,8 @@ export function buildVisitorConfirmationEmail(
           <p style="margin:0 0 16px;font-size:16px;line-height:1.5;">Aprecio tu interés en trabajar conmigo.</p>
           <p style="margin:0 0 24px;font-size:16px;line-height:1.5;">¡Gracias por escribirme!</p>
           <p style="margin:0;font-size:16px;line-height:1.5;">
-            <strong>Pablo M.G.</strong><br />
-            Desarrollo Web<br />
+            <strong>Pablo MG Dev</strong><br />
+            Software Developer | Web &amp; AI<br />
             <a href="https://pablomgdev.xyz" style="color:#0f766e;text-decoration:none;">https://pablomgdev.xyz</a>
           </p>
         </td>

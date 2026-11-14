@@ -14,7 +14,7 @@ const payload = {
 }
 
 const config = {
-  fromEmail: 'Pablo M.G. <contacto@pablomgdev.xyz>',
+  fromEmail: 'Pablo MG Dev <contacto@pablomgdev.xyz>',
   ownerEmail: 'pablomg.developer@gmail.com',
 }
 
@@ -41,6 +41,21 @@ describe('buildVisitorConfirmationEmail', () => {
     expect(email.text).toContain(`Hola, ${payload.name}:`)
     expect(email.text).not.toContain(payload.message)
     expect(email.replyTo).toBeUndefined()
+  })
+
+  it('uses the Pablo MG Dev brand signature', () => {
+    const email = buildVisitorConfirmationEmail(payload, config)
+
+    expect(email.from).toContain('contacto@pablomgdev.xyz')
+    expect(email.text).toContain('Pablo MG Dev')
+    expect(email.text).toContain('Software Developer | Web & AI')
+    expect(email.text).toContain('https://pablomgdev.xyz')
+    expect(email.html).toContain('Pablo MG Dev')
+    expect(email.html).toContain('Software Developer | Web &amp; AI')
+    expect(email.html).toContain('https://pablomgdev.xyz')
+    expect(email.text).toContain(`Hola, ${payload.name}:`)
+    expect(email.text).not.toContain(payload.message)
+    expect(email.html).not.toContain(payload.message)
   })
 })
 
