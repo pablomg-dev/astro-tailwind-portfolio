@@ -35,15 +35,18 @@ describe('handleScrollAnimation', () => {
     })
   })
 
-  it('maneja errores graceful cuando falla IntersectionObserver', () => {
-    const consoleErrorSpy = vi.spyOn(console, 'error')
+  it('maneja errores graceful cuando falla IntersectionObserver', async () => {
+    vi.resetModules()
+    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined)
 
     global.IntersectionObserver = vi.fn(() => {
       throw new Error('IntersectionObserver failed')
-    })
+    }) as unknown as typeof IntersectionObserver
 
-    handleScrollAnimation()
+    const { handleScrollAnimation: runScrollAnimation } = await import('./scrollAnimation')
+    runScrollAnimation()
 
     expect(consoleErrorSpy).toHaveBeenCalledWith('Error en animación de scroll:', expect.any(Error))
+    consoleErrorSpy.mockRestore()
   })
 })

@@ -1,6 +1,6 @@
 ---
 /**
- * Sección de Contacto con formulario de Netlify
+ * Contact section with Resend-backed API submission
  */
 interface Props {
   title: string
@@ -38,16 +38,15 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
     class="max-w-xl mx-auto bg-midnight/40 backdrop-blur-xl border border-primary/10 p-8 rounded-3xl shadow-aura-lg opacity-0 translate-y-16 transition-all duration-1000 delay-300"
     data-scroll-animation
   >
-    <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      class="space-y-6"
-    >
-      <input type="hidden" name="form-name" value="contact" />
+    <form name="contact" method="POST" action="/api/contact" class="space-y-6">
       <p class="hidden">
-        <label>Este campo no debe ser completado: <input name="bot-field" /></label>
+        <label
+          >Este campo no debe ser completado: <input
+            name="bot-field"
+            tabindex="-1"
+            autocomplete="off"
+          /></label
+        >
       </p>
 
       <div>
@@ -59,6 +58,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
           name="name"
           id="name"
           required
+          maxlength="100"
           autocomplete="name"
           class="w-full bg-space/50 border border-primary/10 rounded-2xl px-5 py-4 text-cream focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-all duration-300"
           placeholder="Tu nombre"
@@ -74,6 +74,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
           name="email"
           id="email"
           required
+          maxlength="254"
           autocomplete="email"
           class="w-full bg-space/50 border border-primary/10 rounded-2xl px-5 py-4 text-cream focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-all duration-300"
           placeholder="tu@email.com"
@@ -89,6 +90,8 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
           id="message"
           rows="5"
           required
+          minlength="10"
+          maxlength="5000"
           class="w-full bg-space/50 border border-primary/10 rounded-2xl px-5 py-4 text-cream focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-all duration-300 resize-none"
           placeholder="¿En qué puedo ayudarte?"></textarea>
       </div>
@@ -171,7 +174,9 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </div>
-        <p class="text-lg">Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.</p>
+        <p class="text-lg" id="form-error-text">
+          Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.
+        </p>
       </div>
     </div>
   </div>
@@ -182,17 +187,28 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
     const form = document.querySelector('form[name="contact"]') as HTMLFormElement
     const successMsg = document.getElementById('form-success')
     const errorMsg = document.getElementById('form-error')
+    const errorText = document.getElementById('form-error-text')
     const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement
     const btnText = document.getElementById('btn-text')
     const btnIcon = document.getElementById('btn-icon')
 
     if (form && successMsg && errorMsg && submitBtn && btnText) {
+      if (form.dataset.bound === 'true') {
+        return
+      }
+      form.dataset.bound = 'true'
+
       const originalBtnText = btnText.textContent
+      let isSubmitting = false
 
       form.addEventListener('submit', async e => {
         e.preventDefault()
 
-        // 1. Estado de carga: Deshabilitar botón y cambiar texto
+        if (isSubmitting || submitBtn.disabled) {
+          return
+        }
+
+        isSubmitting = true
         submitBtn.disabled = true
         btnText.textContent = 'Enviando…'
         if (btnIcon) {
@@ -200,57 +216,56 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
         }
         errorMsg.classList.add('hidden')
 
-        // 4. Content-Type: URLSearchParams
         const formData = new FormData(form)
-        const body = new URLSearchParams(formData as any).toString()
+        const body = new URLSearchParams()
+        for (const [key, value] of formData.entries()) {
+          if (typeof value === 'string') {
+            body.append(key, value)
+          }
+        }
 
         try {
-          const response = await fetch('/', {
+          const response = await fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: body,
+            body: body.toString(),
           })
 
-          // 2. Manejo de errores: Respuesta != 200
-          if (response.ok) {
+          let payload: { ok?: boolean; error?: string } = {}
+          try {
+            payload = (await response.json()) as { ok?: boolean; error?: string }
+          } catch {
+            payload = {}
+          }
+
+          if (response.ok && payload.ok !== false) {
             form.classList.add('hidden')
             successMsg.classList.remove('hidden')
-
-            // 5. Accesibilidad: focus y scroll
             successMsg.focus()
             successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' })
-          } else {
-            throw new Error('Netlify respondio con error')
+            return
           }
+
+          throw new Error(payload.error || 'No se pudo enviar el mensaje')
         } catch (error) {
           console.error('Error al enviar formulario:', error)
 
-          // 1. Restaurar el botón si ocurre un error
+          isSubmitting = false
           submitBtn.disabled = false
           btnText.textContent = originalBtnText
           if (btnIcon) {
             btnIcon.classList.remove('hidden')
           }
 
-          // 2. Mostrar mensaje de error visible
-          errorMsg.classList.remove('hidden')
+          if (errorText && error instanceof Error && error.message) {
+            errorText.textContent = error.message
+          }
 
-          // 5. Accesibilidad: focus y scroll
+          errorMsg.classList.remove('hidden')
           errorMsg.focus()
           errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' })
         }
       })
-    }
-
-    // Soporte para redirección (legacy)
-    const urlParams = new URLSearchParams(window.location.search)
-    if (urlParams.get('success') === 'true') {
-      if (successMsg) {
-        successMsg.classList.remove('hidden')
-        if (form) {
-          form.classList.add('hidden')
-        }
-      }
     }
   }
 
