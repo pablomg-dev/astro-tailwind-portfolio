@@ -19,5 +19,6 @@
     "noImplicitReturns": true,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false
-  }
+  },
+  "include": ["src/**/*", "api/**/*"]
 }

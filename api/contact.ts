@@ -6,7 +6,7 @@ import {
   getClientIp,
   parseContactFormData,
   validateContactForm,
-} from '../src/lib/contactForm'
+} from '../src/lib/contactForm.js'
 
 const JSON_HEADERS = {
   'Content-Type': 'application/json; charset=utf-8',
@@ -30,6 +30,27 @@ function getContactEnv() {
     toEmail: readEnv(process.env.CONTACT_TO_EMAIL),
     fromEmail: readEnv(process.env.CONTACT_FROM_EMAIL),
   }
+}
+
+function logSafeError(scope: string, error: unknown): void {
+  if (error instanceof Error) {
+    console.error(`[contact] ${scope}`, {
+      name: error.name,
+      message: error.message,
+    })
+    return
+  }
+
+  if (error && typeof error === 'object') {
+    const record = error as { name?: unknown; message?: unknown }
+    console.error(`[contact] ${scope}`, {
+      name: typeof record.name === 'string' ? record.name : 'UnknownError',
+      message: typeof record.message === 'string' ? record.message : 'unknown',
+    })
+    return
+  }
+
+  console.error(`[contact] ${scope}`)
 }
 
 async function parseBody(request: Request): Promise<FormData | Response> {
@@ -122,7 +143,7 @@ export async function POST(request: Request): Promise<Response> {
     })
 
     if (error) {
-      console.error('[contact] Resend delivery failed')
+      logSafeError('Resend delivery failed', error)
       return jsonResponse(
         { ok: false, error: 'No se pudo enviar el mensaje. Intentá de nuevo.' },
         502
@@ -130,8 +151,8 @@ export async function POST(request: Request): Promise<Response> {
     }
 
     return jsonResponse({ ok: true }, 200)
-  } catch {
-    console.error('[contact] Unexpected error handling submission')
+  } catch (error: unknown) {
+    logSafeError('Unexpected error handling submission', error)
     return jsonResponse(
       { ok: false, error: 'Hubo un error al enviar el mensaje. Intentá de nuevo.' },
       500

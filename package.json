@@ -8,12 +8,13 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && pnpm run typecheck:api && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "optimize-images": "node scripts/optimize-images.js",
     "test": "vitest run",
     "test:watch": "vitest",
+    "typecheck:api": "tsc --noEmit -p tsconfig.api.json",
     "lint": "eslint src/ --ext .ts,.tsx,.js,.astro",
     "lint:fix": "eslint src/ --ext .ts,.tsx,.js,.astro --fix",
     "prebuild": "node scripts/validate-build.js",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@types/node": "^24.12.2",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "eslint": "^8.0.0",

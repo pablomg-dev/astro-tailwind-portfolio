@@ -75,7 +75,9 @@ El objetivo del sitio es comunicar con claridad su propuesta de valor, exhibir c
 ├── astro.config.mjs            # Configuración de Astro (static)
 ├── package.json                # Dependencias, scripts y engines Node 24.x
 ├── tailwind.config.mjs         # Paleta de colores, sombras y tokens de diseño
-└── tsconfig.json               # Configuración estricta de TypeScript
+├── tsconfig.json               # TypeScript del sitio (incluye api/ en include)
+├── tsconfig.api.json           # Typecheck estricto NodeNext de api/ + helpers
+└── vercel.json                 # includeFiles para la Function de contacto
 ```
 
 ---
