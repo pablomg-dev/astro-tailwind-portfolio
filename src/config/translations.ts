@@ -15,9 +15,25 @@ import olgaImage from '../assets/olga-addesso.png'
 import mariaveImage from '../assets/mariavecreativa.png'
 import portalOracularImage from '../assets/elportaloracular.png'
 import entreErasImage from '../assets/entreeras.png'
+import efesoImage from '../assets/efesoproductora.png'
+import malenaBurnsImage from '../assets/malenaburns.jpg'
 import profileImage from '../assets/foto-pablo.jpg'
 
 const projects: ProjectProps[] = [
+  {
+    name: 'Malena Burns',
+    summary:
+      'Sitio personal para guía en bienestar y acompañamiento integral. Un portal sereno diseñado para conectar con su historia, servicios y un camino de transformación personal.',
+    link: 'https://www.malenaburns.com/',
+    image: malenaBurnsImage,
+  },
+  {
+    name: 'Éfeso Experiencias',
+    summary:
+      'Sitio Web para productora boutique de diseño y arquitectura de celebraciones privadas. Un espacio elegante que presenta universos de celebración a través del arte, la simbología y el juego.',
+    link: 'https://www.efesoproductora.com/',
+    image: efesoImage,
+  },
   {
     name: 'El Portal Oracular de Anna Luna',
     summary:
@@ -119,7 +135,7 @@ export const translations = {
     name: 'Pablo M.G.',
     specialty: 'Desarrollador Web Freelance',
     summary:
-      'Diseño y desarrollo sitios Web profesionales, Landing Pages y tiendas online a medida para profesionales, emprendedores y proyectos independientes.',
+      'Diseño y desarrollo sitios Web profesionales, Landing Pages y tiendas online a medida. También construyo productos y agentes de IA con LLMs para potenciar negocios de profesionales, emprendedores y proyectos independientes.',
     email: 'pablomg.developer@gmail.com',
     image: profileImage,
   },
