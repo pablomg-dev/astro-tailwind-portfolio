@@ -40,7 +40,7 @@ describe('buildVisitorConfirmationEmail', () => {
     expect(email.subject).toBe('Recibimos tu mensaje | Pablo M.G. Dev')
     expect(email.text).toContain(`Hola, ${payload.name}:`)
     expect(email.text).not.toContain(payload.message)
-    expect(email.replyTo).toBeUndefined()
+    expect(email.replyTo).toBe(config.fromEmail)
   })
 
   it('uses the Pablo MG Dev brand signature', () => {
