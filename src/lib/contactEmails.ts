@@ -124,7 +124,7 @@ export function buildVisitorConfirmationEmail(
     from: config.fromEmail,
     to: [data.email],
     replyTo: config.fromEmail,
-    subject: 'Recibimos tu mensaje | Pablo M.G. Dev',
+    subject: 'Recibimos tu mensaje | Pablo MG Dev',
     text,
     html,
   }

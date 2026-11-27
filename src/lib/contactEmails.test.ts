@@ -37,7 +37,7 @@ describe('buildVisitorConfirmationEmail', () => {
 
     expect(email.from).toBe(config.fromEmail)
     expect(email.to).toEqual([payload.email])
-    expect(email.subject).toBe('Recibimos tu mensaje | Pablo M.G. Dev')
+    expect(email.subject).toBe('Recibimos tu mensaje | Pablo MG Dev')
     expect(email.text).toContain(`Hola, ${payload.name}:`)
     expect(email.text).not.toContain(payload.message)
     expect(email.replyTo).toBe(config.fromEmail)
