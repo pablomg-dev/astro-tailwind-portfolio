@@ -123,6 +123,7 @@ export function buildVisitorConfirmationEmail(
   return {
     from: config.fromEmail,
     to: [data.email],
+    replyTo: config.fromEmail,
     subject: 'Recibimos tu mensaje | Pablo M.G. Dev',
     text,
     html,
