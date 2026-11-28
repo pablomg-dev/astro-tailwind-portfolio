@@ -21,27 +21,27 @@
     "validate": "node scripts/validate-build.js"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.7.2",
-    "@astrojs/tailwind": "^5.1.2",
-    "@fontsource-variable/gabarito": "^5.1.0",
-    "@fontsource/be-vietnam-pro": "^5.1.0",
-    "astro": "^4.16.18",
-    "resend": "^6.38.0",
-    "tailwindcss": "^3.4.11",
-    "typescript": "^5.6.2"
+    "@astrojs/sitemap": "3.7.6",
+    "@astrojs/tailwind": "^5.1.5",
+    "@fontsource-variable/gabarito": "^5.3.0",
+    "@fontsource/be-vietnam-pro": "^5.3.0",
+    "astro": "^4.16.19",
+    "resend": "^6.40.1",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@types/node": "^24.12.2",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "eslint": "^8.0.0",
+    "@astrojs/check": "^0.9.12",
+    "@types/node": "^24.19.4",
+    "@typescript-eslint/eslint-plugin": "^8.74.0",
+    "@typescript-eslint/parser": "^8.74.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-astro": "^1.7.0",
     "jsdom": "^29.1.1",
-    "prettier": "^3.3.3",
+    "prettier": "^3.10.1",
     "prettier-plugin-astro": "^0.14.1",
     "sharp": "^0.34.5",
-    "vite": "^8.0.0",
-    "vitest": "^4.1.8"
+    "vite": "^8.4.0",
+    "vitest": "^4.1.12"
   }
 }
