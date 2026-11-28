@@ -1,0 +1,157 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Hero from '@components/Hero.astro'
+import About from '@components/About.astro'
+import Projects from '@components/Projects.astro'
+import ExperienceProof from '@components/ExperienceProof.astro'
+import Process from '@components/Process.astro'
+import Benefits from '@components/Benefits.astro'
+import SpecialtyCard from '@components/SpecialtyCard.astro'
+import MidCta from '@components/MidCta.astro'
+import Contact from '@components/Contact.astro'
+import type { Locale, ServiceProps, SpecialtyCardProps } from '@types'
+import { getTranslations } from '@config/translations'
+
+interface Props {
+  locale?: Locale
+}
+
+const { locale = 'es' } = Astro.props
+const t = getTranslations(locale)
+
+const navLinks = [
+  { text: t.nav.projects, href: '#projects' },
+  { text: t.services.title, href: '#services' },
+  { text: t.nav.about, href: '#about' },
+  { text: t.nav.contact, href: '#contact' },
+]
+
+const specialties = [
+  t.about.specialties.design,
+  t.about.specialties.speed,
+  t.about.specialties.automation,
+]
+---
+
+<Layout
+  title={t.seo.title}
+  description={t.seo.description}
+  navLinks={navLinks}
+  author={t.seo.author}
+  locale={locale}
+>
+  <Hero
+    name={t.hero.name}
+    specialty={t.hero.specialty}
+    summary={t.hero.summary}
+    image={t.hero.image}
+    imageAlt={t.hero.imageAlt}
+  />
+
+  <div class="py-12"></div>
+
+  <Projects
+    title={t.projects.title}
+    projects={[...t.projects.items]}
+    viewProject={t.projects.viewProject}
+    altPrefix={t.projects.altPrefix}
+  />
+
+  <ExperienceProof
+    title={t.experienceProof.title}
+    description={t.experienceProof.description}
+    categories={t.experienceProof.categories}
+    note={t.experienceProof.note}
+    subnote={t.experienceProof.subnote}
+  />
+
+  <section class="py-20 relative" id="services">
+    <div class="absolute inset-0 bg-primary/5 blur-[60px] -z-10"></div>
+    <h2
+      class="text-4xl font-serif text-cream text-center mb-16 tracking-widest uppercase opacity-0 translate-y-16 transition-all duration-1000"
+      data-scroll-animation
+    >
+      {t.services.title}
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        t.services.items.map((service: ServiceProps) => (
+          <div
+            class="group p-8 rounded-3xl bg-midnight/40 backdrop-blur-md border border-primary/10 opacity-0 translate-y-16 transition-all duration-1000 hover:shadow-aura hover:-translate-y-1 hover:bg-midnight/50"
+            data-scroll-animation
+          >
+            {service.icon && (
+              <div class="text-3xl mb-4 group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]">
+                {service.icon}
+              </div>
+            )}
+            <h3 class="text-2xl font-serif text-cream mb-3 transition-colors duration-500 group-hover:text-primary text-balance">
+              {service.title}
+            </h3>
+            <p class="text-cream/70 font-light text-base leading-relaxed text-pretty">
+              {service.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <Process title={t.process.title} subtitle={t.process.subtitle} steps={[...t.process.steps]} />
+
+  <Benefits title={t.benefits.title} subtitle={t.benefits.subtitle} items={[...t.benefits.items]} />
+
+  <section class="py-20 relative">
+    <div class="absolute inset-0 bg-primary/5 blur-[60px] -z-10"></div>
+    <h2
+      class="text-4xl font-serif text-cream text-center mb-16 tracking-widest uppercase opacity-0 translate-y-16 transition-all duration-1000"
+      data-scroll-animation
+    >
+      {t.specialties.title}
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      {
+        t.specialties.items.map((item: SpecialtyCardProps) => (
+          <SpecialtyCard title={item.title} description={item.description} icon={item.icon} />
+        ))
+      }
+    </div>
+  </section>
+
+  <MidCta
+    title={t.midCta.title}
+    description={t.midCta.description}
+    buttonText={t.midCta.buttonText}
+    href={t.midCta.href}
+  />
+
+  <About
+    title={t.about.title}
+    description={t.about.description}
+    greeting={t.about.greeting}
+    specialtiesTitle={t.about.specialties.title}
+    specialties={specialties}
+    closing={t.about.closing}
+    cta={t.about.cta}
+    name={t.hero.name}
+    image={t.about.image}
+    imageAlt={t.about.imageAlt}
+  />
+
+  <Contact
+    title={t.contact.title}
+    subtitle={t.contact.subtitle}
+    nameLabel={t.contact.nameLabel}
+    namePlaceholder={t.contact.namePlaceholder}
+    emailLabel={t.contact.emailLabel}
+    emailPlaceholder={t.contact.emailPlaceholder}
+    messageLabel={t.contact.messageLabel}
+    messagePlaceholder={t.contact.messagePlaceholder}
+    sendButton={t.contact.sendButton}
+    sendingButton={t.contact.sendingButton}
+    successMessage={t.contact.successMessage}
+    errorMessage={t.contact.errorMessage}
+    genericErrorMessage={t.contact.genericErrorMessage}
+    honeypotLabel={t.contact.honeypotLabel}
+  />
+</Layout>

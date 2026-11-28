@@ -13,10 +13,21 @@ interface Props {
   cta: string
   name: string
   image: ImageMetadata
+  imageAlt?: string
 }
 
-const { title, description, greeting, specialtiesTitle, specialties, closing, cta, name, image } =
-  Astro.props
+const {
+  title,
+  description,
+  greeting,
+  specialtiesTitle,
+  specialties,
+  closing,
+  cta,
+  name,
+  image,
+  imageAlt,
+} = Astro.props
 
 function validateAboutProps(props: Props): asserts props is Props {
   if (!props.title || typeof props.title !== 'string') {
@@ -70,7 +81,7 @@ const fullText = [greeting, description, specialtiesList].join('\n\n')
       <Image
         class="object-cover rounded-[2.5rem] shadow-aura-lg border-4 border-midnight w-full h-full transition-all duration-500 group-hover:shadow-aura"
         src={image}
-        alt={`Foto de ${name}, desarrollador web freelance en Buenos Aires, Argentina`}
+        alt={imageAlt ?? `Foto de ${name}, desarrollador web freelance`}
         width={260}
         height={260}
         loading="lazy"

@@ -7,7 +7,7 @@ import type { HeroProps } from '../types'
 
 type Props = HeroProps
 
-const { name, specialty, summary, image } = Astro.props
+const { name, specialty, summary, image, imageAlt } = Astro.props
 
 function validateHeroProps(props: Props): asserts props is Props {
   if (!props.name || typeof props.name !== 'string') {
@@ -34,7 +34,7 @@ validateHeroProps(Astro.props)
     <div class="relative mb-8 group">
       <Image
         src={image}
-        alt={`Foto de ${name}, Desarrollador Web Freelance de habla hispana`}
+        alt={imageAlt ?? `Foto de ${name}, Desarrollador Web Freelance`}
         width={160}
         height={160}
         loading="eager"

@@ -7,23 +7,43 @@ import Footer from '@components/Footer.astro'
 import ScrollToTop from '@components/ScrollToTop.astro'
 
 import Background from '@components/Background.astro'
+import { getTranslations } from '@config/translations'
+import type { Locale } from '@types'
 
 interface Props {
   title: string
   description: string
   navLinks: { text: string; href: string }[]
   author: string
+  locale?: Locale
 }
 
-const { title, description, navLinks, author } = Astro.props
+const { title, description, navLinks, author, locale = 'es' } = Astro.props
+const t = getTranslations(locale)
 
 const defaultSite = 'https://pablomgdev.xyz/'
 const siteUrl = new URL(Astro.site || defaultSite).href
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href
+const esUrl = new URL('/', siteUrl).href
+const enUrl = new URL('/en/', siteUrl).href
+
+const personSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: author,
+  url: 'https://pablomgdev.xyz',
+  jobTitle: t.seo.jobTitle,
+  knowsAbout: t.seo.knowsAbout,
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'AR',
+  },
+  sameAs: ['https://www.linkedin.com/in/pablomgdev/', 'https://github.com/pablomg-dev'],
+})
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth overflow-x-hidden">
+<html lang={locale} class="scroll-smooth overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -46,37 +66,16 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL('/vistaprevia.png', siteUrl)} />
 
-    <meta
-      name="keywords"
-      content="Desarrollador Web Freelance, Programador Web Freelance, Desarrollo Web a Medida, Crear Página Web Profesional, Diseño y Desarrollo Web, Landing Pages de Conversión, Web para Profesionales y Emprendedores, Tienda Nube Ecommerce, Sitios Web para Servicios"
-    />
+    <meta name="keywords" content={t.seo.keywords} />
 
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale" content={t.seo.ogLocale} />
 
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={esUrl} />
 
-    <script is:inline type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Pablo M.G.",
-        "url": "https://pablomgdev.xyz",
-        "jobTitle": "Desarrollador Web Freelance",
-        "knowsAbout": [
-          "Desarrollo Web",
-          "Landing Pages",
-          "Ecommerce",
-          "Tienda Nube",
-          "Diseño UX/UI",
-          "Webs para Profesionales"
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "AR"
-        },
-        "sameAs": ["https://www.linkedin.com/in/pablomgdev/", "https://github.com/pablomg-dev"]
-      }
-    </script>
+    <script is:inline type="application/ld+json" set:html={personSchema} />
 
     <!-- Google Analytics (GA4) cargado después de la ruta crítica -->
     <script is:inline>
@@ -130,12 +129,12 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl).href
   <body class="font-sans bg-space text-cream relative overflow-x-hidden">
     <Background />
 
-    <Header {navLinks} />
+    <Header {navLinks} {locale} />
     <main class="max-w-3xl px-5 mx-auto relative" transition:animate="none">
       <slot />
     </main>
     <Footer {author} />
-    <ScrollToTop />
+    <ScrollToTop ariaLabel={t.scrollToTop.ariaLabel} />
     <script is:inline type="module">
       let observer = null
 

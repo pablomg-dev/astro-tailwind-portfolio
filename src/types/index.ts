@@ -3,11 +3,14 @@
  */
 import type { ImageMetadata } from 'astro'
 
+export type Locale = 'es' | 'en'
+
 export interface HeroProps {
   name: string
   specialty: string
   summary: string
   image: ImageMetadata
+  imageAlt?: string
 }
 
 export interface ProjectProps {

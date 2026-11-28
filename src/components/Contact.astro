@@ -6,14 +6,35 @@ interface Props {
   title: string
   subtitle: string
   nameLabel: string
+  namePlaceholder?: string
   emailLabel: string
+  emailPlaceholder?: string
   messageLabel: string
+  messagePlaceholder?: string
   sendButton: string
+  sendingButton?: string
   successMessage: string
+  errorMessage?: string
+  genericErrorMessage?: string
+  honeypotLabel?: string
 }
 
-const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, successMessage } =
-  Astro.props
+const {
+  title,
+  subtitle,
+  nameLabel,
+  namePlaceholder = 'Tu nombre',
+  emailLabel,
+  emailPlaceholder = 'tu@email.com',
+  messageLabel,
+  messagePlaceholder = '¿En qué puedo ayudarte?',
+  sendButton,
+  sendingButton = 'Enviando…',
+  successMessage,
+  errorMessage = 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.',
+  genericErrorMessage = 'No se pudo enviar el mensaje',
+  honeypotLabel = 'Este campo no debe ser completado:',
+} = Astro.props
 ---
 
 <section class="py-20 relative" id="contact">
@@ -38,14 +59,18 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
     class="max-w-xl mx-auto bg-midnight/40 backdrop-blur-xl border border-primary/10 p-8 rounded-3xl shadow-aura-lg opacity-0 translate-y-16 transition-all duration-1000 delay-300"
     data-scroll-animation
   >
-    <form name="contact" method="POST" action="/api/contact" class="space-y-6">
+    <form
+      name="contact"
+      method="POST"
+      action="/api/contact"
+      class="space-y-6"
+      data-sending-text={sendingButton}
+      data-generic-error={genericErrorMessage}
+    >
       <p class="hidden">
         <label
-          >Este campo no debe ser completado: <input
-            name="bot-field"
-            tabindex="-1"
-            autocomplete="off"
-          /></label
+          >{honeypotLabel}{' '}
+          <input name="bot-field" tabindex="-1" autocomplete="off" /></label
         >
       </p>
 
@@ -61,7 +86,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
           maxlength="100"
           autocomplete="name"
           class="w-full bg-space/50 border border-primary/10 rounded-2xl px-5 py-4 text-cream focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-all duration-300"
-          placeholder="Tu nombre"
+          placeholder={namePlaceholder}
         />
       </div>
 
@@ -77,7 +102,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
           maxlength="254"
           autocomplete="email"
           class="w-full bg-space/50 border border-primary/10 rounded-2xl px-5 py-4 text-cream focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-all duration-300"
-          placeholder="tu@email.com"
+          placeholder={emailPlaceholder}
         />
       </div>
 
@@ -93,7 +118,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
           minlength="10"
           maxlength="5000"
           class="w-full bg-space/50 border border-primary/10 rounded-2xl px-5 py-4 text-cream focus:ring-2 focus:ring-primary/20 focus:border-primary/30 outline-none transition-all duration-300 resize-none"
-          placeholder="¿En qué puedo ayudarte?"></textarea>
+          placeholder={messagePlaceholder}></textarea>
       </div>
 
       <button
@@ -175,7 +200,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
           </svg>
         </div>
         <p class="text-lg" id="form-error-text">
-          Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.
+          {errorMessage}
         </p>
       </div>
     </div>
@@ -199,6 +224,8 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
       form.dataset.bound = 'true'
 
       const originalBtnText = btnText.textContent
+      const sendingText = form.dataset.sendingText || 'Enviando…'
+      const genericError = form.dataset.genericError || 'No se pudo enviar el mensaje'
       let isSubmitting = false
 
       form.addEventListener('submit', async e => {
@@ -210,7 +237,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
 
         isSubmitting = true
         submitBtn.disabled = true
-        btnText.textContent = 'Enviando…'
+        btnText.textContent = sendingText
         if (btnIcon) {
           btnIcon.classList.add('hidden')
         }
@@ -246,7 +273,7 @@ const { title, subtitle, nameLabel, emailLabel, messageLabel, sendButton, succes
             return
           }
 
-          throw new Error(payload.error || 'No se pudo enviar el mensaje')
+          throw new Error(payload.error || genericError)
         } catch (error) {
           console.error('Error al enviar formulario:', error)
 
